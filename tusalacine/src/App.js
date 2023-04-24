@@ -1,14 +1,14 @@
 import './App.css';
 import React from 'react';
-import Header from './Component/Header';
+import HeaderPrincipal from './Component/HeaderPrincipal';
 /* import MainContent from './MainContent';
 import Footer from './Footer'; */
 
 function App() {
   return (
     <div >
-      <Header />
-{/*       <MainContent />
+      <HeaderPrincipal />
+    {/* <MainContent />
       <Footer /> */}
     </div>
   );
