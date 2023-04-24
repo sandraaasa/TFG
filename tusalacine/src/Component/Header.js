@@ -1,4 +1,8 @@
-<nav >
+import React from 'react';
+
+function Footer(){
+  return (
+    <nav >
 {/* class="navbar navbar-light bg-light" */}
   <div>
   {/* class="container-fluid" */}
@@ -9,3 +13,7 @@
     </a>
   </div>
 </nav>
+  );
+}
+
+export default Footer;
