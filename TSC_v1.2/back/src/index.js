@@ -5,7 +5,6 @@ const bodyparser = require('body-parser');
 const mongose = require('mongoose');
 const app = express();
 
-var url = 'mongodb://localhost:puerto/tsc';
 mongose.Promise = global.Promise;
 var peli_rutas = require('./routes/pelicula');
 
@@ -28,10 +27,25 @@ app.use((req, res, next) =>{
 
 //cargamos los archivos de ruta
 app.use('/api', peli_rutas);
+
 //nos conectamos a mongo y ejecutamos
-mongose.connect(url, {userNewUrlParser: true}).then(() =>{
+/* mongose.connect(url, {useNewUrlParser: true}).then(() =>{
     console.log('CONECTADO!');
     app.listen(3000, ()=>{
         console.log('Server en marcha en http://localhost:3000')
     })
+}) */
+
+mongose.connect('mongodb://localhost/tsc', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  autoIndex: true
+});
+
+const db = mongose.connection;
+db.on('error', (error) => console.error(error));
+db.once('open', () => console.log('Conectado a la base de datos'));
+
+app.listen(3000, ()=>{
+    console.log('Server en marcha en http://localhost:3000')
 })
