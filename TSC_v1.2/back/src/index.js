@@ -26,26 +26,12 @@ app.use((req, res, next) =>{
 
 
 //cargamos los archivos de ruta
-app.use('/api', peli_rutas);
+app.use('/', peli_rutas);
 
 //nos conectamos a mongo y ejecutamos
-/* mongose.connect(url, {useNewUrlParser: true}).then(() =>{
-    console.log('CONECTADO!');
-    app.listen(3000, ()=>{
-        console.log('Server en marcha en http://localhost:3000')
+mongose.connect('mongodb+srv://usuario:usuario@sandra.42non41.mongodb.net/test',{useNewUrlParser: true,autoIndex: true}).then(() =>{
+        console.log('CONECTADO!');
+        app.listen(3000, ()=>{
+            console.log('Server en marcha en http://localhost:3000')
+        })
     })
-}) */
-
-mongose.connect('mongodb://localhost/tsc', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  autoIndex: true
-});
-
-const db = mongose.connection;
-db.on('error', (error) => console.error(error));
-db.once('open', () => console.log('Conectado a la base de datos'));
-
-app.listen(3000, ()=>{
-    console.log('Server en marcha en http://localhost:3000')
-})
