@@ -31,7 +31,7 @@ app.use('/', peli_rutas);
 //nos conectamos a mongo y ejecutamos
 mongose.connect('mongodb+srv://usuario:usuario@sandra.42non41.mongodb.net/tsc',{useNewUrlParser: true,autoIndex: true}).then(() =>{
         console.log('CONECTADO!');
-        app.listen(3000, ()=>{
-            console.log('Server en marcha en http://localhost:3000')
+        app.listen(3001, ()=>{
+            console.log('Server en marcha en http://localhost:3001')
         })
     })

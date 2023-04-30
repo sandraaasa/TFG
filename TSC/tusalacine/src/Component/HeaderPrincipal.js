@@ -1,24 +1,3 @@
-/* import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../css/header.css'
-import { Button } from 'primereact/button';
-import MenuPopUp from './MenuPopUp';
-
-
-
-function HeaderPrincipal(){
-  return (
-    <nav classname="header">
-      
-      <div classname="logo">
-        <MenuPopUp/>
-        <Button icon="pi pi-user" severity="info" aria-label="User" />
-      </div>
-    </nav>
-  );
-}
-
-export default HeaderPrincipal; */
 import React from 'react';
 import { Menubar } from 'primereact/menubar';
 import { InputText } from 'primereact/inputtext';
@@ -112,7 +91,7 @@ export default function TemplateDemo() {
     const end = <InputText placeholder="Search" type="text" className="w-full" />;
 
     return (
-        <div className="card">
+        <div>
 
             <Menubar model={items} start={start} end={end} />
         </div>
