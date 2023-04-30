@@ -4,10 +4,10 @@ var Schema = mongose.Schema;
 
 var PeliculaSchema = new Schema(
     {
-        idP: Number,
+        imdb_id: String,
         titulo: String,
-        studio: String,
-        categorias: String,
+        fecha: Date,
+        categorias: [String],
         minutos: Number,
         pais: String,
         sinopsis: String,

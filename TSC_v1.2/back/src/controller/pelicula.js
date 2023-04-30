@@ -3,85 +3,92 @@
 let Peli = require('../model/pelicula');
 let controller ={
     //Metodo añadir
-    add: (req, res)=>{
+    save: (req, res)=>{
         let params = req.body;
         const peliNew = new Peli();
         //Rellenamos
+        peliNew.imdb_id = params.imdb_id;
         peliNew.titulo = params.titulo;
-        peliNew.studio = params.categorias;
+        peliNew.fecha = params.fecha;
+        peliNew.categorias = params.categorias;
         peliNew.minutos = params.minutos;
         peliNew.pais = params.pais;
         peliNew.sinopsis = params.sinopsis;
         peliNew.valoracionTotal = params.valoracionTotal;
         //guardamos
-        peliNew.save((err, peliStored) =>{
-                if (err || !peliStored) {
-                    return res.status(404).send({
-                        status: 'error',
-                        message: 'No se ha podido guardar la película'
-                    });
-                }else{
-                    return res.status(200).send({
-                        status: 'success',
-                        peliStored
-                    });
-                }
-            });
+        peliNew.save()
+        .then((peliStored) => {
+                return res.status(200).send({
+                    peliStored
+                });
+          })
+          .catch((error) => {
+            console.log('Ocurrió un error al guardar el usuario:', error);
+          });
+        
     },
 
     //Metodo Listar
-    getPelis: (req, res)=>{
-        let query = Peli.find({});
-        
-        query.err((err, peliculas) =>{
-
-            if (err) {
-                return res.status(500).send({
-                    status: 'error',
-                    message: 'No se ha podido extraer las peliculas'
+    getPelis: async (req, res)=>{
+        try {
+            const peliget = await Peli.find({});
+            if (!peliget) {
+                return res.status(404).send({
+                    message: 'No hay películas actualmente'
                 });
-            }else {
-                if (!peliculas) {
-                    return res.status(404).send({
-                        status: 'error',
-                        message: 'No hay películas actualmente'
-                    });
-                }else{
-                    return res.status(200).send({
-                        status: 'success',
-                        peliculas
-                    });
-                }
-            }
+            } else {
+                return res.status(200).send({
+                    peliget
+                });
+            };
+        } catch (error) {
+            return res.status(500).send({
+                message: 'Ha habido un error y no se han encontrado las peliculas'
+            });
+        }
+    },
 
-        });
+    //Metodo  por id
+    getPelisId: async (req, res)=>{
+        try {
+            const pelid = req.params.id;
+            const peliget = await Peli.findById({_id: pelid});
+            if (!peliget) {
+                return res.status(404).send({
+                    message: 'No hay películas con ese id'
+                });
+            } else {
+                return res.status(200).send({
+                    peliget
+                });
+            };
+        } catch (error) {
+            return res.status(500).send({
+                message: 'Ha habido un error y no se ha encontrado la pelicula'
+            });
+        }
     },
 
     //Metodo Eliminar
-    delete: (req, res)=>{
-        let pelid = req.params.id;
-        
-        Peli.findOneAndDelete({_id: pelid}, (err, pelidelt) =>{
+    delete: async (req, res)=>{
+        try {
+            const pelid = req.params.id;
+            const pelidelt = await Peli.findOneAndDelete({_id: pelid});
 
-            if (err) {
-                return res.status(500).send({
-                    status: 'error',
-                    message: 'No se ha podido eliminar'
-                });
-            }
             if (!pelidelt) {
                 return res.status(404).send({
-                    status: 'error',
                     message: 'No se ha encontrado la película'
                 });
             }else{
                 return res.status(200).send({
-                    status: 'success',
                     pelicula: pelidelt
                 });
             }
-
-        });
+        } catch (error) {
+            return res.status(500).send({
+                message: 'Ha habido un error y no se ha podido eliminar'
+              });
+        }
     }
 
 }
