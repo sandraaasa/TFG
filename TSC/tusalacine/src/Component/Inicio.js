@@ -5,8 +5,8 @@ import logo from '../assets/images/tsclogo.png';
 
 const Inicio = () => {
     return(
-        <div>
-             <img alt="logo" src={logo} className="logo"/>;
+        <div alt="logo">
+            <img src={logo} className="logo"/>;
         </div>
     )
 

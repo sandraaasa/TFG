@@ -1,5 +1,4 @@
 .logo{
-    align-self: center;
-    height: 80%;
-    
+    display: flex;
+    width: 100%;
 }

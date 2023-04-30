@@ -24,7 +24,29 @@
     text-decoration: none;
     color: white;
     font-size: large;
+    font-weight: 600;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
 }
 .deco:hover{
     color: #5F9EA0;
+}
+
+.linea::after {
+        content: ''; 
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 3px;
+        bottom: -2px;
+        left: 0;
+        background-color: #E6E6E6 ;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+    }
+
+.linea:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
