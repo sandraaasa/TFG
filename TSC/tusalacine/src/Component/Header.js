@@ -1,21 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/css/header.css'
 
-import logo from '../assets/images/tsclogo.png';
+//import logo from '../assets/images/tsclogo.png';
 import logo2 from '../assets/images/tsclogoinvert.png';
 import { NavLink } from 'react-router-dom';
+import { Button } from 'primereact/button';
+import { InputSwitch } from "primereact/inputswitch";
+
 
 
 const HeaderInicio = () =>{
+  const [checked, setChecked] = useState(true);
   return (
     <nav className='card menu'>
         <NavLink to="/" className="deco logoH">
           <img alt="logo" src={logo2} height="70" className="mr-2"/>
         </NavLink>
         <ul className='lista'>
+          <li className='dark_mode'>
+            <span id="dark_mode">Tema oscuro </span>
+            <InputSwitch aria-labelledby="dark_mode" checked={checked} onChange={(e) => setChecked(e.value)} />
+          </li>
           <li>
-            <NavLink to="/Catalogo" className="deco linea">Categorias</NavLink>
+            <NavLink to="/Catalogo"  className="deco linea"><Button className='deco' severity="secondary" text>Categorias</Button></NavLink>
           </li>
           <li>
             <NavLink to="/Sesion" className="deco linea">Iniciar Sesion</NavLink>
