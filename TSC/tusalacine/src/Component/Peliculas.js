@@ -27,7 +27,11 @@ const Peliculas = () =>{
                         
                         pelis.map((peli, i)=>{
                             return(
-                                <Carta />
+                                <Carta 
+                                    key={i}
+                                    id={i}
+                                    peliData={peli}
+                                />
                             ); 
                         })
                     ):(

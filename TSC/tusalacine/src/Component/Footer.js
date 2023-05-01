@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom';
 
 const Footer = () =>{
   return (
-    <footer class="container">
+    <footer className='contenedor'>
       <p>Todos los derechos reservados &copy; 2023</p>
       <img alt="logo" src={logo} height="40" className="mr-2"></img>
       <ul>

@@ -15,12 +15,17 @@ const Router = () =>{
         {/* <Routes>
             <Route exact path='/Catalogo' element={<Header/>} />
         </Routes> */}
+        <div> 
+            <aside>
+                
+            </aside>
             <Routes>
                 <Route exact path="/" element={<Inicio />} />
                 <Route exact path="/Catalogo" element={<Peliculas />} />
-                <Route exact path="/Sesion" element={<Carta />} />
-                
+                {//<Route exact path="/Sesion" element={<Carta />} />
+                }
             </Routes>
+        </div>
         <Footer/>
         </BrowserRouter>
     );
