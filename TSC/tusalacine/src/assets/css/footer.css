@@ -3,9 +3,6 @@ footer {
   border-radius: 8px;
   color: #fff;
   padding: 20px;
-}
-
-footer .contenedor {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
