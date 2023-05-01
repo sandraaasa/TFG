@@ -20,8 +20,8 @@ const CartaPeli =({id, peliData}) =>{
     );
     const footer = (
         <div className="flex flex-wrap justify-content-end gap-2">
-            <Button label="Info" icon="pi pi-check" />
-            <Button label="Cancel" icon="pi pi-times" className="p-button-outlined p-button-secondary" />
+            <Button label="Info" icon="pi pi-info-circle"  style={{ backgroundColor: '#708090', borderColor: 'white'}}/>
+            <Button icon="pi pi-heart-fill" className="p-button-outlined p-button-secondary" />
         </div>
     );
 

@@ -19,7 +19,7 @@ const Peliculas = () =>{
         })
     }
     return(
-        <main className=''>
+        <div className='container'>
             <h1 className='mt-5'>Categoria seleccionada</h1>
             <section className="card flex justify-content-center">
                 {
@@ -40,7 +40,7 @@ const Peliculas = () =>{
                 }
             </section>
 
-        </main>        
+        </div>        
     );
 }
 export default Peliculas;

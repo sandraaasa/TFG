@@ -38,7 +38,7 @@ const AsideLateral = ()=> {
                 {
                     label: 'Router',
                     icon: 'pi pi-upload',
-                    command () => {
+                    command: () => {
                         //router.push('/fileupload');
                     }
                 }
@@ -47,7 +47,7 @@ const AsideLateral = ()=> {
     ];
 
     return (
-        <div className="card flex justify-content-center">
+        <div className="flex justify-content-center">
             <Toast ref={toast} />
             <Menu model={items} />
         </div>
