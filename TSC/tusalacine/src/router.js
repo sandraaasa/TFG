@@ -6,6 +6,7 @@ import Inicio from './Component/Home';
 import Carta from './Component/Carta';
 import Footer from './Component/Footer';
 import './assets/css/router.css';
+import Peliculas from './Component/Peliculas';
 
 const Router = () =>{
     return(
@@ -16,7 +17,7 @@ const Router = () =>{
         </Routes> */}
             <Routes>
                 <Route exact path="/" element={<Inicio />} />
-                <Route exact path="/Catalogo" element={<Carta />} />
+                <Route exact path="/Catalogo" element={<Peliculas />} />
                 <Route exact path="/Sesion" element={<Carta />} />
                 
             </Routes>

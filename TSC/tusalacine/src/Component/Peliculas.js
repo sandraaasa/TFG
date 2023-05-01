@@ -3,6 +3,7 @@ import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import Global from '../Global';
 import axios from 'axios';
+import Carta from './Carta';
 
 const Peliculas = () =>{
     const [pelis, setpelis] = useState([]);
@@ -10,12 +11,11 @@ const Peliculas = () =>{
 
     useEffect(() =>{
         getpelis();
-        console.log(pelis);
     }, [pelis.length]);
 
     const getpelis = () =>{
         axios.get(url + 'getall').then(res =>{
-            setpelis(res.data.pelis);
+            setpelis(res.data.peliget);
         })
     }
     return(
@@ -23,13 +23,16 @@ const Peliculas = () =>{
             <h1 className='mt-5'>Categoria seleccionada</h1>
             <section className="card flex justify-content-center">
                 {
-                    pelis.length > 0 ? {
+                    pelis.length > 0 ? (
+                        
                         pelis.map((peli, i)=>{
-                            return
+                            return(
+                                <Carta />
+                            ); 
                         })
-                    }:{
-                        <h3 className="mx-auto" >No hay Peliculasque mostrar</h3>
-                    }
+                    ):(
+                        <h3 className="mx-auto" >No hay Peliculas que mostrar</h3>
+                    )
                 }
             </section>
 

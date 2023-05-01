@@ -7,7 +7,6 @@ import { Navigate } from 'react-router-dom'; */
 
 export default function CartaPeli() {
     const url = Global.url;
-
     const header = (
         <img alt="Card" src="https://primefaces.org/cdn/primereact/images/usercard.png" />
     );
