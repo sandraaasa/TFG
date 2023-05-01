@@ -1,10 +1,6 @@
+
 .menu{
     background-color: #1F1F1F;
-}
-#logo{
-    width: auto;
-}
-.menu{
     display: flex;
     flex-direction: row;
     justify-content:space-between;
@@ -32,6 +28,53 @@
 .deco:hover{
     color: #5F9EA0;
 }
+
+.logoH:hover{
+    animation: move 0.0005s ease-in-out infinite;
+    transform-origin: center center;
+}
+@keyframes slide {
+    0% {
+      transform: translateX(0);
+      opacity: 0;
+    }
+    50% {
+      transform: translateX(50);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+
+@keyframes move {
+    0% {
+      transform: translateX(0);
+    }
+    50%{
+        transform: translateX(50px);
+    }
+    100% {
+
+        transform: translateX(100px);
+    }
+  }
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+    
+    100% {
+        transform: scale(1);
+        opacity: 0.7;
+      }
+  }
 
 .linea::after {
         content: ''; 

@@ -1,8 +1,8 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 /* import Header from './Component/HeaderPrincipal'; */
-import Header from "./Component/HeaderInicio";
-import Inicio from './Component/Inicio';
+import Header from './Component/Header';
+import Inicio from './Component/Home';
 import Carta from './Component/Carta';
 import Footer from './Component/Footer';
 
@@ -10,7 +10,7 @@ const Router = () =>{
     return(
         
         <BrowserRouter>
-        <Header/>
+            <Header/>
         {/* <Routes>
             <Route exact path='/Catalogo' element={<Header/>} />
         </Routes> */}

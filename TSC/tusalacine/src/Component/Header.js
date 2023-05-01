@@ -10,8 +10,8 @@ import { NavLink } from 'react-router-dom';
 const HeaderInicio = () =>{
   return (
     <nav className='card menu'>
-        <NavLink to="/" className="deco linea">
-        <img alt="logo" src={logo2} height="70" className="mr-2"/>
+        <NavLink to="/" className="deco logoH">
+          <img alt="logo" src={logo2} height="70" className="mr-2"/>
         </NavLink>
         <ul className='lista'>
           <li>
