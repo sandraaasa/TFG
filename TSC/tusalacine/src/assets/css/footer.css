@@ -30,7 +30,28 @@ footer li:last-child {
   margin-right: 0;
 }
 
-footer a {
+.deco{
   color: #fff;
   text-decoration: none;
+}
+.deco:hover{
+    color: white;
+}
+
+.linea::after {
+  content: ''; 
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 3px;
+  bottom: -2px;
+  left: 0;
+  background-color: #E6E6E6 ;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.linea:hover::after {
+transform: scaleX(1);
+transform-origin: bottom left;
 }

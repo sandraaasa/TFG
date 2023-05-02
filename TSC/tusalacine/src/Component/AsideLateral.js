@@ -1,56 +1,84 @@
-
-import React, { useRef } from 'react';
-//import { useRouter } from 'next/router';
-import { Menu } from 'primereact/menu';
+import React, { useRef } from "react";
+import { useFormik } from 'formik';
+import { ListBox } from 'primereact/listbox';
+import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 
-const AsideLateral = ()=> {
+
+const AsideLateral = () =>{
     const toast = useRef(null);
-    //const router = useRouter();
-    const items = [
-        {
-            label: 'Options',
-            items: [
-                {
-                    label: 'Update',
-                    icon: 'pi pi-refresh',
-                    command: () => {
-                        toast.current.show({ severity: 'success', summary: 'Updated', detail: 'Data Updated', life: 3000 });
-                    }
-                },
-                {
-                    label: 'Delete',
-                    icon: 'pi pi-times',
-                    command: () => {
-                        toast.current.show({ severity: 'warn', summary: 'Delete', detail: 'Data Deleted', life: 3000 });
-                    }
-                }
-            ]
-        },
-        {
-            label: 'Navigate',
-            items: [
-                {
-                    label: 'React Website',
-                    icon: 'pi pi-external-link',
-                    url: 'https://reactjs.org/'
-                },
-                {
-                    label: 'Router',
-                    icon: 'pi pi-upload',
-                    command: () => {
-                        //router.push('/fileupload');
-                    }
-                }
-            ]
-        }
+    const cities = [
+        { name: 'Acción', code: 'AC' },
+        { name: 'Aventura', code: 'AV' },
+        { name: 'Animación', code: 'ANIM' },
+        { name: 'Comedia', code: 'COM' },
+        { name: 'Crimen', code: 'CRM' },
+        { name: 'Documental', code: 'DOC' },
+        { name: 'Drama', code: 'DRM' },
+        { name: 'Familia', code: 'FM' },
+        { name: 'Fantasía', code: 'FNT' },
+        { name: 'Historia', code: 'HIS' },
+        { name: 'Terror', code: 'TRR' },
+        { name: 'Música', code: 'MUS' },
+        { name: 'Misterio', code: 'MIST' },
+        { name: 'Romance', code: 'ROM' },
+        { name: 'Ciencia ficción', code: 'SC' },
+        { name: 'Pelicula de TV', code: 'PTV' },
+        { name: 'Suspense', code: 'SUSP' },
+        { name: 'Bélica', code: 'BLG' },
+        { name: 'Western', code: 'WSTR' }
     ];
 
+    const show = () => {
+        toast.current.show({ severity: 'success', summary: 'Form Submitted', detail: formik.values.item.name });
+    };
+
+    const formik = useFormik({
+        initialValues: {
+            item: ''
+        },
+        validate: (data) => {
+            let errors = {};
+
+            if (!data.item) {
+                errors.item = 'City is required.';
+            }
+
+            return errors;
+        },
+        onSubmit: (data) => {
+            data.item && show(data);
+            formik.resetForm();
+        }
+    });
+
+    const isFormFieldInvalid = (name) => !!(formik.touched[name] && formik.errors[name]);
+
+    const getFormErrorMessage = (name) => {
+        return isFormFieldInvalid(name) ? <small className="p-error">{formik.errors[name]}</small> : <small className="p-error">&nbsp;</small>;
+    };
+    
     return (
-        <div className="flex justify-content-center">
-            <Toast ref={toast} />
-            <Menu model={items} />
-        </div>
+        
+            <form onSubmit={formik.handleSubmit} className="flex flex-column align-items-center gap-2">
+                <Toast ref={toast} />
+                <ListBox
+                    filter
+                    id="item"
+                    name="item"
+                    value={formik.values.item}
+                    options={cities}
+                    optionLabel="name"
+                    placeholder="Select a City"
+                    onChange={(e) => {
+                        formik.setFieldValue('item', e.value);
+                    }}
+                    style={{ width: '15rem' }}
+                />
+                {getFormErrorMessage('item')}
+                <Button type="submit" label="Submit" className="mt-2" />
+            </form>
+        
     )
 }
 export default AsideLateral;

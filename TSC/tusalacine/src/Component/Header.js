@@ -23,7 +23,7 @@ const HeaderInicio = () =>{
             <InputSwitch aria-labelledby="dark_mode" checked={checked} onChange={(e) => setChecked(e.value)} />
           </li>
           <li>
-            <NavLink to="/Catalogo"  className="deco linea"><Button className='deco' severity="secondary" text>Categorias</Button></NavLink>
+            <NavLink to="/Catalogo"  className="deco linea">Categoría</NavLink>
           </li>
           <li>
             <NavLink to="/Sesion" className="deco linea">Iniciar Sesion</NavLink>

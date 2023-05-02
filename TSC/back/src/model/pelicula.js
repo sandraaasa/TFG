@@ -14,4 +14,4 @@ var PeliculaSchema = new Schema(
         valoracionTotal: Number
     }
 )
-module.exports = mongose.model('Pelicula', PeliculaSchema);
+module.exports = mongose.model('Pelicula', PeliculaSchema); 
