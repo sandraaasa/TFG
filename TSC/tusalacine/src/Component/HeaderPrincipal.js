@@ -41,6 +41,7 @@ export default function TemplateDemo() {
                         {
                             label: 'Drama',
                             icon: 'pi pi-fw pi-bookmark'
+                            /* command: */
                         },
                         {
                             label: 'Familia',
