@@ -2,18 +2,19 @@
     height: 100%;
     width: 100%;
 }
-.mainRouter{
+main{
     display: flex;
-    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
-.mainRouter>aside{
+aside{
     width: 20%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
 }
-.mainRouter>section{
+.contenedor{
     width: 80%;
+}
+.backBlack{
+    background-color: #1F1F1F;
+    color: white;
 }

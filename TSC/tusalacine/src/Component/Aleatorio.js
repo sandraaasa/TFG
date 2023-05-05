@@ -2,11 +2,12 @@
 import React from 'react'; 
 import { Fieldset } from 'primereact/fieldset';
 
-export default function ToggleableDemo() {
-
+const Aleatorio =(peliData) => {
+    const {categorias, imbd_id, titulo, fecha, minutos, pais, sinopsis, valoracionTotal} = peliData;
+    const url = Global.url;
     return (
-        <article className="card">
-            <Fieldset legend="Header" toggleable>
+        <article className=" card">
+            <Fieldset legend="Pelicula" toggleable className='backBlack'>
                 <p className="m-0">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -17,4 +18,5 @@ export default function ToggleableDemo() {
         </article>
     )
 }
+export default Aleatorio;
         

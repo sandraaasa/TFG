@@ -5,7 +5,6 @@ import '../assets/css/header.css'
 //import logo from '../assets/images/tsclogo.png';
 import logo2 from '../assets/images/tsclogoinvert.png';
 import { NavLink } from 'react-router-dom';
-import { Button } from 'primereact/button';
 import { InputSwitch } from "primereact/inputswitch";
 
 

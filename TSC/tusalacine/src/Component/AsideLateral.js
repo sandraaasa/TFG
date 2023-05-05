@@ -59,7 +59,7 @@ const AsideLateral = () =>{
     };
     
     return (
-        
+        <aside>
             <form onSubmit={formik.handleSubmit} className="flex flex-column align-items-center gap-2">
                 <Toast ref={toast} />
                 <ListBox
@@ -78,7 +78,7 @@ const AsideLateral = () =>{
                 {getFormErrorMessage('item')}
                 <Button type="submit" label="Submit" className="mt-2" />
             </form>
-        
+            </aside>
     )
 }
 export default AsideLateral;

@@ -30,11 +30,11 @@
 .deco:hover{
     color: white;
 }
-/* 
-.logoH:hover{
+ 
+.logoH:focus{
     animation: slide 2s ease-in-out infinite;
     transform-origin: center center;
-} */
+} 
 @keyframes slide {
     0% {
       transform: translateX(0);

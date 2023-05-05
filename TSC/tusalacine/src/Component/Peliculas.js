@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Card } from 'primereact/card';
-import { Button } from 'primereact/button';
+/* import { Card } from 'primereact/card';
+import { Button } from 'primereact/button'; */
 import Global from '../Global';
 import axios from 'axios';
 import Carta from './Carta';
+import AsideLateral from "./AsideLateral";
+import Aleatorio from "./Aleatorio";
 
 const Peliculas = () =>{
     const [pelis, setpelis] = useState([]);
+    /* const [peliTSC, setPeli] = useState([]); */
     const url = Global.url;
 
     useEffect(() =>{
@@ -18,8 +21,21 @@ const Peliculas = () =>{
             setpelis(res.data.peliget);
         })
     }
+    /* const getpeli = () =>{
+        axios.get(url + 'getrandom').then(res =>{
+            setPeli(res.data.peliget);
+        })
+    } */
+
+
     return(
-        <div className='container'>
+        <main>
+            <AsideLateral
+                key = {0}
+                peliData={pelis[0]}
+            />
+        <div className='container contenedor'>
+            <Aleatorio/>
             <h1 className='mt-5'>Categoria seleccionada</h1>
             <section className="card flex justify-content-center">
                 {
@@ -28,7 +44,7 @@ const Peliculas = () =>{
                         pelis.map((peli, i)=>{
                             return(
                                 <Carta 
-                                    key={i}
+                                    key={i+1}
                                     id={i}
                                     peliData={peli}
                                 />
@@ -40,7 +56,9 @@ const Peliculas = () =>{
                 }
             </section>
 
-        </div>        
+        </div>
+        
+        </main>        
     );
 }
 export default Peliculas;

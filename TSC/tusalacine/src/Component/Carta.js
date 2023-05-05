@@ -14,10 +14,17 @@ const CartaPeli =({id, peliData}) =>{
     const formatDate = (fecha) =>{
         return fecha.substring(8, 10) + fecha.substring(4, 8) + fecha.substring(0, 4);
     }
-    const subTitle = "Fecha: " + formatDate(fecha) +"  Minutos: " + minutos;
+    const subTitle = (
+        <div id='subtitlePeli'>
+        <p>Fecha: {formatDate(fecha)} </p>
+        <p> Minutos: {minutos}</p>
+        <p>Estrellas: {valoracionTotal}</p>
+        <p>Pais: {pais}</p>
+        </div>
+    );
 
     const header = (
-        <img alt="Card" src="https://primefaces.org/cdn/primereact/images/usercard.png" />
+        <img alt={imbd_id} src="https://primefaces.org/cdn/primereact/images/usercard.png" />
     );
     const footer = (
         <div className="flex flex-wrap justify-content-end gap-2">
@@ -28,26 +35,23 @@ const CartaPeli =({id, peliData}) =>{
 
 
     return (
-            <Card title={titulo} subTitle={subTitle} footer={footer} header={header} className="md:w-25rem">
+            <Card title={titulo} subTitle={subTitle} footer={footer} header={header} className="md:w-25rem backBlack">
                 <Accordion >
-                <AccordionTab header="Categoría">
-                    <ul>
-                    {
-                        categorias.map((elemento) =>{
-                            return <li key={elemento}>{elemento}</li>
-                        })
-                    }
-                    </ul>
-                </AccordionTab>
-                <AccordionTab header="Sinopsis">
-                    <p className="m-0">
-                        {sinopsis}
-                    </p>
-                </AccordionTab>
-                <AccordionTab header="Mas datos">
-                    
-                </AccordionTab>
-            </Accordion>
+                    <AccordionTab header="Sinopsis">
+                        <p className="m-0">
+                            {sinopsis}
+                        </p>
+                    </AccordionTab>
+                    <AccordionTab header="Categorías">
+                        <ul>
+                        {
+                            categorias.map((elemento) =>{
+                                return <li key={elemento}>{elemento}</li>
+                            })
+                        }
+                        </ul>
+                    </AccordionTab>
+                </Accordion>
             </Card>
     )
 }
