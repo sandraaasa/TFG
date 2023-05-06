@@ -7,7 +7,7 @@ import { Toast } from 'primereact/toast';
 
 const AsideLateral = () =>{
     const toast = useRef(null);
-    const cities = [
+    const categorias = [
         { name: 'Acción', code: 'AC' },
         { name: 'Aventura', code: 'AV' },
         { name: 'Animación', code: 'ANIM' },
@@ -60,23 +60,22 @@ const AsideLateral = () =>{
     
     return (
         <aside>
-            <form onSubmit={formik.handleSubmit} className="flex flex-column align-items-center gap-2">
+            <form onSubmit={formik.handleSubmit} className="  flex flex-column align-items-center gap-2">
                 <Toast ref={toast} />
                 <ListBox
                     filter
                     id="item"
                     name="item"
                     value={formik.values.item}
-                    options={cities}
+                    options={categorias}
                     optionLabel="name"
                     placeholder="Select a City"
                     onChange={(e) => {
                         formik.setFieldValue('item', e.value);
                     }}
-                    style={{ width: '15rem' }}
                 />
                 {getFormErrorMessage('item')}
-                <Button type="submit" label="Submit" className="mt-2" />
+                <Button type="submit" label="Submit" className=" mb-4 backBlack" />
             </form>
             </aside>
     )

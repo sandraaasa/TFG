@@ -7,17 +7,19 @@ import Carta from './Carta';
 import AsideLateral from "./AsideLateral";
 import Aleatorio from "./Aleatorio";
 
-const Peliculas = () =>{
+const Peliculas = () => {
     const [pelis, setpelis] = useState([]);
+    
     /* const [peliTSC, setPeli] = useState([]); */
+    
     const url = Global.url;
 
-    useEffect(() =>{
+    useEffect(() => {
         getpelis();
     }, [pelis.length]);
 
-    const getpelis = () =>{
-        axios.get(url + 'getall').then(res =>{
+    const getpelis = () => {
+        axios.get(url + 'getall').then(res => {
             setpelis(res.data.peliget);
         })
     }
@@ -28,37 +30,38 @@ const Peliculas = () =>{
     } */
 
 
-    return(
+    return (
         <main>
-            <AsideLateral
-                key = {0}
-                peliData={pelis[0]}
-            />
-        <div className='container contenedor'>
-            <Aleatorio/>
-            <h1 className='mt-5'>Categoria seleccionada</h1>
-            <section className="card flex justify-content-center">
-                {
-                    pelis.length > 0 ? (
-                        
-                        pelis.map((peli, i)=>{
-                            return(
-                                <Carta 
-                                    key={i+1}
-                                    id={i}
-                                    peliData={peli}
-                                />
-                            ); 
-                        })
-                    ):(
-                        <h3 className="mx-auto" >No hay Peliculas que mostrar</h3>
-                    )
-                }
-            </section>
+            <AsideLateral />
+            <div className='container contenedor'>
+                {/* <Aleatorio
+                    key={0}
+                    peliSelec={pelis[0]}
+                    
+                /> */}
+                <h1 className='mt-5'>Categoria seleccionada</h1>
+                <section className="card flex justify-content-center ">
+                    {
+                        pelis.length > 0 ? (
 
-        </div>
-        
-        </main>        
+                            pelis.map((peli, i) => {
+                                return (
+                                    <Carta
+                                        key={i + 1}
+                                        id={i}
+                                        peliData={peli}
+                                    />
+                                );
+                            })
+                        ) : (
+                            <h3 className="mx-auto" >No hay Peliculas que mostrar</h3>
+                        )
+                    }
+                </section>
+
+            </div>
+
+        </main>
     );
 }
 export default Peliculas;

@@ -3,14 +3,16 @@ import React from 'react';
 import { Fieldset } from 'primereact/fieldset';
 import Global from '../Global';
 
-const Aleatorio =(peliData) => {
-    const {categorias, imbd_id, titulo, fecha, minutos, pais, sinopsis, valoracionTotal} = peliData;
+const Aleatorio =() => {
     const url = Global.url;
     return (
-        <article className=" card">
-            <Fieldset legend="Pelicula" toggleable className='backBlack'>
+
+        <article className="card backBlack" >
+            
+            <Fieldset legend='titulo' toggleable >
+
                 <p className="m-0">
-                    {sinopsis}
+                    'sinopsis'
                 </p>
             </Fieldset>
         </article>

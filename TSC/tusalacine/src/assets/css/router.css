@@ -1,4 +1,6 @@
-.cuerpo{
+body{
+    /* background-color: #353434;
+    color: aliceblue; */
     height: 100%;
     width: 100%;
 }
@@ -16,5 +18,9 @@ aside{
 }
 .backBlack{
     background-color: #1F1F1F;
-    color: white;
+    color: orange;
+}
+.backMBlack{
+    background-color: #353434;
+    color: orange;
 }

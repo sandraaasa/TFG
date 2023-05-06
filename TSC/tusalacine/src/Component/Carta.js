@@ -8,7 +8,6 @@ import { Navigate } from 'react-router-dom'; */
 
 
 const CartaPeli =({id, peliData}) =>{
-    const url = Global.url;
 
     const {categorias, imbd_id, titulo, fecha, minutos, pais, sinopsis, valoracionTotal} = peliData;
     const formatDate = (fecha) =>{
@@ -35,7 +34,7 @@ const CartaPeli =({id, peliData}) =>{
 
 
     return (
-            <Card title={titulo} subTitle={subTitle} footer={footer} header={header} className="md:w-25rem backBlack">
+            <Card title={titulo} subTitle={subTitle} footer={footer} header={header} className="md:w-25rem">
                 <Accordion >
                     <AccordionTab header="Sinopsis">
                         <p className="m-0">

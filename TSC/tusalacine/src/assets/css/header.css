@@ -32,34 +32,30 @@
 }
  
 .logoH:focus{
-    animation: slide 2s ease-in-out infinite;
+    animation: slide 0.7s ease-in ;
+    animation-iteration-count: 2;
     transform-origin: center center;
 } 
 @keyframes slide {
     0% {
-      transform: translateX(0);
+      transform: translateX(-50%);
       opacity: 0;
     }
-    50% {
-      transform: translateX(50);
+    25% {
+      transform: translateX(0%);
       opacity: 1;
     }
-    100% {
-      transform: translateX(100%);
+    50%{
+        transform: translateX(50%);
+        opacity: 0;
+    }
+    75% {
+      transform: translateX(-50%);
       opacity: 0;
     }
-  }
-
-@keyframes move {
-    0% {
-      transform: translateX(0);
-    }
-    50%{
-        transform: translateX(50px);
-    }
     100% {
-
-        transform: translateX(100px);
+      transform: translateX(0%);
+      opacity: 1;
     }
   }
 
