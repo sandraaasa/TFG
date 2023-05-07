@@ -3,8 +3,6 @@ import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import Global from '../Global';
 import { Accordion, AccordionTab } from 'primereact/accordion';
-/* import axios from 'axios';
-import { Navigate } from 'react-router-dom'; */
 
 
 const CartaPeli =({id, peliData}) =>{

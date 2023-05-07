@@ -7,6 +7,7 @@ import { Toast } from 'primereact/toast';
 
 const AsideLateral = () =>{
     const toast = useRef(null);
+    
     const categorias = [
         { name: 'Acción', code: 'AC' },
         { name: 'Aventura', code: 'AV' },
@@ -48,8 +49,10 @@ const AsideLateral = () =>{
         },
         onSubmit: (data) => {
             data.item && show(data);
+
             formik.resetForm();
         }
+
     });
 
     const isFormFieldInvalid = (name) => !!(formik.touched[name] && formik.errors[name]);

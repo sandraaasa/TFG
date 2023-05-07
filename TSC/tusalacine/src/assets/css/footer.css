@@ -1,8 +1,14 @@
+#footer{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}
+
 footer {
   background-color: #1F1F1F;
-  border-radius: 8px;
   color: #fff;
-  padding: 20px;
+  padding: 30px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -46,7 +52,7 @@ footer li:last-child {
   height: 3px;
   bottom: -2px;
   left: 0;
-  background-color: #E6E6E6 ;
+  background-color: hsl(38, 100%, 57%) ;
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }

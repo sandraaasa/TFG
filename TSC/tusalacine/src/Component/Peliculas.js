@@ -10,8 +10,7 @@ import Aleatorio from "./Aleatorio";
 const Peliculas = () => {
     const [pelis, setpelis] = useState([]);
     
-    /* const [peliTSC, setPeli] = useState([]); */
-    
+
     const url = Global.url;
 
     useEffect(() => {
@@ -34,11 +33,10 @@ const Peliculas = () => {
         <main>
             <AsideLateral />
             <div className='container contenedor'>
-                {/* <Aleatorio
+                <Aleatorio
                     key={0}
-                    peliSelec={pelis[0]}
-                    
-                /> */}
+                    categoria="accion"
+                />
                 <h1 className='mt-5'>Categoria seleccionada</h1>
                 <section className="card flex justify-content-center ">
                     {

@@ -67,7 +67,7 @@
         height: 3px;
         bottom: -2px;
         left: 0;
-        background-color: #E6E6E6 ;
+        background-color: hsl(38, 100%, 57%) ;
         transform-origin: bottom right;
         transition: transform 0.25s ease-out;
     }

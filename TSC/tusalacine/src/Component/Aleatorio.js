@@ -1,9 +1,10 @@
 
-import React from 'react'; 
+import React, { useEffect, useState } from 'react'; 
 import { Fieldset } from 'primereact/fieldset';
 import Global from '../Global';
 
 const Aleatorio =() => {
+    const [peliTSC, setPeli] = useState([]);
     const url = Global.url;
     return (
 

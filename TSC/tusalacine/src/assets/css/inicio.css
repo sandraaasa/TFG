@@ -4,6 +4,7 @@
     align-items: center;
     width: 100%;
     flex-direction:column;
+    padding: 5%;
 }
 .logoI{
     width: 50%;
