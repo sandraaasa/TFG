@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 
-function MovieForm() {
+const MovieForm =() =>{
     const [title, setTitle] = useState('');
     const [director, setDirector] = useState('');
   
@@ -36,3 +36,4 @@ function MovieForm() {
       </div>
     );
   }
+  return MovieForm;

@@ -4,6 +4,7 @@ const express = require('express');
 const bodyparser = require('body-parser');
 const mongose = require('mongoose');
 const app = express();
+const axios = require('axios');
 
 mongose.Promise = global.Promise;
 var peli_rutas = require('./routes/pelicula');
