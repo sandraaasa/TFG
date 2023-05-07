@@ -48,7 +48,27 @@ let controller ={
         }
     },
 
-    //Metodo  por id
+    //Metodo por
+    getPelis: async (req, res)=>{
+        try {
+            const peliget = await Peli.find({});
+            if (!peliget) {
+                return res.status(404).send({
+                    message: 'No hay películas actualmente'
+                });
+            } else {
+                return res.status(200).send({
+                    peliget
+                });
+            };
+        } catch (error) {
+            return res.status(500).send({
+                message: 'Ha habido un error y no se han encontrado las peliculas'
+            });
+        }
+    },
+
+    //Metodo por id
     getPelisId: async (req, res)=>{
         try {
             const pelid = req.params.id;

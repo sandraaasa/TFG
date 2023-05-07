@@ -1,11 +1,52 @@
-.logo{
+.inicio {
     display: flex;
-    justify-content: center ;
+    justify-content: center;
     align-items: center;
     width: 100%;
-    flex-direction:column;
+    flex-direction: column;
     padding: 5%;
 }
-.logoI{
-    width: 50%;
+
+.animacionDiv {
+    position: relative;
+    width: 100%;
+}
+
+.logoI {
+    width: 60%;
+    position: absolute;
+    top: 80px;
+}
+
+.logo1{
+    left: 20.5%;
+}
+
+.logo2{
+    left: 20%;
+}
+
+.ani1 {
+    animation: ani1 0.5s ease-in infinite;
+    animation-iteration-count: 5;
+    transform-origin: center center;
+}
+
+@keyframes ani1 {
+
+    0% {
+        transform: translateX(-50%);
+        opacity: 0.5;
+    }
+
+    50%{
+        transform: translateX(0%);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(50%);
+        opacity: 0.5;
+    }
+
 }
