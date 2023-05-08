@@ -8,7 +8,7 @@ const Aleatorio =() => {
     const url = Global.url;
     return (
 
-        <article className="card backBlack" >
+        <article className="card bg-yellow-200" >
             
             <Fieldset legend='titulo' toggleable >
 

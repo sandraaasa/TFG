@@ -7,32 +7,33 @@ import { Accordion, AccordionTab } from 'primereact/accordion';
 
 const CartaPeli =({id, peliData}) =>{
 
-    const {categorias, imbd_id, titulo, fecha, minutos, pais, sinopsis, valoracionTotal} = peliData;
+    const {categorias, imbd_id, titulo, fecha, minutos, pais, sinopsis, valoracionTotal, poster} = peliData;
     const formatDate = (fecha) =>{
         return fecha.substring(8, 10) + fecha.substring(4, 8) + fecha.substring(0, 4);
     }
     const subTitle = (
-        <div id='subtitlePeli'>
+        <div id='subtitlePeli' className='text-gray-900'>
         <p>Fecha: {formatDate(fecha)} </p>
         <p> Minutos: {minutos}</p>
         <p>Estrellas: {valoracionTotal}</p>
         <p>Pais: {pais}</p>
         </div>
     );
+    const img = "https://image.tmdb.org/t/p/w500" + poster;
 
     const header = (
-        <img alt={imbd_id} src="https://primefaces.org/cdn/primereact/images/usercard.png" />
+        <img alt={imbd_id} src={img} />
     );
     const footer = (
         <div className="flex flex-wrap justify-content-end gap-2">
-            <Button label="Info" icon="pi pi-info-circle"  style={{ backgroundColor: '#708090', borderColor: 'white'}}/>
+            <Button label="Info" icon="pi pi-info-circle border-round"/>
             <Button icon="pi pi-heart-fill" style={{ color: 'red' }} className="p-button-outlined p-button-secondary" />
         </div>
     );
 
 
     return (
-            <Card title={titulo} subTitle={subTitle} footer={footer} header={header} className="md:w-25rem">
+            <Card title={titulo} subTitle={subTitle} footer={footer} header={header} className='border-round max-w-full md:max-w-23rem m-2 bg-orange-50 text-gray-900'>
                 <Accordion >
                     <AccordionTab header="Sinopsis">
                         <p className="m-0">

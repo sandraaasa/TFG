@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-/* import { Card } from 'primereact/card';
-import { Button } from 'primereact/button'; */
 import Global from '../Global';
 import axios from 'axios';
 import Carta from './Carta';
@@ -9,8 +7,6 @@ import Aleatorio from "./Aleatorio";
 
 const Peliculas = () => {
     const [pelis, setpelis] = useState([]);
-    
-
     const url = Global.url;
 
     useEffect(() => {
@@ -22,23 +18,16 @@ const Peliculas = () => {
             setpelis(res.data.peliget);
         })
     }
-    /* const getpeli = () =>{
-        axios.get(url + 'getrandom').then(res =>{
-            setPeli(res.data.peliget);
-        })
-    } */
 
 
     return (
         <main>
             <AsideLateral />
-            <div className='container contenedor'>
+            <div className='card contenedor backBlack'>
                 <Aleatorio
-                    key={0}
-                    categoria="accion"
                 />
                 <h1 className='mt-5'>Categoria seleccionada</h1>
-                <section className="card flex justify-content-center ">
+                <section className="flex flex-wrap justify-content-center card-container gap-3">
                     {
                         pelis.length > 0 ? (
 
