@@ -11,7 +11,8 @@ var PeliculaSchema = new Schema(
         minutos: Number,
         pais: String,
         sinopsis: String,
-        valoracionTotal: Number
+        valoracionTotal: Number,
+        poster: String
     }
 )
 module.exports = mongose.model('Pelicula', PeliculaSchema); 

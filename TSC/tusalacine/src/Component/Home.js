@@ -10,12 +10,11 @@ const Inicio = () => {
     const url = Global.url;
     const [pelis, setpelis] = useState([]);
 
-
     useEffect(() => {
         addpelis();
     });
     const addpelis = () => {
-        axios.get('https://api.themoviedb.org/3/list/1?api_key=652e4fba8ba82b23170e2069858853c1&language=es').then(res => {
+        axios.get('https://api.themoviedb.org/3/movie/popular?api_key=652e4fba8ba82b23170e2069858853c1&language=es&page=1').then(res => {
             setpelis(res.data);
         })
         /* axios.post(url + 'add', {
@@ -27,7 +26,6 @@ const Inicio = () => {
             pais: 'EEUU',
             sinopsis: pelis.items[0].overview,
             valoracionTotal: pelis.items[0].vote_count
-
         } ) */
     }
     return (
@@ -37,7 +35,7 @@ const Inicio = () => {
                 <img src={logo} className='logoI ani1' alt='logo' />
             </div>
             <Button label="Categorias" text raised severity="warning"/>
-            <p>{pelis.created_by}</p>
+            
         </div>
     )
 

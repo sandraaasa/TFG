@@ -4,8 +4,8 @@ let Peli = require('../model/pelicula');
 
 let controller = {
     //Metodo añadir
-    save: (req, res) => {
-        let params = req.body;
+    /* save: (req, res) => {
+        const params = req.body;
         const peliNew = new Peli();
         //Rellenamos
         peliNew.imdb_id = params.imdb_id;
@@ -16,7 +16,9 @@ let controller = {
         peliNew.pais = params.pais;
         peliNew.sinopsis = params.sinopsis;
         peliNew.valoracionTotal = params.valoracionTotal;
+        peliNew.poster = params.poster;
         //guardamos
+
         peliNew.save()
             .then((peliStored) => {
                 return res.status(200).send({
@@ -27,6 +29,28 @@ let controller = {
                 console.log('Ocurrió un error al guardar el usuario:', error);
             });
 
+    } */
+    save: async (req, res) => {
+        try {
+            const params = req.body;
+            Peli.insertMany(params);
+                
+                if (!params) {
+                    return res.status(404).send({
+                        message: 'No hay películas actualmente'
+                    });
+                } else {
+                    return res.status(200).send({
+                        params
+                    });
+                };
+
+        } catch (error) {
+            
+            return res.status(500).send({
+                message: 'Ha habido un error y no se han encontrado las peliculas'
+            });
+        }
     },
 
     //Metodo Listar
