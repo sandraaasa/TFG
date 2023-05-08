@@ -6,6 +6,7 @@ var route = express.Router();
 
 //rutas para ejecutar los metodos de pelicula(controller)
 route.post('/add', Peli.save);
+route.post('/addone', Peli.saveone);
 route.get('/getall', Peli.getPelis);
 route.get('/getone', Peli.getRandom);
 route.get('/getid/:id', Peli.getPelisId);
