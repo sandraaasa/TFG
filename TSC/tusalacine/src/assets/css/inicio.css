@@ -15,14 +15,14 @@
 .logoI {
     width: 60%;
     position: absolute;
-    top: 80px;
+    top: 40px;
     left: 20%;
 }
 
 
 .ani1 {
     animation: ani1 0.5s ease-in infinite;
-    animation-iteration-count: 5;
+    animation-iteration-count: 3;
     transform-origin: center center;
 }
 
