@@ -42,7 +42,7 @@ const AsideLateral = () =>{
             let errors = {};
 
             if (!data.item) {
-                errors.item = 'City is required.';
+                errors.item = 'Selecciona una categoria.';
             }
 
             return errors;
@@ -63,7 +63,7 @@ const AsideLateral = () =>{
     
     return (
         <aside>
-            <form onSubmit={formik.handleSubmit} className="  flex flex-column align-items-center gap-2">
+            <form onSubmit={formik.handleSubmit} className=" flex flex-column align-items-center gap-2">
                 <Toast ref={toast} />
                 <ListBox
                     filter

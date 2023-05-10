@@ -33,7 +33,7 @@ const CartaPeli =({id, peliData}) =>{
 
 
     return (
-            <Card title={titulo} subTitle={subTitle} footer={footer} header={header} className='border-round max-w-full md:max-w-23rem m-2 bg-orange-50 text-gray-900'>
+            <Card title={titulo} subTitle={subTitle} footer={footer} header={header} className='border-round max-w-full md:max-w-14rem xl:max-w-22rem m-2 bg-orange-50 text-gray-900'>
                 <Accordion >
                     <AccordionTab header="Sinopsis">
                         <p className="m-0">
