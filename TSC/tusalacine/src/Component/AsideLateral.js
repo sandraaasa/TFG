@@ -72,13 +72,13 @@ const AsideLateral = () =>{
                     value={formik.values.item}
                     options={categorias}
                     optionLabel="name"
-                    placeholder="Select a City"
+                    placeholder="Selecciona película"
                     onChange={(e) => {
                         formik.setFieldValue('item', e.value);
                     }}
                 />
                 {getFormErrorMessage('item')}
-                <Button type="submit" label="Submit" className=" mb-4 backBlack" />
+                <Button type="submit" label="Por categoría" className=" mb-4 backBlack" />
             </form>
             </aside>
     )

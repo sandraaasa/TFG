@@ -9,11 +9,20 @@ import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/arya-orange/theme.css';
 import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
+import { useUserContext, useUserToggleContext } from "./UserProvider";
 
 const Rutas = () => {
+
+    const user = useUserContext();
+    const cambiarLogin = useUserToggleContext();
+
     return (
         <BrowserRouter>
-            <Header />
+            <h3>Componente hikjo</h3>
+            {user && <p> Hola {user.name}</p>}
+            <button onClick={cambiarLogin}> CAmbia Login</button>
+
+            {/* <Header />
             <div className='mainRouter'>
                 <Routes>
                     <Route exact path='/' element={<Inicio />} />
@@ -21,7 +30,7 @@ const Rutas = () => {
                     {//<Route exact path="/Sesion" element={<Carta />} />
                     }
                 </Routes>
-            </div>
+            </div> */}
             <Footer />
         </BrowserRouter>
     );
