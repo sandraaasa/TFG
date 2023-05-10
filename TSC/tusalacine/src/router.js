@@ -11,6 +11,9 @@ import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
 import { useUserContext, useUserToggleContext } from "./UserProvider";
 
+
+import { UserProvider } from './UserProvider';
+
 const Rutas = () => {
 
     const user = useUserContext();
@@ -22,7 +25,7 @@ const Rutas = () => {
             {user && <p> Hola {user.name}</p>}
             <button onClick={cambiarLogin}> CAmbia Login</button>
 
-            {/* <Header />
+            <Header />
             <div className='mainRouter'>
                 <Routes>
                     <Route exact path='/' element={<Inicio />} />
@@ -30,7 +33,7 @@ const Rutas = () => {
                     {//<Route exact path="/Sesion" element={<Carta />} />
                     }
                 </Routes>
-            </div> */}
+            </div>
             <Footer />
         </BrowserRouter>
     );
