@@ -12,18 +12,21 @@ import 'primeflex/primeflex.css';
 import { useUserContext, useUserToggleContext } from "./UserProvider";
 
 
-import { UserProvider } from './UserProvider';
-
 const Rutas = () => {
 
     const user = useUserContext();
     const cambiarLogin = useUserToggleContext();
+    const CateData = {
+        id: null,
+        categoria: "pepo"
+    }
 
     return (
         <BrowserRouter>
-            <h3>Componente hikjo</h3>
+        
+            {/* <h3>Componente hikjo</h3>
             {user && <p> Hola {user.name}</p>}
-            <button onClick={cambiarLogin}> CAmbia Login</button>
+            <button onClick={cambiarLogin}> CAmbia Login</button> */}
 
             <Header />
             <div className='mainRouter'>

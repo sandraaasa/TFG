@@ -76,16 +76,28 @@ let controller = {
     },
 
     //Metodo sacar peli random
-    /* getRandom: async (req, res) => {
+    getRandom: async (req, res) => {
         try {
+            const categoria = req.params.cate;
+            const peliculas = await Peli.where({categorias: categoria}).find();
+            console.log(peliculas);
+            const PeliRandom = peliculas[Math.floor(Math.random() * peliculas.length)];
             
-            
+            if (!peliculas) {
+                return res.status(404).send({
+                    message: 'No hay películas con ese id'
+                });
+            } else {
+                return res.status(200).send({
+                    PeliRandom
+                });
+            };
         } catch (error) {
             return res.status(500).send({
                 message: 'Ha habido un error y no se han encontrado las peliculas'
             });
         }
-    }, */
+    }, 
 
     //Metodo por id
     getPelisId: async (req, res) => {

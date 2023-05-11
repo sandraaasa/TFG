@@ -1,12 +1,13 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useFormik } from 'formik';
 import { ListBox } from 'primereact/listbox';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 
 
-const AsideLateral = () =>{
+const AsideLateral = (props) =>{
     const toast = useRef(null);
+    const [categoria, setCategoria] = useState('');
     
     const categorias = [
         { name: 'Acción', code: 'AC' },
@@ -47,9 +48,10 @@ const AsideLateral = () =>{
 
             return errors;
         },
+        
         onSubmit: (data) => {
             data.item && show(data);
-
+            props.getCategoria(data.item.name);
             formik.resetForm();
         }
 
@@ -61,6 +63,11 @@ const AsideLateral = () =>{
         return isFormFieldInvalid(name) ? <small className="p-error">{formik.errors[name]}</small> : <small className="p-error">&nbsp;</small>;
     };
     
+    const enviarCategoriaPeli = () =>{
+        const dato = categoria;
+        props.getCategoria(dato);
+    };
+
     return (
         <aside>
             <form onSubmit={formik.handleSubmit} className=" flex flex-column align-items-center gap-2">

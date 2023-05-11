@@ -7,6 +7,7 @@ import Aleatorio from "./Aleatorio";
 
 const Peliculas = () => {
     const [pelis, setpelis] = useState([]);
+    const [categoria, setCategoria] = useState('');
     const url = Global.url;
 
     useEffect(() => {
@@ -18,13 +19,18 @@ const Peliculas = () => {
             setpelis(res.data.peliget);
         })
     }
+    const recibirCategoria = (datosHijo) => {
+        setCategoria(datosHijo);
+        console.log(datosHijo);
+    };
 
 
     return (
         <main>
-            <AsideLateral />
+            <AsideLateral getCategoria={recibirCategoria}/>
+                
             <div className='card contenedor backBlack'>
-                <Aleatorio
+                <Aleatorio categoria={categoria}
                 />
                 <h1 className='mt-5'>Categoria seleccionada</h1>
                 <section className="flex flex-wrap justify-content-center card-container gap-3">
