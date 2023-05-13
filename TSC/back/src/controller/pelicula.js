@@ -80,7 +80,6 @@ let controller = {
         try {
             const categoria = req.params.cate;
             const peliculas = await Peli.where({categorias: categoria}).find();
-            console.log(peliculas);
             const PeliRandom = peliculas[Math.floor(Math.random() * peliculas.length)];
             
             if (!peliculas) {

@@ -7,6 +7,7 @@ import Aleatorio from "./Aleatorio";
 
 const Peliculas = () => {
     const [pelis, setpelis] = useState([]);
+    /* const [random, setpeli] = useState([]); */
     const [categoria, setCategoria] = useState('');
     const url = Global.url;
 
@@ -19,19 +20,26 @@ const Peliculas = () => {
             setpelis(res.data.peliget);
         })
     }
+/*     const getPeli = () => {
+        axios.get(url + 'getone/' + categoria).then(res => {
+            setpeli(res.data.peliget);
+        })
+    } */
+
     const recibirCategoria = (datosHijo) => {
         setCategoria(datosHijo);
-        console.log(datosHijo);
+        console.log(categoria);
     };
-
 
     return (
         <main>
             <AsideLateral getCategoria={recibirCategoria}/>
                 
             <div className='card contenedor backBlack'>
-                <Aleatorio categoria={categoria}
-                />
+                {
+                    categoria && <Aleatorio categoria={categoria}/>
+                }
+                
                 <h1 className='mt-5'>Categoria seleccionada</h1>
                 <section className="flex flex-wrap justify-content-center card-container gap-3">
                     {
