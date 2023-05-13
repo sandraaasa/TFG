@@ -4,7 +4,9 @@ import { Panel } from 'primereact/panel';
 import Global from '../Global';
 import { Button } from 'primereact/button';
 import { StyleClass } from 'primereact/styleclass';
-import { Accordion, AccordionTab } from 'primereact/accordion';
+import { Rating } from "primereact/rating";
+import { Inplace, InplaceDisplay, InplaceContent } from 'primereact/inplace';
+import { InputText } from 'primereact/inputtext';
 
 const Aleatorio = (categoria) => {
 
@@ -13,67 +15,67 @@ const Aleatorio = (categoria) => {
     const url = Global.url;
     const openBtnRef = useRef(null);
 
-    function getPeli () {
+    function getPeli() {
         axios.get(url + 'getone/' + categoria.categoria).then(res => {
             setpeli(res.data.PeliRandom);
             console.log(categoria.categoria)
         })
     }
-/* 
-    if (random) {
-        
-    } else {
-        
-    } */
-    const { categorias, imbd_id, titulo, fecha, minutos, pais, sinopsis, valoracionTotal, poster } = random;
-    const formatDate = (fecha) =>{
-        return fecha.substring(8, 10) + fecha.substring(4, 8) + fecha.substring(0, 4);
+    /* 
+        if (random) {
+            
+        } else {
+            
+        } */
+    const { imbd_id, titulo, fecha, minutos, pais, sinopsis, valoracionTotal, poster } = random;
+    const formatDate = (fech) => {
+        return fech.substring(8, 10) + fech.substring(4, 8) + fech.substring(0, 4);
     }
+    const content = (
+        <>
+            <span className="bg-primary border-circle w-2rem h-2rem flex align-items-center justify-content-center">P</span>
+            <span className="ml-2 font-medium">{valoracionTotal}</span>
+        </>
+    );
     const subTitle = (
-        <div id='subtitlePeli' className='text-gray-900'>
-        <p>Fecha: {formatDate(fecha)} </p>
-        <p> Minutos: {minutos}</p>
-        <p>Estrellas: {valoracionTotal}</p>
-        <p>Pais: {pais}</p>
+        <div id='subtitlePeli'>
+            <p>Fecha: {fecha} </p>
+            <p> Minutos: {minutos}</p>
+            <p>Estrellas: {valoracionTotal}</p>
+            <p>Pais: {pais}</p>
         </div>
     );
     const img = "https://image.tmdb.org/t/p/w500" + poster;
     const header = (
-        <img alt={imbd_id} src={img} className='max-w-4rem'/>
+        <img alt={imbd_id} src={img} className='max-h-10rem' />
     );
 
     return (
 
-        <article className="bg-yellow-200 card flex flex-column align-items-center" >
+        <article className="bg-yellow-200 card" >
+            <div className="bg-yellow-200 card-container flex flex-column align-content-around" >
+                <StyleClass nodeRef={openBtnRef} selector=".box" enterClassName="hidden" enterActiveClassName="fadein">
+                    <Button ref={openBtnRef} label="TSC" icon="pi pi-refresh" size="large" onClick={getPeli} />
+                </StyleClass>
 
-            <StyleClass nodeRef={openBtnRef} selector=".box" enterClassName="hidden" enterActiveClassName="fadein">
-                <Button ref={openBtnRef} label="TSC" icon="pi pi-refresh" size="large" onClick={getPeli}/>
-            </StyleClass>
 
+                <Panel header={titulo} toggleable className='hidden animation-duration-500 box' >
 
-            <Panel  header={titulo} toggleable className='hidden animation-duration-500 box ' >
-                
-                <p className="m-0 ">
-                    {header}
-                    <Accordion >
-                    <AccordionTab header="Sinopsis">
-                        <p className="m-0">
-                            {sinopsis}
-                        </p>
-                    </AccordionTab>
-                    <AccordionTab header="Categorías">
-                        <ul>
-                        {
-                            categorias.map((elemento) =>{
-                                return <li key={elemento}>{elemento}</li>
-                            })
-                        }
-                        </ul>
-                    </AccordionTab>
-                </Accordion>
-                </p>
-            </Panel>
+                    <p className="m-0 flex flex-column justify-content-center align-items-center flex-wrap card-containe gap-3">
 
+                        <div className="flex justify-content-center flex-wrap card-containe gap-3">
+                            {header}
+                            {subTitle}
+                        </div>
+                        <Inplace closable className='flex flex-row justify-content-center align-items-center flex-wrap card-containe gap-3' >
+                            <InplaceDisplay >Sinopsis</InplaceDisplay>
+                            <InplaceContent>
+                                <p>{sinopsis}</p>
+                            </InplaceContent>
+                        </Inplace>
+                    </p>
+                </Panel>
+            </div>
         </article>
     )
 }

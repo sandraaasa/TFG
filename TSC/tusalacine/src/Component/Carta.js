@@ -1,7 +1,6 @@
 import React, { useState } from 'react'; 
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
-import Global from '../Global';
 import { Accordion, AccordionTab } from 'primereact/accordion';
 
 

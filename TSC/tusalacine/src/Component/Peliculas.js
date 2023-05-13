@@ -20,11 +20,7 @@ const Peliculas = () => {
             setpelis(res.data.peliget);
         })
     }
-/*     const getPeli = () => {
-        axios.get(url + 'getone/' + categoria).then(res => {
-            setpeli(res.data.peliget);
-        })
-    } */
+
 
     const recibirCategoria = (datosHijo) => {
         setCategoria(datosHijo);
@@ -36,11 +32,13 @@ const Peliculas = () => {
             <AsideLateral getCategoria={recibirCategoria}/>
                 
             <div className='card contenedor backBlack'>
+                <section className='backBlack card flex flex-wrap justify-content-center align-items-center'>
+                    <h1 onhov>Pelicula Random</h1>
                 {
                     categoria && <Aleatorio categoria={categoria}/>
                 }
-                
-                <h1 className='mt-5'>Categoria seleccionada</h1>
+                </section>
+                <h1 className='mt-5'>Peliculas: {categoria}</h1>
                 <section className="flex flex-wrap justify-content-center card-container gap-3">
                     {
                         pelis.length > 0 ? (

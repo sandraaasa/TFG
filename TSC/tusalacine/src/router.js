@@ -10,6 +10,7 @@ import 'primereact/resources/themes/arya-orange/theme.css';
 import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
 import { useUserContext, useUserToggleContext } from "./UserProvider";
+import { ScrollTop } from 'primereact/scrolltop';
 
 
 const Rutas = () => {
@@ -38,6 +39,7 @@ const Rutas = () => {
                 </Routes>
             </div>
             <Footer />
+            <ScrollTop className='mb-8'/>
         </BrowserRouter>
     );
 
