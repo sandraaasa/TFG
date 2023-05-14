@@ -78,6 +78,30 @@ let controller = {
     //Metodo sacar peli random
     getRandom: async (req, res) => {
         try {
+            //sacamos una categoria aleatoria
+            const categoria = ["Acción", "Aventura", "Animación", "Comedia", "Crimen", "Documental", "Drama", "Familia", "Fantasía", "Historia", "Terror", "Música", "Misteria", "Romance", "Ciencia ficción", "Pelicula de TV", "Suspense", "Bélica", "Western"];
+            const cateRandom =  categoria[Math.floor(Math.random() * categoria.length)];
+            //obtenemos la pelicula random
+            const peliculas = await Peli.where({categorias: cateRandom}).find();
+            const PeliRandom = peliculas[Math.floor(Math.random() * peliculas.length)];
+            
+            if (!peliculas) {
+                return res.status(404).send({
+                    message: 'No hay películas con ese id'
+                });
+            } else {
+                return res.status(200).send({
+                    PeliRandom
+                });
+            };
+        } catch (error) {
+            return res.status(500).send({
+                message: 'Ha habido un error y no se han encontrado las peliculas'
+            });
+        }
+    }, 
+    getRandomCate: async (req, res) => {
+        try {
             const categoria = req.params.cate;
             const peliculas = await Peli.where({categorias: categoria}).find();
             const PeliRandom = peliculas[Math.floor(Math.random() * peliculas.length)];
@@ -96,7 +120,7 @@ let controller = {
                 message: 'Ha habido un error y no se han encontrado las peliculas'
             });
         }
-    }, 
+    },
 
     //Metodo por id
     getPelisId: async (req, res) => {

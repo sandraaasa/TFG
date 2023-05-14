@@ -7,7 +7,6 @@ import { Toast } from 'primereact/toast';
 
 const AsideLateral = (props) =>{
     const toast = useRef(null);
-    const [categoria, setCategoria] = useState('');
     
     const categorias = [
         { name: 'Acción', code: 'AC' },
@@ -32,7 +31,7 @@ const AsideLateral = (props) =>{
     ];
 
     const show = () => {
-        toast.current.show({ severity: 'success', summary: 'Form Submitted', detail: formik.values.item.name });
+        toast.current.show({ severity: 'success', summary: 'Categoria seleccionada', detail: formik.values.item.name });
     };
 
     const formik = useFormik({
@@ -63,10 +62,6 @@ const AsideLateral = (props) =>{
         return isFormFieldInvalid(name) ? <small className="p-error">{formik.errors[name]}</small> : <small className="p-error">&nbsp;</small>;
     };
     
-    const enviarCategoriaPeli = () =>{
-        const dato = categoria;
-        props.getCategoria(dato);
-    };
 
     return (
         <aside>
