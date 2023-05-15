@@ -31,7 +31,7 @@ const AsideLateral = (props) =>{
     ];
 
     const show = () => {
-        toast.current.show({ severity: 'success', summary: 'Categoria seleccionada', detail: formik.values.item.name });
+        toast.current.show({ severity: 'success', summary: 'Has selecciondo ' + formik.values.item.name, detail: " Pulse de nuevo el boton para generar una película" });
     };
 
     const formik = useFormik({
