@@ -13,9 +13,6 @@ const Inicio = () => {
     const url = Global.url;
     const [visible, setVisible] = useState(false);
 
-    useEffect(() => {
-        getPeli();
-    }, [visible]);
 
     function getPeli() {
         axios.get(url + 'getone/').then(res => {
@@ -25,7 +22,7 @@ const Inicio = () => {
     }
     return (
         <div alt="logo" className="inicio">
-            <Dialog header="TSC" visible={visible} style={{ width: '80vw' }} onHide={() => setVisible(false)}>
+            <Dialog header="TSC" visible={visible} style={{ width: '60vw' }} onHide={() => setVisible(false)}>
                 <AleatorioSinCate
                     peliData={random}
                 /> 
@@ -35,7 +32,6 @@ const Inicio = () => {
                 <img src={logo} className='logoI' alt='logo' />
                 <img src={logo} className='logoI ani1' alt='logo' />
             </div>
-
         </div>
     )
 
