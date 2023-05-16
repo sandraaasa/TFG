@@ -32,7 +32,7 @@ const Aleatorio = (categoria) => {
     }
     const img = "https://image.tmdb.org/t/p/w500" + poster;
     const header = (
-        <img alt={imbd_id} src={img} className='max-h-10rem' />
+        <img alt={imbd_id} src={img} className='max-h-20rem' />
     );
 
     const time = (

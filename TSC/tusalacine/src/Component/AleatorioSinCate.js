@@ -45,7 +45,7 @@ const Random = ({ peliData }) => {
 
     const header = (
         <div className='m-2 rounded-4 flex justify-content-center align-items-center'>
-            <img alt={peliData.imbd_id} src={img} className='w-ful md:w-9 rounded-4' />
+            <img alt={peliData.imbd_id} src={img} className='w-ful md:w-6 rounded-4' />
         </div>
     );
     const info = (
