@@ -5,6 +5,8 @@ import Inicio from './Component/Home';
 import Footer from './Component/Footer';
 import './assets/css/router.css';
 import Peliculas from './Component/Peliculas';
+import TSCAyuda from './Component/TSCAyuda';
+import LogRegistro from "./Component/RegisLog";
 import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/arya-orange/theme.css';
 import 'primereact/resources/primereact.css';
@@ -24,17 +26,14 @@ const Rutas = () => {
 
     return (
         <BrowserRouter>
-        
-            {/* <h3>Componente hikjo</h3>
-            {user && <p> Hola {user.name}</p>}
-            <button onClick={cambiarLogin}> CAmbia Login</button> */}
 
             <Header />
             <div className='mainRouter'>
                 <Routes>
                     <Route exact path='/' element={<Inicio />} />
                     <Route exact path="/Catalogo" element={<Peliculas />} />
-                    <Route exact path="/Sesion" element={<Registro/>} />
+                    <Route exact path="/Sesion" element={<LogRegistro/>} />
+                    <Route exact path="/empresa" element={<TSCAyuda/>} />
                     
                 </Routes>
             </div>
