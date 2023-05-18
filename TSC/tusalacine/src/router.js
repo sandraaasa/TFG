@@ -34,8 +34,8 @@ const Rutas = () => {
                 <Routes>
                     <Route exact path='/' element={<Inicio />} />
                     <Route exact path="/Catalogo" element={<Peliculas />} />
-                    {//<Route exact path="/Sesion" element={<Carta />} />
-                    }
+                    <Route exact path="/Sesion" element={<Registro/>} />
+                    
                 </Routes>
             </div>
             <Footer />
