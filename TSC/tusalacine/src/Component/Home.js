@@ -27,7 +27,7 @@ const Inicio = () => {
                     peliData={random}
                 /> 
             </Dialog>
-            <Button icon="pi pi-external-link" onClick={() =>  getPeli()} label="Pelicula Random" text raised severity="warning" className='text-base md:text-3xl lg:text-7xl' />
+            <Button icon="pi pi-external-link" onClick={() =>  getPeli()} label="Película Random" text raised severity="warning" className='text-base md:text-3xl lg:text-7xl' />
             <div className='animacionDiv'>
                 <img src={logo} className='logoI' alt='logo' />
                 <img src={logo} className='logoI ani1' alt='logo' />
