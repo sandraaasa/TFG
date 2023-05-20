@@ -6,7 +6,7 @@ const mongose = require('mongoose');
 const app = express();
 
 mongose.Promise = global.Promise;
-var peli_rutas = require('./src/routes/pelicula');
+var peli_rutas = require('./routes/pelicula');
 
 //cargamos el middleware para analizar cuerpos de la url
 app.use(bodyparser.urlencoded({extended: false}));
