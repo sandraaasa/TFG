@@ -9,6 +9,7 @@ let controller = {
         const userNew = new User();
         //Rellenamos
         userNew.nombre = params.nombre;
+        userNew.rol = params.rol;
         userNew.correo = params.correo;
         userNew.password = params.password;
         userNew.cunple = params.cunple;

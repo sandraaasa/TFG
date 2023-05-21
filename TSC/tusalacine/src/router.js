@@ -21,7 +21,7 @@ const Rutas = () => {
     const cambiarLogin = useUserToggleContext();
     const CateData = {
         id: null,
-        categoria: "pepo"
+        correo: "pepo"
     }
 
     return (
@@ -31,7 +31,7 @@ const Rutas = () => {
             <div className='mainRouter'>
                 <Routes>
                     <Route exact path='/' element={<Inicio />} />
-                    <Route exact path="/Catalogo" element={<Peliculas />} />
+                    <Route exact path="/Catalogo" element={<Peliculas/>} />
                     <Route exact path="/Sesion" element={<LogRegistro/>} />
                     <Route exact path="/empresa" element={<TSCAyuda/>} />
                     
