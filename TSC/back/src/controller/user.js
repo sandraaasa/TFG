@@ -1,17 +1,19 @@
 'use strict'
 
 let User = require('../model/usuario');
+let bcrypt = require('bcrypt');
 
 let controller = {
     //Metodo añadir
-    saveuser: (req, res) => {
+    saveuser: async (req, res) => {
         const params = req.body;
         const userNew = new User();
         //Rellenamos
         userNew.nombre = params.nombre;
         userNew.rol = params.rol;
         userNew.correo = params.correo;
-        userNew.password = params.password;
+        
+        userNew.password = await bcrypt.hash(params.password, 10);
         userNew.cunple = params.cunple;
         //guardamos
 
