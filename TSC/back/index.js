@@ -9,7 +9,8 @@ mongose.Promise = global.Promise;
 var rutas = require('./src/routes/peliculas');
 
 //cargamos el middleware para analizar cuerpos de la url
-app.use(bodyparser.urlencoded({extended: false}));
+//
+app.use(bodyparser.urlencoded({extended: true}));
 //todas las peticiones las convertimos a json
 app.use(bodyparser.json());
 

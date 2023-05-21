@@ -6,7 +6,10 @@ var UsuarioSchema = new Schema(
     {
         nombre: String,
         rol: String,
-        correo: String,
+        correo: {
+            type: String,
+            required: true
+        },
         password: String,
         cunple: Date
     }

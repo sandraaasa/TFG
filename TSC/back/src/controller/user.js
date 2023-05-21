@@ -72,7 +72,7 @@ let controller = {
             const userget = await User.where({correo: usercorreo}).find();
             if (!userget) {
                 return res.status(404).send({
-                    message: 'No hay usuarios con ese id'
+                    message: 'No hay usuarios con ese correo0'
                 });
             } else {
                 return res.status(200).send({
