@@ -10,7 +10,7 @@ route.post('/add', Peli.save);
 route.post('/addone', Peli.saveone);
 route.get('/getall', Peli.getPelis);
 
-route.get('/getone/', Peli.getRandom);
+route.get('/getone', Peli.getRandom);
 route.get('/getoneCate/:cate', Peli.getRandomCate);
 route.get('/getid/:id', Peli.getPelisId);
 route.delete('/delete/:id', Peli.delete);
@@ -18,6 +18,9 @@ route.delete('/delete/:id', Peli.delete);
 
 //rutas para ejecutar los metodos de usuario(controller)
 route.post('/adduser', User.saveuser);
+route.get('/getuser', User.getUser);
+route.get('/getoneuser', Peli.getOneUser);
+route.delete('/deleteuser/:id', User.delete);
 
 
 

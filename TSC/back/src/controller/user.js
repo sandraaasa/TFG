@@ -25,6 +25,45 @@ let controller = {
             });
 
     },
+    //Metodo Listar todos los usuarios
+    getUser: async (req, res) => {
+        try {
+            const userget = await User.find({});
+            if (!userget) {
+                return res.status(404).send({
+                    message: 'No hay usuarios actualmente'
+                });
+            } else {
+                return res.status(200).send({
+                    userget
+                });
+            };
+        } catch (error) {
+            return res.status(500).send({
+                message: 'Ha habido un error y no se han encontrado las usuarios'
+            });
+        }
+    },
+    //Metodo buscar por id
+    getOneUser: async (req, res) => {
+        try {
+            const userid = req.params.id;
+            const userget = await User.findById({ _id: userid });
+            if (!userget) {
+                return res.status(404).send({
+                    message: 'No hay usuarios con ese id'
+                });
+            } else {
+                return res.status(200).send({
+                    userget
+                });
+            };
+        } catch (error) {
+            return res.status(500).send({
+                message: 'Ha habido un error y no se ha encontrado el usuario'
+            });
+        }
+    },
     //Metodo Eliminar
     delete: async (req, res) => {
         try {
