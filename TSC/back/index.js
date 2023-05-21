@@ -6,7 +6,7 @@ const mongose = require('mongoose');
 const app = express();
 
 mongose.Promise = global.Promise;
-var peli_rutas = require('./src/routes/pelicula');
+var rutas = require('./src/routes/peliculas');
 
 //cargamos el middleware para analizar cuerpos de la url
 app.use(bodyparser.urlencoded({extended: false}));
@@ -26,7 +26,7 @@ app.use((req, res, next) =>{
 
 
 //cargamos los archivos de ruta
-app.use('/', peli_rutas);
+app.use('/', rutas);
 
 //nos conectamos a mongo y ejecutamos
 mongose.connect('mongodb+srv://usuario:usuario@sandra.42non41.mongodb.net/tsc',{useNewUrlParser: true,autoIndex: true}).then(() =>{

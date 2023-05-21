@@ -26,7 +26,7 @@ let controller = {
                 });
             })
             .catch((error) => {
-                console.log('Ocurrió un error al guardar el usuario:', error);
+                console.log('Ocurrió un error al guardar la película:', error);
             });
 
     },

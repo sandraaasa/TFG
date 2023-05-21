@@ -5,12 +5,9 @@ var Schema = mongose.Schema;
 var UsuarioSchema = new Schema(
     {
         nombre: String,
-        apellido: String,
-        cunple: Date,
-        password: String,
         correo: String,
-        telefono: Number,
-        pais: String
+        password: String,
+        cunple: String
     }
 )
 module.exports = mongose.model('Usuario', UsuarioSchema); 
