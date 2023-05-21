@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../assets/css/header.css'
-
-//import logo from '../assets/images/tsclogo.png';
+import '../assets/css/header.css';
 import logo2 from '../assets/images/tsclogoinvert.png';
 import { NavLink } from 'react-router-dom';
 import { InputSwitch } from "primereact/inputswitch";
