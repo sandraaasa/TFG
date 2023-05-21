@@ -16,9 +16,9 @@ let controller = {
         //guardamos
 
         userNew.save()
-            .then((userStored) => {
+            .then((user) => {
                 return res.status(200).send({
-                    userStored
+                    user
                 });
             })
             .catch((error) => {
@@ -50,6 +50,26 @@ let controller = {
         try {
             const userid = req.params.id;
             const userget = await User.findById({ _id: userid });
+            if (!userget) {
+                return res.status(404).send({
+                    message: 'No hay usuarios con ese id'
+                });
+            } else {
+                return res.status(200).send({
+                    userget
+                });
+            };
+        } catch (error) {
+            return res.status(500).send({
+                message: 'Ha habido un error y no se ha encontrado el usuario'
+            });
+        }
+    },
+    //Metodo buscar por id
+    getUserEmail: async (req, res) => {
+        try {
+            const usercorreo = req.params.correo;
+            const userget = await User.where({correo: usercorreo}).find();
             if (!userget) {
                 return res.status(404).send({
                     message: 'No hay usuarios con ese id'

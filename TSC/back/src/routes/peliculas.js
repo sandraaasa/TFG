@@ -19,7 +19,8 @@ route.delete('/delete/:id', Peli.delete);
 //rutas para ejecutar los metodos de usuario(controller)
 route.post('/adduser', User.saveuser);
 route.get('/getuser', User.getUser);
-route.get('/getoneuser', User.getOneUser);
+route.get('/getoneuser/:id', User.getOneUser);
+route.get('/getuseremail/:correo', User.getUserEmail);
 route.delete('/deleteuser/:id', User.delete);
 
 
