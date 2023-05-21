@@ -8,7 +8,8 @@ var UsuarioSchema = new Schema(
         rol: String,
         correo: {
             type: String,
-            required: true
+            required: true,
+            unique:true
         },
         password: String,
         cunple: Date

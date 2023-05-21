@@ -6,40 +6,57 @@ import { Toast } from 'primereact/toast';
 import { Divider } from 'primereact/divider';
 import { Password } from 'primereact/password';
 import { Calendar } from 'primereact/calendar';
+import Global from '../Global';
+import axios from 'axios';
 import '../assets/css/router.css';
 
 
 const Regislog = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
-  const [date, setDate] = useState(null);
+  const url = Global.url;
+
+  const [emailReg, setEmailReg] = useState('');
+  const [emailLog, setEmailLog] = useState('');
+  const [passwordReg, setPasswordReg] = useState('');
+  const [passwordLog, setPasswordLog] = useState('');
+  const [usernameReg, setUsernameReg] = useState('');
+  const [dateReg, setDateReg] = useState(null);
   const [isLogin, setIsLogin] = useState(true);
-  const [blocked, setBlocked] = useState(false);
   const toast = useRef(null);
 
   const showSuccessMessage = (message) => {
     toast.current.show({
       severity: 'success',
       summary: 'Success',
-      detail: message,
-      life: 10000
+      detail: message
     });
   };
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
     // Aquí puedes agregar la lógica para el inicio de sesión
-    showSuccessMessage('LogueoCorrecto!');
+    showSuccessMessage('Logueo Correcto!');
   };
 
-  const handleRegistro = () => {
+  const handleRegistro = (e) => {
     // Aquí puedes agregar la lógica para el registro de usuario
-    showSuccessMessage('Registered successfully!');
+    e.preventDefault();
+    const usuario = {
+      nombre: usernameReg,
+      rol: "cliente",
+      correo: emailReg,
+      password: passwordReg,
+      cumple: dateReg
+    }
+    console.log(usuario)
+    console.log(emailLog)
+     axios.post(url + 'adduser', usuario).then(res => {
+
+      console.log(res.data);
+    })  
+    showSuccessMessage('Registro correcto!');
   };
 
   const cambiarPestaña = () => {
     setIsLogin(!isLogin);
-    setBlocked(!blocked)
   };
 
   const footer = (
@@ -65,12 +82,12 @@ const Regislog = () => {
 
             <h2 className="pb-4">Login</h2>
             <span className="p-float-label">
-              <InputText id="email" type="email" disabled={!isLogin} value={email} keyfilter={/[^s]/} onChange={(e) => setEmail(e.target.value)} className='w-full' />
-              <label htmlFor="email">Correo</label>
+              <InputText id="emailLog" name="emailLog" type="email" disabled={!isLogin} value={emailLog} keyfilter={/[^s]/} onChange={(e) => setEmailLog(e.target.value)} className='w-full' />
+              <label htmlFor="emailLog">Correo</label>
             </span><br />
             <span className="p-float-label">
-              <Password id="pass" disabled={!isLogin} value={password} keyfilter={/[^s]/} onChange={(e) => setPassword(e.target.value)} footer={footer} toggleMask className='w-full' inputClassName='w-full p-3 ' />
-              <label htmlFor="pass">Contraseña</label>
+              <Password id="passwordLog" name="passwordLog" disabled={!isLogin} value={passwordLog} keyfilter={/[^s]/} onChange={(e) => setPasswordLog(e.target.value)} footer={footer} toggleMask className='w-full' inputClassName='w-full p-3 ' />
+              <label htmlFor="passwordLog">Contraseña</label>
             </span><br />
             <Button
               disabled={!isLogin}
@@ -89,30 +106,32 @@ const Regislog = () => {
             </Divider>
           </div>
 
-          <form className={!isLogin ? "card backMBlack w-full h-full shadow-7" : "card backBlack w-full h-full"}>
+          <form onSubmit={handleRegistro} className={!isLogin ? "card backMBlack w-full h-full shadow-7" : "card backBlack w-full h-full"}>
 
             <h2 className="pb-4">Registro</h2>
-              <span className="p-float-label">
-                <InputText disabled={isLogin} id="username" type="text" keyfilter={/[^s]/} onChange={(e) => setUsername(e.target.value)} className='w-full' />
-                <label htmlFor="username">Usuario</label>
-              </span><br />
-              <span className="p-float-label">
-                <InputText disabled={isLogin} id="email" type="email" keyfilter={/[^s]/} onChange={(e) => setEmail(e.value)} className='w-full' />
-                <label htmlFor="email">Correo electrónico</label>
-              </span><br />
-              <span className="p-float-label">
-                <Password id="password" disabled={isLogin} keyfilter={/[^s]/} onChange={(e) => setPassword(e.target.value)} footer={footer} toggleMask className='w-full' inputClassName='w-full p-3 ' />
-                <label htmlFor="password">Contraseña</label>
-              </span><br />
-              <span className="p-float-label">
-                <Calendar disabled={isLogin} id="birthday" keyfilter={/[^s]/} onChange={(e) => setDate(e.value)} className='w-full' />
-                <label htmlFor="birthday">Cumpleaños</label>
-              </span><br />
-              <Button disabled={isLogin} className="my-2 w-full"
-                label='Registro'
-                onClick={handleRegistro}
-              />
-            </form>
+            <span className="p-float-label">
+              <InputText disabled={isLogin} id="usernameReg" name='usernameReg' type="text" value={usernameReg} keyfilter={/[^s]/} onChange={(e) => setUsernameReg(e.target.value)} className='w-full' />
+              <label htmlFor="usernameReg">Usuario</label>
+            </span><br />
+            <span className="p-float-label">
+              <InputText disabled={isLogin} id="emailReg" name='emailReg' type="text" value={emailReg} keyfilter={/[^s]/} onChange={(e) => setEmailReg(e.target.value)} className='w-full' />
+              <label htmlFor="emailReg">Correo electrónico</label>
+            </span><br />
+            <span className="p-float-label">
+              <Password id="passwordReg" name='passwordReg' value={passwordReg} disabled={isLogin} keyfilter={/[^s]/} onChange={(e) => setPasswordReg(e.target.value)} footer={footer} toggleMask className='w-full' inputClassName='w-full p-3 ' />
+              <label htmlFor="passwordReg">Contraseña</label>
+            </span><br />
+            <span className="p-float-label">
+              <Calendar disabled={isLogin} id="dateReg" name='dateReg' value={dateReg} keyfilter={/[^s]/} onChange={(e) => setDateReg(e.value)} className='w-full' />
+              <label htmlFor="dateReg">Cumpleaños</label>
+            </span><br />
+            <Button
+              disabled={isLogin}
+              className="my-2 w-full"
+              label='Registro'
+              type='submit'
+            />
+          </form>
         </div>
         <div className="p-text-center ">
           <span className='m-1'>{isLogin ? "No tienes una cuenta aún?" : "Ya tienes una cuenta? "}</span>
