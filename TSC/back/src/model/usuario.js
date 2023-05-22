@@ -12,7 +12,7 @@ var UsuarioSchema = new Schema(
             unique:true
         },
         password: String,
-        cunple: Date
+        cumple: Date
     }
 )
 module.exports = mongose.model('Usuario', UsuarioSchema); 

@@ -14,7 +14,7 @@ let controller = {
         userNew.correo = params.correo;
         
         userNew.password = await bcrypt.hash(params.password, 10);
-        userNew.cunple = params.cunple;
+        userNew.cumple = params.cumple;
         //guardamos
 
         userNew.save()
@@ -25,6 +25,7 @@ let controller = {
             })
             .catch((error) => {
                 console.log('Ocurrió un error al guardar el usuario:', error);
+                return res.status(500).send(error);
             });
 
     },

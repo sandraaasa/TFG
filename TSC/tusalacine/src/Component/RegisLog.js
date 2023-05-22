@@ -2,13 +2,14 @@ import React, { useState, useRef } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
-import { Toast } from 'primereact/toast';
+import { Messages } from 'primereact/messages';
 import { Divider } from 'primereact/divider';
 import { Password } from 'primereact/password';
 import { Calendar } from 'primereact/calendar';
 import Global from '../Global';
 import axios from 'axios';
 import '../assets/css/router.css';
+import { Error } from 'mongoose';
 
 
 const Regislog = () => {
@@ -21,19 +22,31 @@ const Regislog = () => {
   const [usernameReg, setUsernameReg] = useState('');
   const [dateReg, setDateReg] = useState(null);
   const [isLogin, setIsLogin] = useState(true);
-  const toast = useRef(null);
+  const msg = useRef(null);
 
-  const showSuccessMessage = (message) => {
-    toast.current.show({
-      severity: 'success',
-      summary: 'Success',
+  const correcto = (message) => {
+    msg.current.show({
+      severity: 'info',
+      summary: 'Info',
+      detail: message
+    });
+  };
+  const erroneo = (message) => {
+    msg.current.show({
+      severity: 'error',
+      summary: 'Error',
       detail: message
     });
   };
 
   const handleLogin = (e) => {
     // Aquí puedes agregar la lógica para el inicio de sesión
-    showSuccessMessage('Logueo Correcto!');
+    correcto('Logueo Correcto!');
+    /* axios.post(url + 'adduser', usuario).then(res => {
+
+      console.log(res.data);
+    })  */
+
   };
 
   const handleRegistro = (e) => {
@@ -46,13 +59,18 @@ const Regislog = () => {
       password: passwordReg,
       cumple: dateReg
     }
-    console.log(usuario)
-    console.log(emailLog)
-     axios.post(url + 'adduser', usuario).then(res => {
-
+    axios.post(url + 'adduser', usuario)
+    .then(res => {
       console.log(res.data);
-    })  
-    showSuccessMessage('Registro correcto!');
+      correcto('Registro correcto!');
+      cambiarPestaña();
+    })
+    .catch(Error => {
+
+      console.log(Error.data);
+      erroneo('Registro erroneo!');
+
+    })
   };
 
   const cambiarPestaña = () => {
@@ -74,7 +92,6 @@ const Regislog = () => {
 
   return (
     <div className="container">
-      <Toast ref={toast} />
 
       <Card className="card">
         <div className='lg:flex align-content-center justify-content-evenly'>
@@ -82,13 +99,14 @@ const Regislog = () => {
 
             <h2 className="pb-4">Login</h2>
             <span className="p-float-label">
-              <InputText id="emailLog" name="emailLog" type="email" disabled={!isLogin} value={emailLog} keyfilter={/[^s]/} onChange={(e) => setEmailLog(e.target.value)} className='w-full' />
+              <InputText id="emailLog" name="emailLog" type="email" disabled={!isLogin} value={emailLog}  onChange={(e) => setEmailLog(e.target.value)} className='w-full' />
               <label htmlFor="emailLog">Correo</label>
             </span><br />
             <span className="p-float-label">
-              <Password id="passwordLog" name="passwordLog" disabled={!isLogin} value={passwordLog} keyfilter={/[^s]/} onChange={(e) => setPasswordLog(e.target.value)} footer={footer} toggleMask className='w-full' inputClassName='w-full p-3 ' />
+              <Password id="passwordLog" name="passwordLog" disabled={!isLogin} value={passwordLog}  onChange={(e) => setPasswordLog(e.target.value)} footer={footer} toggleMask className='w-full' inputClassName='w-full p-3 ' />
               <label htmlFor="passwordLog">Contraseña</label>
             </span><br />
+            <Messages ref={msg} /> <br/>
             <Button
               disabled={!isLogin}
               className="my-2 w-full"
@@ -110,21 +128,22 @@ const Regislog = () => {
 
             <h2 className="pb-4">Registro</h2>
             <span className="p-float-label">
-              <InputText disabled={isLogin} id="usernameReg" name='usernameReg' type="text" value={usernameReg} keyfilter={/[^s]/} onChange={(e) => setUsernameReg(e.target.value)} className='w-full' />
+              <InputText required disabled={isLogin} id="usernameReg" name='usernameReg' type="text" value={usernameReg}  onChange={(e) => setUsernameReg(e.target.value)} className='w-full' />
               <label htmlFor="usernameReg">Usuario</label>
             </span><br />
             <span className="p-float-label">
-              <InputText disabled={isLogin} id="emailReg" name='emailReg' type="text" value={emailReg} keyfilter={/[^s]/} onChange={(e) => setEmailReg(e.target.value)} className='w-full' />
+              <InputText required disabled={isLogin} id="emailReg" name='emailReg' type="text" value={emailReg}  onChange={(e) => setEmailReg(e.target.value)} className='w-full' />
               <label htmlFor="emailReg">Correo electrónico</label>
             </span><br />
             <span className="p-float-label">
-              <Password id="passwordReg" name='passwordReg' value={passwordReg} disabled={isLogin} keyfilter={/[^s]/} onChange={(e) => setPasswordReg(e.target.value)} footer={footer} toggleMask className='w-full' inputClassName='w-full p-3 ' />
+              <Password  toggleMask required id="passwordReg" name='passwordReg' value={passwordReg} disabled={isLogin}  onChange={(e) => setPasswordReg(e.target.value)} footer={footer} className='w-full' inputClassName='w-full p-3 ' />
               <label htmlFor="passwordReg">Contraseña</label>
             </span><br />
             <span className="p-float-label">
-              <Calendar disabled={isLogin} id="dateReg" name='dateReg' value={dateReg} keyfilter={/[^s]/} onChange={(e) => setDateReg(e.value)} className='w-full' />
+              <Calendar required disabled={isLogin} id="dateReg" name='dateReg' value={dateReg}  onChange={(e) => setDateReg(e.value)} className='w-full' />
               <label htmlFor="dateReg">Cumpleaños</label>
             </span><br />
+            <Messages ref={msg} /> <br/>
             <Button
               disabled={isLogin}
               className="my-2 w-full"
