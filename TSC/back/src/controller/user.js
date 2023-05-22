@@ -71,16 +71,22 @@ let controller = {
     //Metodo buscar por id
     getUserEmail: async (req, res) => {
         try {
-            const usercorreo = req.params.correo;
-            const userget = await User.where({correo: usercorreo}).find();
-            if (!userget) {
+            const {correo, password} = req.body;
+            const userget = await User.where({correo: correo}).find();
+            if (!userget[0]) {
                 return res.status(404).send({
-                    message: 'No hay usuarios con ese correo0'
+                    message: 'No hay usuarios con ese correo'
                 });
             } else {
-                return res.status(200).send({
-                    userget
-                });
+                if (await bcrypt.compare(password, userget[0].password)) {
+                    return res.status(200).send(
+                        userget[0]
+                    );
+                }else{
+                    return res.status(401).send({
+                        message: 'Contraseña incorrecta'
+                    });
+                }
             };
         } catch (error) {
             return res.status(500).send({

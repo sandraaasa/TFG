@@ -11,22 +11,29 @@ import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/arya-orange/theme.css';
 import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
+import UserContext from "./context/UsuarioContext";
 import { useUserContext, useUserToggleContext } from "./UserProvider";
 import { ScrollTop } from 'primereact/scrolltop';
 
 
 const Rutas = () => {
 
-    const user = useUserContext();
-    const cambiarLogin = useUserToggleContext();
-    const CateData = {
-        id: null,
-        correo: "pepo"
+    const user = localStorage.getItem(nombre);
+    if (localStorage.getItem(rol) != "") {
+        
+    } else {
+        
+    }
+    const rol = localStorage.getItem(rol);
+    const UserData = {
+        correo: null,
+        nombre: user,
+        rol: null
     }
 
     return (
         <BrowserRouter>
-
+            <UserContext.Provider value={UserData}>
             <Header />
             <div className='mainRouter'>
                 <Routes>
@@ -39,6 +46,7 @@ const Rutas = () => {
             </div>
             <Footer />
             <ScrollTop className='mb-8'/>
+            </UserContext.Provider>
         </BrowserRouter>
     );
 

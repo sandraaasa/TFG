@@ -4,11 +4,12 @@ import '../assets/css/header.css';
 import logo2 from '../assets/images/tsclogoinvert.png';
 import { NavLink } from 'react-router-dom';
 import { InputSwitch } from "primereact/inputswitch";
-
+import useUser from "../Hook/UseUsuario";
 
 
 const HeaderInicio = () =>{
   const [checked, setChecked] = useState(true);
+  const user = useUser();
   return (
     <nav className='card menu'>
         <NavLink to="/" className="deco logoH">

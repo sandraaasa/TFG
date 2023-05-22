@@ -20,7 +20,7 @@ route.delete('/delete/:id', Peli.delete);
 route.post('/adduser', User.saveuser);
 route.get('/getuser', User.getUser);
 route.get('/getoneuser/:id', User.getOneUser);
-route.get('/getuseremail/:correo', User.getUserEmail);
+route.post('/getuseremail', User.getUserEmail);
 route.delete('/deleteuser/:id', User.delete);
 
 

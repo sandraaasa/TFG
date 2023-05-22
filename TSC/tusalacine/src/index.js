@@ -9,6 +9,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+localStorage.setItem('correo', "");
+localStorage.setItem('nombre', "");
+localStorage.setItem('rol', "");
 root.render(
   <React.StrictMode>
     <App />
