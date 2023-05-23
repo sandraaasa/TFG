@@ -9,3 +9,4 @@
  * https://rapidapi.com/apidojo/api/online-movie-database/
 ### react
  * https://youtu.be/mnKHJDkpZos *ayuda useContext HOOK*
+ * enlace interesante para aprender un poco de next.js -> https://nextjs.org/learn/foundations/from-react-to-nextjs 
