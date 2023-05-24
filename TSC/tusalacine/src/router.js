@@ -13,6 +13,7 @@ import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
 import UserContext from "./context/UsuarioContext";
 import { ScrollTop } from 'primereact/scrolltop';
+import InicioCRUD from './Component/InicioCrud';
 
 
 const Rutas = () => {
@@ -37,7 +38,7 @@ const Rutas = () => {
                         <Route exact path="/Catalogo" element={<Peliculas />} />
                         <Route exact path="/Sesion" element={<LogRegistro />} />
                         <Route exact path="/empresa" element={<TSCAyuda />} />
-                        <Route exact path='/admin' />
+                        <Route exact path='/admin' element={<InicioCRUD/>}/>
                     </Routes>
                 </div>
                 <Footer />
