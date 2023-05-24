@@ -9,11 +9,12 @@ import { Calendar } from 'primereact/calendar';
 import Global from '../Global';
 import axios from 'axios';
 import '../assets/css/router.css';
+import { useNavigate } from 'react-router-dom';
 
 
 const Regislog = () => {
   const url = Global.url;
-
+  const navigate = useNavigate();
   const [emailReg, setEmailReg] = useState('');
   const [emailLog, setEmailLog] = useState('');
   const [passwordReg, setPasswordReg] = useState('');
@@ -64,9 +65,8 @@ const Regislog = () => {
     // Aquí puedes agregar la lógica para el inicio de sesión
     e.preventDefault();
     axios.post(url + 'getuseremail/', {correo: emailLog, password: passwordLog}).then(res => {
-
-      const { nombre, rol, correo } = res.data
-      console.log(res.data);
+      
+      const { nombre, rol, correo } = res.data;
       correcto(' Login correcto!');
       localStorage.setItem('correo', correo);
       localStorage.setItem('nombre', nombre);
@@ -78,6 +78,10 @@ const Regislog = () => {
       erroneo(' Login erroneo!');
 
     })
+    if (localStorage.getItem("rol") != "") {
+      
+      navigate("/Catalogo");
+    }
 
   };
 

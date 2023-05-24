@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Router, Routes, Route } from 'react-router-dom';
 import Header from './Component/Header';
 import Inicio from './Component/Home';
@@ -21,12 +21,10 @@ const Rutas = () => {
     const rol = localStorage.getItem("rol");
     const user = localStorage.getItem("nombre");
     const correo = localStorage.getItem("correo");
-    const UserData = {
+    const UserData ={
         correo: correo,
         nombre: user,
-        rol: rol
-    }
-    console.log(UserData);
+        rol: rol};
 
     return (
         <BrowserRouter>
