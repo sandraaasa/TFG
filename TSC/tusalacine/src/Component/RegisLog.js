@@ -71,6 +71,7 @@ const Regislog = () => {
       localStorage.setItem('correo', correo);
       localStorage.setItem('nombre', nombre);
       localStorage.setItem('rol', rol);
+      
     })
     .catch(Error => {
       console.log(Error.message);

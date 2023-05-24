@@ -19,15 +19,6 @@ const Regislog = () => {
     });
   };
 
-  const handleLogin = () => {
-    // Aquí puedes agregar la lógica para el inicio de sesión
-    showSuccessMessage('LogueoCorrecto!');
-  };
-
-  const handleRegister = () => {
-    // Aquí puedes agregar la lógica para el registro de usuario
-    showSuccessMessage('Registered successfully!');
-  };
 
   const cambiarPestaña = () => {
     setIsLogin(!isLogin);

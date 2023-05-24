@@ -6,7 +6,6 @@ import Global from '../Global';
 import axios from 'axios';
 import { Dialog } from 'primereact/dialog';
 import AleatorioSinCate from "./AleatorioSinCate";
-import { classNames } from 'primereact/utils';
 
 
 const Inicio = () => {

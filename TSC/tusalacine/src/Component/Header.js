@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/css/header.css';
 import logo2 from '../assets/images/tsclogoinvert.png';
@@ -9,7 +9,7 @@ import useUser from "../Hook/UseUsuario";
 
 const HeaderInicio = () =>{
   const [checked, setChecked] = useState(true);
-  const user = useUser();
+  const {correo, user, rol} = useUser();
   return (
     <nav className='card menu'>
         <NavLink to="/" className="deco logoH">
@@ -23,6 +23,12 @@ const HeaderInicio = () =>{
           <li>
             <NavLink to="/Catalogo"  className="deco linea">Catálogo</NavLink>
           </li>
+          {
+            rol == "admin" &&
+            <li>
+              <NavLink to="/Admin"  className="deco linea">Admin</NavLink>
+            </li> 
+          }
           <li>
             <NavLink to="/Sesion" className="deco linea">Iniciar Sesion</NavLink>
           </li>
