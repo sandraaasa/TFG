@@ -6,4 +6,5 @@ const UsuarioContext = createContext({
     rol: null
 });
 
+
 export default UsuarioContext;

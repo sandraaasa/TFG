@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
@@ -10,6 +10,7 @@ import Global from '../Global';
 import axios from 'axios';
 import '../assets/css/router.css';
 import { useNavigate } from 'react-router-dom';
+import useUser from "../Hook/UseUsuario";
 
 
 const Regislog = () => {
@@ -24,6 +25,7 @@ const Regislog = () => {
   const [isLogin, setIsLogin] = useState(true);
   const msgLog = useRef(null);
   const msgReg = useRef(null);
+  const { contextUser, setContextUser } = useUser();
 
   const correcto = (message) => {
     if (isLogin) {
@@ -64,22 +66,25 @@ const Regislog = () => {
   const handleLogin = (e) => {
     // Aquí puedes agregar la lógica para el inicio de sesión
     e.preventDefault();
+    const UserData = {};
     axios.post(url + 'getuseremail/', {correo: emailLog, password: passwordLog}).then(res => {
-      
       const { nombre, rol, correo } = res.data;
       correcto(' Login correcto!');
       localStorage.setItem('correo', correo);
       localStorage.setItem('nombre', nombre);
       localStorage.setItem('rol', rol);
-      
+      UserData = {
+        correo: correo,
+        nombre: nombre,
+        rol: rol
+      }
     })
     .catch(Error => {
-      console.log(Error.message);
       erroneo(' Login erroneo!');
 
     })
-    if (localStorage.getItem("rol") != "") {
-      
+    if ( contextUser !== "") {
+      setContextUser(UserData);
       navigate("/Catalogo");
     }
 

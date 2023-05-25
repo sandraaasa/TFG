@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Router, Routes, Route } from 'react-router-dom';
 import Header from './Component/Header';
 import Inicio from './Component/Home';
@@ -18,17 +18,19 @@ import InicioCRUD from './Component/InicioCrud';
 
 const Rutas = () => {
 
-    const rol = localStorage.getItem("rol");
-    const user = localStorage.getItem("nombre");
-    const correo = localStorage.getItem("correo");
-    const UserData ={
-        correo: correo,
-        nombre: user,
-        rol: rol};
+    const UserData = {
+        correo: "",
+        nombre: "",
+        rol: "cliente"
+    };
+    const [ contextUser, setContextUser ] = useState(UserData);
+    const updateContext = (newValue) => {
+        setContextUser(newValue);
+    };
 
     return (
         <BrowserRouter>
-            <UserContext.Provider value={UserData}>
+            <UserContext.Provider value={{ contextUser, updateContext }}>
                 <Header />
                 <div className='mainRouter'>
                     <Routes>
@@ -36,7 +38,7 @@ const Rutas = () => {
                         <Route exact path="/Catalogo" element={<Peliculas />} />
                         <Route exact path="/Sesion" element={<LogRegistro />} />
                         <Route exact path="/empresa" element={<TSCAyuda />} />
-                        <Route exact path='/admin' element={<InicioCRUD/>}/>
+                        <Route exact path='/admin' element={<InicioCRUD />} />
                     </Routes>
                 </div>
                 <Footer />

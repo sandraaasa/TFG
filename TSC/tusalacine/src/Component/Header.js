@@ -9,7 +9,8 @@ import useUser from "../Hook/UseUsuario";
 
 const HeaderInicio = () =>{
   const [checked, setChecked] = useState(true);
-  const {correo, user, rol} = useUser();
+  const { contextUser, setContextUser } = useUser();
+  const rol = contextUser;
   return (
     <nav className='card menu'>
         <NavLink to="/" className="deco logoH">
