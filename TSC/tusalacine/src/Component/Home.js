@@ -12,25 +12,34 @@ const Inicio = () => {
     const [random, setpeli] = useState([]);
     const url = Global.url;
     const [visible, setVisible] = useState(false);
+    const [err, seterr] = useState("");
 
 
     function getPeli() {
         axios.get(url + 'getone/').then(res => {
             setpeli(res.data.PeliRandom);
+            
+            setVisible(true);
         })
-        setVisible(true)
+        .catch(error =>{
+            seterr("No hay peliculas disponibles");
+        })
     }
     return (
         <div alt="logo" className="inicio">
             <Dialog header="TSC" visible={visible} style={{ width: '60vw' }} onHide={() => setVisible(false)}>
-                <AleatorioSinCate
-                    peliData={random}
-                /> 
+                {
+                    err == "" ?
+                        <AleatorioSinCate
+                            peliData={random}
+                        />
+                    :
+                        <div>{err}</div>
+                } 
             </Dialog>
-            <Button icon="pi pi-external-link" onClick={() =>  getPeli()} label="Película Random" text raised severity="warning" className=' text-base md:text-3xl lg:text-7xl'  />
+            <Button icon="pi pi-external-link" onClick={() =>  getPeli()} label="Película Random" text raised severity="warning" className=' text-3xl md:text-5xl lg:text-7xl'  />
             <div className='animacionDiv'>
                 <img src={logo} className='logoI' alt='logo' />
-                <img src={logo} className='logoI ani1' alt='logo' />
             </div>
         </div>
     )

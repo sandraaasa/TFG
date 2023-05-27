@@ -10,7 +10,6 @@ const Random = ({ peliData }) => {
 
     const [visible, setVisible] = useState(false);
 
-    const img =peliData.poster;
     const intlConfig = {
         locale: "en-US",
         options: {
@@ -22,35 +21,35 @@ const Random = ({ peliData }) => {
     const time = (
         <>
             <span className="bg-primary-reverse border-circle w-2rem h-2rem flex align-items-center justify-content-center"><i className="pi pi-spin pi-clock" /></span>
-            <span className="ml-2 font-medium"><DateTime config={intlConfig}>{peliData.fecha}</DateTime></span>
+            <span className="ml-2 font-medium"><DateTime config={intlConfig}>{peliData?.fecha}</DateTime></span>
         </>
     );
     const star = (
         <>
             <span className="bg-primary-reverse border-circle w-2rem h-2rem flex align-items-center justify-content-center"><i className="pi pi-spin pi-star" /></span>
-            <span className="ml-2 font-medium">{peliData.valoracionTotal}</span>
+            <span className="ml-2 font-medium">{peliData?.valoracionTotal}</span>
         </>
     );
     const world = (
         <>
             <span className="bg-primary-reverse border-circle w-2rem h-2rem flex align-items-center justify-content-center"><i className="pi pi-spin pi-globe" /></span>
-            <span className="ml-2 font-medium">{peliData.pais}</span>
+            <span className="ml-2 font-medium">{peliData?.pais}</span>
         </>
     );
     const minute = (
         <>
-            <span className="ml-2 font-medium">  {peliData.minutos} minutos</span>
+            <span className="ml-2 font-medium">  {peliData?.minutos} minutos</span>
         </>
     );
 
     const header = (
         <div className='m-2 rounded-4 flex justify-content-center align-items-center'>
-            <img alt={peliData.imbd_id} src={img} className='w-ful md:w-6 rounded-4' />
+            <img alt={peliData?.imbd_id} src={peliData?.poster} className='w-ful md:w-6 rounded-4' />
         </div>
     );
     const info = (
         <div className='flex flex-wrap justify-content-center align-items-center'>
-            <p className='overflow-auto surface-overlay p-3 border-2 border-round w-8 lg:w-6 xl:w-4 h-20rem md:h-15rem lg:h-auto'>{peliData.sinopsis}</p>
+            <div className='overflow-auto surface-overlay p-3 border-2 border-round w-8 lg:w-6 xl:w-4 h-20rem md:h-15rem lg:h-auto'>{peliData?.sinopsis}</div>
             <div className='m-3 w-6 xl:w-3'>
                 <p>
                     <Chip className="pl-0 pr-3" template={time} />
@@ -75,7 +74,7 @@ const Random = ({ peliData }) => {
 
 
     return (
-        <Card title={peliData.titulo} footer={footer} header={header} className='border-round max-w-full m-2 flex flex-column flex-wrap justify-content-center align-items-center'>
+        <Card title={peliData?.titulo} footer={footer} header={header} className='border-round max-w-full m-2 flex flex-column flex-wrap justify-content-center align-items-center'>
         </Card>
     )
 }

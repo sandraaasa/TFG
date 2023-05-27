@@ -64,7 +64,6 @@ const Regislog = () => {
   };
 
   const handleLogin = (e) => {
-    // Aquí puedes agregar la lógica para el inicio de sesión
     e.preventDefault();
     const UserData = {};
     axios.post(url + 'getuseremail/', {correo: emailLog, password: passwordLog}).then(res => {
@@ -91,7 +90,6 @@ const Regislog = () => {
   };
 
   const handleRegistro = (e) => {
-    // Aquí puedes agregar la lógica para el registro de usuario
     e.preventDefault();
     const usuario = {
       nombre: usernameReg,
@@ -136,9 +134,9 @@ const Regislog = () => {
 
       <Card className="card">
         <div className='lg:flex align-content-center justify-content-evenly'>
-          <form onSubmit={handleLogin} className={isLogin ? "card backMBlack w-full h-full shadow-7" : "card backBlack w-full h-full"}>
+          <form onSubmit={handleLogin} onClick={cambiarPestaña} className={isLogin ? "card backMBlack w-full h-full shadow-7" : "card backBlack w-full h-full"}>
 
-            <h2 className="pb-4">Login</h2>
+            <h2 className="pb-4 w-full" onClick={cambiarPestaña}>Login</h2>
             <span className="p-float-label">
               <InputText id="emailLog" name="emailLog" type="email" disabled={!isLogin} value={emailLog} onChange={(e) => setEmailLog(e.target.value)} className='w-full' />
               <label htmlFor="emailLog">Correo</label>
@@ -167,7 +165,7 @@ const Regislog = () => {
 
           <form onSubmit={handleRegistro} className={!isLogin ? "card backMBlack w-full h-full shadow-7" : "card backBlack w-full h-full"}>
 
-            <h2 className="pb-4">Registro</h2>
+            <h2 className="pb-4 w-full" onClick={cambiarPestaña}>Registro</h2>
             <span className="p-float-label">
               <InputText required disabled={isLogin} id="usernameReg" name='usernameReg' type="text" value={usernameReg} onChange={(e) => setUsernameReg(e.target.value)} className='w-full' />
               <label htmlFor="usernameReg">Usuario</label>

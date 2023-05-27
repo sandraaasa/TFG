@@ -13,34 +13,28 @@
 }
 
 .logoI {
-    width: 50%;
+    width: 40%;
     position: absolute;
-    top: 40px;
-    left: 25%;
+    left: 10%;
 }
 
-
-.ani1 {
-    animation: ani1 0.5s ease-in infinite;
-    animation-iteration-count: 3;
-    transform-origin: center center;
+@media screen and (max-width: 700px) {
+    .logoI {
+        width: 80%;
+        left: 10%;
+    }
 }
 
-@keyframes ani1 {
-
-    0% {
-        transform: translateX(-50%);
-        opacity: 0.5;
+@media screen and (min-width: 700px) {
+    .logoI {
+        width: 60%;
+        left: 20%;
     }
+}
 
-    50%{
-        transform: translateX(0%);
-        opacity: 1;
+@media screen and (min-width: 1600px) {
+    .logoI {
+        width: 40%;
+        left: 30%;
     }
-
-    100% {
-        transform: translateX(50%);
-        opacity: 0.5;
-    }
-
 }

@@ -55,7 +55,7 @@ const Peliculas = () => {
     )
 
 return (
-    <main>
+    <main >
         <AsideLateral getCategoria={recibirCategoria} />
 
         <div className='card contenedor backBlack'>

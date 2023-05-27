@@ -14,11 +14,10 @@ const Aleatorio = (categoria) => {
     const [random, setpeli] = useState([]);
     const openBtnRef = useRef(null);
 
-    const { imbd_id, titulo, fecha, minutos, pais, sinopsis, valoracionTotal, poster } = random;
+    const { imbd_id, titulo, fecha, minutos, pais, sinopsis, valoracionTotal, poster } = random||{};
     function getPeliCate() {
         axios.get(url + 'getoneCate/' + categoria.categoria).then(res => {
             setpeli(res.data.PeliRandom);
-            console.log(categoria.categoria);
         })
     }
 
