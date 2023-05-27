@@ -10,7 +10,7 @@ const Random = ({ peliData }) => {
 
     const [visible, setVisible] = useState(false);
 
-    const img = "https://image.tmdb.org/t/p/w500" + peliData.poster;
+    const img = "https://image.tmdb.org/t/p/w500/" + peliData.poster;
     const intlConfig = {
         locale: "en-US",
         options: {

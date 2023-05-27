@@ -21,7 +21,7 @@ const Rutas = () => {
     const UserData = {
         correo: "",
         nombre: "",
-        rol: "cliente"
+        rol: ""
     };
     const [ contextUser, setContextUser ] = useState(UserData);
     const updateContext = (newValue) => {

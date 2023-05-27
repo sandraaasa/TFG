@@ -30,7 +30,7 @@ const Aleatorio = (categoria) => {
             year: "numeric"
         }
     }
-    const img = "https://image.tmdb.org/t/p/w500" + poster;
+    const img = "https://image.tmdb.org/t/p/w500/" + poster;
     const header = (
         <img alt={imbd_id} src={img} className='max-h-20rem' />
     );

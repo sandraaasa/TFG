@@ -11,6 +11,7 @@ const HeaderInicio = () =>{
   const [checked, setChecked] = useState(true);
   const { contextUser, setContextUser } = useUser();
   const rol = contextUser;
+  console.log(rol);
   return (
     <nav className='card menu'>
         <NavLink to="/" className="deco logoH">
