@@ -18,7 +18,7 @@ const CartaPeli =({id, peliData}) =>{
         <p>Pais: {pais}</p>
         </div>
     );
-    const img = "https://image.tmdb.org/t/p/w500/" + poster;
+    const img = poster;
 
     const header = (
         <img alt={imbd_id} src={img} />
