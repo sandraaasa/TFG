@@ -7,9 +7,8 @@ body{
 main{
     height: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: space-around;
 
 }
@@ -28,11 +27,19 @@ aside{
     color: orange;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (max-width: 800px) {
     main{
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-around;
+        flex-direction: column;
+        align-items: left;
+    }
+    aside{
+        width: 100%;
+    }
+    .listaCategoria{
+        height: 70px;
+    }
+    .contenedor{
+        width: 100%;
     }
 }

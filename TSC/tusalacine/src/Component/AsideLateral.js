@@ -65,7 +65,7 @@ const AsideLateral = (props) =>{
 
     return (
         <aside>
-            <form onSubmit={formik.handleSubmit} className=" flex flex-column align-items-center gap-2">
+            <form onSubmit={formik.handleSubmit} className=" flex md:flex-column justify-content-center align-items-center gap-2 m-2">
                 <Toast ref={toast} />
                 <ListBox
                     filter
@@ -74,6 +74,7 @@ const AsideLateral = (props) =>{
                     value={formik.values.item}
                     options={categorias}
                     optionLabel="name"
+                    listClassName="listaCategoria"
                     placeholder="Selecciona película"
                     onChange={(e) => {
                         formik.setFieldValue('item', e.value);
