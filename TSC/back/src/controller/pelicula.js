@@ -128,9 +128,7 @@ let controller = {
     getCate: async (req, res) => {
         try {
             const categoria = req.params.cate;
-            console.log(categoria);
             const pelisCate = await Peli.where({categorias: categoria}).find({});
-            console.log(pelisCate);
             if (!pelisCate) {
                 return res.status(404).send({
                     message: 'No hay películas con esa categoría'
