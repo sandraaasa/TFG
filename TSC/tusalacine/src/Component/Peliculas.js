@@ -21,16 +21,28 @@ const Peliculas = () => {
 
     useEffect(() => {
         getpelis();
-    }, [pelis.length]);
+    }, [categoria]);
 
+    //obtner todas las películasen en el usestate pelis
     const getpelis = () => {
-        axios.get(url + 'getall').then(res => {
-            setpelis(res.data.peliget);
-        })
+        if (categoria == "") {
+            axios.get(url + 'getall').then(res => {
+                setpelis(res.data.peliget);
+                console.log(res.data.peliget);
+                console.log(categoria);
+            })
+        } else {
+            console.log(categoria);
+            axios.get(url + 'getCate/' + categoria).then(res => {
+                setpelis(res.data.pelisCate);
+                console.log(res.data.pelisCate);
+            })
+        }
     }
 
+    //obtner la película aletortia sin la categoría
     function getPeli() {
-        axios.get(url + 'getone/').then(res => {
+        axios.get(url + 'getone').then(res => {
             setpeli(res.data.PeliRandom);
         })
     }
@@ -77,7 +89,7 @@ return (
             <h1 className='mt-5'>Peliculas: {categoria}</h1>
             <section className="flex flex-wrap justify-content-center card-container gap-3">
                 {
-                    pelis.length > 0 ? (
+                    pelis.length > 0 ? 
 
                         pelis.map((peli, i) => {
                             return (
@@ -88,9 +100,9 @@ return (
                                 />
                             );
                         })
-                    ) : (
+                     : 
                         <h3 className="mx-auto" >No hay Peliculas que mostrar</h3>
-                    )
+                    
                 }
             </section>
 

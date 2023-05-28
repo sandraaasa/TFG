@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../assets/css/inicio.css';
-import logo from '../assets/images/tsclogoinvert.png';
+import logo from '../assets/images/TSCHome.png';
 import { Button } from 'primereact/button';
 import Global from '../Global';
 import axios from 'axios';
@@ -22,7 +22,7 @@ const Inicio = () => {
             setVisible(true);
         })
         .catch(error =>{
-            seterr("No hay peliculas disponibles");
+            seterr("No hay películas disponibles");
         })
     }
     return (
@@ -39,7 +39,8 @@ const Inicio = () => {
             </Dialog>
             <Button icon="pi pi-external-link" onClick={() =>  getPeli()} label="Película Random" text raised severity="warning" className=' text-3xl md:text-5xl lg:text-7xl'  />
             <div className='animacionDiv'>
-                <img src={logo} className='logoI' alt='logo' />
+                
+                <img src={logo} className='logoI w-full' alt='logo' /> 
             </div>
         </div>
     )

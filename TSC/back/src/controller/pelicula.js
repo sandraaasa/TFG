@@ -3,7 +3,7 @@
 let Peli = require('../model/pelicula');
 
 let controller = {
-    //Metodo añadir
+    //Metodo añadir una peli
     saveone: (req, res) => {
         const params = req.body;
         const peliNew = new Peli();
@@ -31,7 +31,7 @@ let controller = {
 
     },
 
-    //Metodo añadir muchas pelis a partir de array de obj
+    //Metodo añadir muchas pelis
     save: async (req, res) => {
         try {
             const params = req.body;
@@ -50,12 +50,12 @@ let controller = {
         } catch (error) {
             
             return res.status(500).send({
-                message: 'Ha habido un error y no se han encontrado las peliculas'
+                message: 'Ha habido un error y no se han encontrado las películas'
             });
         }
     },
 
-    //Metodo Listar todas las pelis
+    //Método Listar todas las pelis
     getPelis: async (req, res) => {
         try {
             const peliget = await Peli.find({});
@@ -70,12 +70,12 @@ let controller = {
             };
         } catch (error) {
             return res.status(500).send({
-                message: 'Ha habido un error y no se han encontrado las peliculas'
+                message: 'Ha habido un error y no se han encontrado las películas'
             });
         }
     },
 
-    //Metodo sacar peli random
+    //Metodo get peli random
     getRandom: async (req, res) => {
         try {
             //sacamos una categoria aleatoria
@@ -96,10 +96,12 @@ let controller = {
             };
         } catch (error) {
             return res.status(500).send({
-                message: 'Ha habido un error y no se han encontrado las peliculas'
+                message: 'Ha habido un error y no se han encontrado las películas'
             });
         }
     }, 
+
+    //Metodo get una categoría
     getRandomCate: async (req, res) => {
         try {
             const categoria = req.params.cate;
@@ -117,7 +119,30 @@ let controller = {
             };
         } catch (error) {
             return res.status(500).send({
-                message: 'Ha habido un error y no se han encontrado las peliculas'
+                message: 'Ha habido un error y no se han encontrado las películas'
+            });
+        }
+    },
+
+    //Método get todas categorías
+    getCate: async (req, res) => {
+        try {
+            const categoria = req.params.cate;
+            console.log(categoria);
+            const pelisCate = await Peli.where({categorias: categoria}).find({});
+            console.log(pelisCate);
+            if (!pelisCate) {
+                return res.status(404).send({
+                    message: 'No hay películas con esa categoría'
+                });
+            } else {
+                return res.status(200).send({
+                    pelisCate
+                });
+            };
+        } catch (error) {
+            return res.status(500).send({
+                message: 'Ha habido un error y no se han encontrado las películas'
             });
         }
     },

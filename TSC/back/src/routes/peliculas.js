@@ -9,8 +9,8 @@ var route = express.Router();
 route.post('/add', Peli.save);
 route.post('/addone', Peli.saveone);
 route.get('/getall', Peli.getPelis);
-
 route.get('/getone', Peli.getRandom);
+route.get('/getCate/:cate',  Peli.getCate);
 route.get('/getoneCate/:cate', Peli.getRandomCate);
 route.get('/getid/:id', Peli.getPelisId);
 route.delete('/delete/:id', Peli.delete);
