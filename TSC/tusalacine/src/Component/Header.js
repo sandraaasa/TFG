@@ -1,17 +1,17 @@
-import React, { useContext, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/css/header.css';
 import logo2 from '../assets/images/tsclogoinvert.png';
 import { NavLink } from 'react-router-dom';
 import { InputSwitch } from "primereact/inputswitch";
-import useUser from "../Hook/UseUsuario";
 
 
 const HeaderInicio = () =>{
   const [checked, setChecked] = useState(true);
-  const { contextUser, setContextUser } = useUser();
-  const rol = contextUser;
+  let rol = localStorage.getItem("rol");
+  
   console.log(rol);
+
   return (
     <nav className='card menu'>
         <NavLink to="/" className="deco logoH">
@@ -31,9 +31,24 @@ const HeaderInicio = () =>{
               <NavLink to="/Admin"  className="deco linea">Admin</NavLink>
             </li> 
           }
-          <li>
-            <NavLink to="/Sesion" className="deco linea">Iniciar Sesion</NavLink>
-          </li>
+          
+            
+              {
+                rol == "admin" ? 
+                  <li>
+                    <div
+                      className="deco linea" 
+                    >
+                      Cerrar Sesion
+                    </div>
+                  </li>
+                :
+                  <li>
+                    <NavLink to="/Sesion" className="deco linea">Iniciar Sesion</NavLink>
+                  </li>
+              }
+            
+          
         </ul>
     </nav>
   );

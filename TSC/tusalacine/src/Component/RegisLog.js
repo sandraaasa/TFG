@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, { useState, useRef } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
@@ -10,7 +10,6 @@ import Global from '../Global';
 import axios from 'axios';
 import '../assets/css/router.css';
 import { useNavigate } from 'react-router-dom';
-import useUser from "../Hook/UseUsuario";
 
 
 const Regislog = () => {
@@ -25,7 +24,6 @@ const Regislog = () => {
   const [isLogin, setIsLogin] = useState(true);
   const msgLog = useRef(null);
   const msgReg = useRef(null);
-  const { contextUser, setContextUser } = useUser();
 
   const correcto = (message) => {
     if (isLogin) {
@@ -65,27 +63,18 @@ const Regislog = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const UserData = {};
     axios.post(url + 'getuseremail/', {correo: emailLog, password: passwordLog}).then(res => {
       const { nombre, rol, correo } = res.data;
       correcto(' Login correcto!');
       localStorage.setItem('correo', correo);
       localStorage.setItem('nombre', nombre);
       localStorage.setItem('rol', rol);
-      UserData = {
-        correo: correo,
-        nombre: nombre,
-        rol: rol
-      }
+      navigate("/Catalogo");
     })
     .catch(Error => {
       erroneo(' Login erroneo!');
 
     })
-    if ( contextUser !== "") {
-      setContextUser(UserData);
-      navigate("/Catalogo");
-    }
 
   };
 
@@ -134,7 +123,7 @@ const Regislog = () => {
 
       <Card className="card">
         <div className='lg:flex align-content-center justify-content-evenly'>
-          <form onSubmit={handleLogin} onClick={cambiarPestaña} className={isLogin ? "card backMBlack w-full h-full shadow-7" : "card backBlack w-full h-full"}>
+          <form onSubmit={handleLogin} className={isLogin ? "card backMBlack w-full h-full shadow-7" : "card backBlack w-full h-full"}>
 
             <h2 className="pb-4 w-full" onClick={cambiarPestaña}>Login</h2>
             <span className="p-float-label">

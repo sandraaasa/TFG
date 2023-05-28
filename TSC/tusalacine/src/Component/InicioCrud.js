@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import '../assets/css/inicio.css';
-import logo from '../assets/images/tsclogoinvert.png';
 import { Button } from 'primereact/button';
-import Global from '../Global';
-import axios from 'axios';
+//import Global from '../Global';
+//import axios from 'axios';
 
 
 const InicioCRUD = () => {
-    const url = Global.url;
+    //const url = Global.url;
 
     return (
         <div alt="logo" className="inicioCRUD">

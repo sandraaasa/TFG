@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import '../assets/css/inicio.css';
 import logo from '../assets/images/TSCHome.png';
 import { Button } from 'primereact/button';
@@ -29,7 +29,7 @@ const Inicio = () => {
         <div alt="logo" className="inicio">
             <Dialog header="TSC" visible={visible} style={{ width: '60vw' }} onHide={() => setVisible(false)}>
                 {
-                    err == "" ?
+                    err === "" ?
                         <AleatorioSinCate
                             peliData={random}
                         />

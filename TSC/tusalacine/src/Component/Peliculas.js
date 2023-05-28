@@ -4,7 +4,6 @@ import axios from 'axios';
 import Carta from './Carta';
 import AsideLateral from "./AsideLateral";
 import Aleatorio from "./Aleatorio";
-import { Dialog } from 'primereact/dialog';
 import AleatorioSinCate from "./AleatorioSinCate";
 import { Button } from 'primereact/button';
 import { StyleClass } from 'primereact/styleclass';
@@ -25,17 +24,14 @@ const Peliculas = () => {
 
     //obtner todas las películasen en el usestate pelis
     const getpelis = () => {
-        if (categoria == "") {
+        if (categoria === "") {
             axios.get(url + 'getall').then(res => {
                 setpelis(res.data.peliget);
-                console.log(res.data.peliget);
-                console.log(categoria);
             })
         } else {
             console.log(categoria);
             axios.get(url + 'getCate/' + categoria).then(res => {
                 setpelis(res.data.pelisCate);
-                console.log(res.data.pelisCate);
             })
         }
     }
