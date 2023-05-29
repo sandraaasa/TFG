@@ -36,4 +36,4 @@ const MovieForm =() =>{
       </div>
     );
   }
-  return MovieForm;
+  return default MovieForm;

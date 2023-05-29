@@ -23,12 +23,14 @@ const CartaPeli =({id, peliData}) =>{
     const header = (
         <img alt={imbd_id} src={img} />
     );
+    const isHeart = true;
     const footer = (
         <div className="flex flex-wrap justify-content-end gap-2">
             <Button label="Info" icon="pi pi-info-circle border-round"/>
-            <Button icon="pi pi-heart-fill" style={{ color: 'red' }} className="p-button-outlined p-button-secondary" />
+            <Button icon={`pi ${isHeart ? 'pi-heart' : 'pi-heart-fill' } `} style={{ color: 'red' }} className="p-button-outlined p-button-secondary" />
         </div>
     );
+    
 
 
     return (
