@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
@@ -10,6 +10,7 @@ import Global from '../Global';
 import axios from 'axios';
 import '../assets/css/router.css';
 import { useNavigate } from 'react-router-dom';
+import UserContext from '../Context/UserContext';
 
 
 const Regislog = () => {
@@ -24,13 +25,14 @@ const Regislog = () => {
   const [isLogin, setIsLogin] = useState(true);
   const msgLog = useRef(null);
   const msgReg = useRef(null);
+  const { login } = useContext(UserContext);
 
-  const correcto = (message) => {
+  const correcto = (mensaje) => {
     if (isLogin) {
       msgLog.current.show({
         severity: 'info',
         summary: 'Info',
-        detail: message, 
+        detail: mensaje, 
         life: 1000
       });
 
@@ -38,42 +40,51 @@ const Regislog = () => {
       msgReg.current.show({
         severity: 'info',
         summary: 'Info',
-        detail: message
+        detail: mensaje
       });
 
     }
   };
-  const erroneo = (message) => {
+  const erroneo = (mensaje) => {
 
     if (isLogin) {
       msgLog.current.show({
         severity: 'error',
         summary: 'Error',
-        detail: message
+        detail: mensaje
       });
     } else {
 
       msgReg.current.show({
         severity: 'error',
         summary: 'Error',
-        detail: message
+        detail: mensaje
       });
     }
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
-    axios.post(url + 'getuseremail/', {correo: emailLog, password: passwordLog}).then(res => {
-      const { nombre, rol, correo } = res.data;
-      correcto(' Login correcto!');
-      localStorage.setItem('correo', correo);
-      localStorage.setItem('nombre', nombre);
-      localStorage.setItem('rol', rol);
+    let UserData = {};
+    axios.post(url + 'getuseremail/', {correo: emailLog, password: passwordLog})
+    .then(res => {
+      const { _id, nombre, rol, correo } = res.data;
+      correcto(' Inicio de sesión correcto!');
+      UserData = {
+        id: _id,
+        correo: correo,
+        nombre: nombre,
+        rol: rol
+      };
+      return UserData;
+    })
+    .then(resData => {
       navigate("/Catalogo");
+      login(resData);
     })
     .catch(Error => {
-      erroneo(' Login erroneo!');
-
+      erroneo(' Inicio de sesión erroneo!');
+      console.log(Error)
     })
 
   };
@@ -108,7 +119,7 @@ const Regislog = () => {
   const footer = (
     <>
       <Divider />
-      <p className="mt-2">Debe tene: </p>
+      <p className="mt-2">Debe tener: </p>
       <ul className="pl-2 ml-2 mt-0 line-height-3">
         <li>Mínimo una minúscula</li>
         <li>Mínimo una mayúscula</li>
@@ -183,7 +194,7 @@ const Regislog = () => {
         <div className="p-text-center ">
           <span className='m-1'>{isLogin ? "No tienes una cuenta aún?" : "Ya tienes una cuenta? "}</span>
           <Button
-            label={isLogin ? ' Registrate aquí' : ' Inicia sesión aquí'}
+            label={isLogin ? ' Regístrate aquí' : ' Inicia sesión aquí'}
             onClick={cambiarPestaña}
             className="p-button-link m-0 p-0"
           />

@@ -6,6 +6,7 @@ import { Accordion, AccordionTab } from 'primereact/accordion';
 
 const CartaPeli =({id, peliData}) =>{
 
+    const [isHeart, setIsHeart] = useState(false);
     const {categorias, imbd_id, titulo, fecha, minutos, pais, sinopsis, valoracionTotal, poster} = peliData;
     const formatDate = (fecha) =>{
         return fecha.substring(8, 10) + fecha.substring(4, 8) + fecha.substring(0, 4);
@@ -23,12 +24,18 @@ const CartaPeli =({id, peliData}) =>{
     const header = (
         <img alt={imbd_id} src={img} />
     );
+
+    const cambiarHeart = () => {
+        setIsHeart(!isHeart);
+    }
+
     const footer = (
         <div className="flex flex-wrap justify-content-end gap-2">
             <Button label="Info" icon="pi pi-info-circle border-round"/>
-            <Button icon="pi pi-heart-fill" style={{ color: 'red' }} className="p-button-outlined p-button-secondary" />
+            <Button icon={`pi ${isHeart ? 'pi-heart-fill' : 'pi-heart' } `} rounded text severity="danger" aria-label="Favorite" onClick={cambiarHeart} />
         </div>
     );
+    
 
 
     return (
