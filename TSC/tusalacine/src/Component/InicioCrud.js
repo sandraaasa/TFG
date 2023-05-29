@@ -10,7 +10,8 @@ const InicioCRUD = () => {
 
     return (
         <div alt="logo" className="inicioCRUD">
-            <Button></Button>
+            <Button label="Info" severity="info" text raised />
+            <Button label="Warning" severity="warning" text raised />
         </div>
     )
 }
