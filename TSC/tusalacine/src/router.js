@@ -25,7 +25,7 @@ const Rutas = () => {
         <BrowserRouter>
             <UserProvider>
                 <Header />
-                <Routes>
+                <Routes className='mb-8'>
                     <Route exact path='/' element={<Inicio />} />
                     <Route exact path="/Catalogo" element={<Peliculas />} />
                     <Route exact path="/Sesion" element={<LogRegistro />} />
