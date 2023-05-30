@@ -18,14 +18,15 @@ route.delete('/delete/:id', Peli.delete);
 
 
 //rutas para ejecutar los metodos de usuario(controller)
-route.post('/adduser', User.saveuser);
+route.post('/adduser', User.save);
 route.get('/getuser', User.getUser);
 route.get('/getoneuser/:id', User.getOneUser);
 route.post('/getuseremail', User.getUserEmail);
 route.delete('/deleteuser/:id', User.delete);
 
 //rutas para ejecutar los metodos de usuario(controller)
-route.post('/addvista', Vistas.savevista);
+route.post('/addvista', Vistas.save);
+route.delete('/deletevista/:id', Vistas.delete)
 
 module.exports = route;
 

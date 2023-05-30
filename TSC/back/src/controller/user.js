@@ -5,7 +5,7 @@ let bcrypt = require('bcrypt');
 
 let controller = {
     //Metodo añadir
-    saveuser: async (req, res) => {
+    save: async (req, res) => {
         const params = req.body;
         const userNew = new User();
         //Rellenamos

@@ -4,7 +4,7 @@ let Vista = require('../model/vistas');
 
 let controller = {
     //Metodo añadir
-    savevista: async (req, res) => {
+    save: async (req, res) => {
         const params = req.body;
         const vistaNew = new Vista();
         //Rellenamos
