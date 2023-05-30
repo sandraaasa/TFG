@@ -37,7 +37,7 @@ const Inicio = () => {
                         <div>{err}</div>
                 } 
             </Dialog>
-            <Button icon="pi pi-external-link" onClick={() =>  getPeli()} label="Película Random" text raised severity="warning" className=' text-3xl md:text-5xl lg:text-7xl'  />
+            <Button icon="pi pi-external-link" onClick={() =>  getPeli()} label="Random Movie" text raised severity="warning" className=' text-3xl md:text-5xl lg:text-7xl'  />
             <div className='animacionDiv'>
                 
                 <img src={logo} className='logoI w-full' alt='logo' /> 

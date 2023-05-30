@@ -21,7 +21,7 @@ const Aleatorio = (categoria) => {
     pais,
     sinopsis,
     valoracionTotal,
-    poster,
+    poster
   } = random || {};
   function getPeliCate() {
     axios.get(url + "getoneCate/" + categoria.categoria).then((res) => {

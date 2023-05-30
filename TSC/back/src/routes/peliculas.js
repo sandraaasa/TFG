@@ -1,10 +1,10 @@
 'use strict'
 
-var express = require('express');
-var Peli = require('../controller/pelicula');
-var User = require('../controller/user');
-var Vistas = require('../controller/vistas');
-var route = express.Router();
+const express = require('express');
+const Peli = require('../controller/pelicula');
+const User = require('../controller/user');
+const Vistas = require('../controller/vistas');
+const route = express.Router();
 
 //rutas para ejecutar los metodos de pelicula(controller)
 route.post('/add', Peli.save);
