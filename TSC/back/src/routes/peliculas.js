@@ -3,6 +3,7 @@
 var express = require('express');
 var Peli = require('../controller/pelicula');
 var User = require('../controller/user');
+var Vistas = require('../controller/vistas');
 var route = express.Router();
 
 //rutas para ejecutar los metodos de pelicula(controller)
@@ -23,7 +24,8 @@ route.get('/getoneuser/:id', User.getOneUser);
 route.post('/getuseremail', User.getUserEmail);
 route.delete('/deleteuser/:id', User.delete);
 
-
+//rutas para ejecutar los metodos de usuario(controller)
+route.post('/addvista', Vistas.savevista);
 
 module.exports = route;
 
