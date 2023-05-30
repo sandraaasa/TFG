@@ -1,17 +1,17 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/css/footer.css'
-
-import logo from '../assets/images/tsclogoinvert.png';
 import { Link, NavLink } from 'react-router-dom';
 
 
 const Footer = () => {
+  const id ={
+    
+  }
   return (
-    <div id='footer'>
-      <footer>
+    <div id="footer">
+      <footer className='rounded'>
         <p>Todos los derechos reservados &copy; 2023</p>
-        {/* <img alt="logo" src={logo} height="40" className="mr-2"></img> */}
         <ul>
           <li>
             <Link to="/" className='linea deco'>

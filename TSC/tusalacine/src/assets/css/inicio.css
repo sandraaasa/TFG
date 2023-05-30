@@ -5,30 +5,4 @@
     width: 100%;
     flex-direction: column;
     padding: 5%;
-    position: relative;
 }
-.logoI { 
-    position: absolute;
-    left: 0px;
-}
-
-/* @media screen and (max-width: 700px) {
-    .logoI {
-        width: 80%;
-        left: 10%;
-    }
-}
-
-@media screen and (min-width: 700px) {
-    .logoI {
-        width: 60%;
-        left: 20%;
-    }
-}
-
-@media screen and (min-width: 1600px) {
-    .logoI {
-        width: 40%;
-        left: 30%;
-    }
-}  */

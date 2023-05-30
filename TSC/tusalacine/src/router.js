@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useRoutes } from 'react-router-dom';
 import Header from './Component/Header';
 import Inicio from './Component/Home';
 import Footer from './Component/Footer';
@@ -18,14 +18,14 @@ import { ScrollTop } from 'primereact/scrolltop';
 
 
 const Rutas = () => {
-
+    const rou = Location.name
 
     return (
 
         <BrowserRouter>
             <UserProvider>
                 <Header />
-                <Routes className='mb-8'>
+                <Routes >
                     <Route exact path='/' element={<Inicio />} />
                     <Route exact path="/Catalogo" element={<Peliculas />} />
                     <Route exact path="/Sesion" element={<LogRegistro />} />
@@ -35,6 +35,7 @@ const Rutas = () => {
                 </Routes>
             </UserProvider>
             <Footer />
+
             <ScrollTop className='mb-8' />
 
         </BrowserRouter>
