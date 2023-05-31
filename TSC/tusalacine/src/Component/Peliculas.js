@@ -8,6 +8,7 @@ import AleatorioSinCate from "./AleatorioSinCate";
 import { Button } from "primereact/button";
 import { StyleClass } from "primereact/styleclass";
 import { Panel } from "primereact/panel";
+import logo2 from "../assets/images/tsclogoinvert.png";
 
 const Peliculas = () => {
   const url = Global.url;
@@ -76,11 +77,16 @@ const Peliculas = () => {
 
       <div className="card contenedor backBlack">
         <section className="backBlack card flex flex-wrap justify-content-center align-items-center">
-          <h1>Pelicula Random</h1>
           {categoria ? (
-            <Aleatorio categoria={categoria} />
+            <div>
+              <h1>{categoria}</h1>
+              <Aleatorio categoria={categoria} />
+            </div>
           ) : (
-            <div>{peliSinCate}</div>
+            <div>
+              <h1>Random Movie</h1>
+              {peliSinCate}
+            </div>
           )}
         </section>
         <h1 className="mt-5">Peliculas: {categoria}</h1>
