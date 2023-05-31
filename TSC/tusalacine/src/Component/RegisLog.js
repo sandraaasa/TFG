@@ -180,7 +180,7 @@ const Regislog = () => {
             </span><br />
             <span className="p-float-label">
               <Calendar required disabled={isLogin} id="dateReg" name='dateReg' value={dateReg} onChange={(e) => setDateReg(e.value)} className='w-full' />
-              <label htmlFor="dateReg">Cumpleaños</label>
+              <label htmlFor="dateReg">Fecha de cumpleaños</label>
             </span><br />
             <Messages ref={msgReg} /> <br />
             <Button
@@ -192,7 +192,7 @@ const Regislog = () => {
           </form>
         </div>
         <div className="p-text-center ">
-          <span className='m-1'>{isLogin ? "No tienes una cuenta aún?" : "Ya tienes una cuenta? "}</span>
+          <span className='m-1'>{isLogin ? "¿No tienes una cuenta aún?" : "¿Ya tienes una cuenta? "}</span>
           <Button
             label={isLogin ? ' Regístrate aquí' : ' Inicia sesión aquí'}
             onClick={cambiarPestaña}
