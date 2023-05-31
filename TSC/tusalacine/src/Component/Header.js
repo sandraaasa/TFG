@@ -64,7 +64,7 @@ const HeaderInicio = () => {
                     style={{ fontSize: "1.5rem" }}
                   />
                 </span>
-                <span>Logout</span>
+                <span>Salir</span>
               </NavLink>
             </li>
           ) : (
