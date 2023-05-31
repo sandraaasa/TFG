@@ -1,5 +1,4 @@
 .menu {
-  display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -7,7 +6,7 @@
 .lista {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-around;
   width: 40vw;
   flex-wrap: wrap;
@@ -82,5 +81,4 @@
   align-items: center;
   color: white;
   flex-direction: column;
-  margin: 5%;
 }
