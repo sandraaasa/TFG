@@ -5,7 +5,7 @@ import logo2 from "../assets/images/tsclogoinvert.png";
 import { NavLink } from "react-router-dom";
 import { InputSwitch } from "primereact/inputswitch";
 import UserContext from "../Context/UserContext";
-import { Button } from 'primereact/button';
+import { Button } from "primereact/button";
 
 const HeaderInicio = () => {
   const [checked, setChecked] = useState(true);
@@ -14,7 +14,7 @@ const HeaderInicio = () => {
   const { user, logout } = useContext(UserContext);
 
   return (
-    <nav className="card menu">
+    <nav className="card menu onlyback">
       <NavLink to="/" className="deco logoH">
         <img alt="logo" src={logo2} height="70" className="mr-2" />
       </NavLink>
@@ -32,20 +32,23 @@ const HeaderInicio = () => {
             Catálogo
           </NavLink>
         </li>
-        {
-          user &&
+        {user && (
           <li className="m-2 flex">
-            <NavLink to="/Admin" className="deco linea flex flex-column  align-content-center justify-content-center">
-
-              <Button icon="pi pi-user" text severity="warning" aria-label={user.nombre} />
+            <NavLink
+              to="/Admin"
+              className="deco linea  flex flex-column  align-content-center justify-content-center"
+            >
+              <span>
+                <i className="pi pi-user" style={{ fontSize: "1.5rem" }} />
+              </span>
               <span>{user.nombre}</span>
             </NavLink>
           </li>
-        }
+        )}
         {user ? (
           <li className="m-2 flex">
             <NavLink to="/Sesion" className="deco linea" onClick={logout}>
-              Cerrar Sesion
+              <i className="pi pi-sign-out" style={{ fontSize: "1.5rem" }} />
             </NavLink>
           </li>
         ) : (
