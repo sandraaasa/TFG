@@ -129,7 +129,7 @@ let controller = {
         try {
             const categoria = req.params.cate;
             const pelisCate = await Peli.where({categorias: categoria}).find({});
-            if (peliculas.length === 0 ) {
+            if (pelisCate.length === 0 ) {
                 return res.status(404).send({
                     message: 'No hay películas con esa categoría'
                 });
