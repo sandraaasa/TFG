@@ -20,50 +20,50 @@ const PerfilUsuario = () => {
 
   //obtner todas las películasen en el usestate pelis
   const getpelis = () => {
-      axios.get(url + "getPelis/" ).then((res) => {
+      axios.get(url + "getAll/" ).then((res) => {
         setpelis(res.data.peliget);
       });
   };  
   
 
   return (
-    <div className="container m-4 w-auto">
-      <TabView >
+    <div className=" m-3 w-full">
+      <TabView className="w-full">
         <TabPanel header={user.nombre} leftIcon="pi pi-user mr-2" >
-          <form className="m-4 container perfilContainer">
-            <span className="perfil">
+          <form className="m-4 perfilContainer">
+            <span>
               <div >Usuario</div>
               <InputText disabled value={user.nombre} />
             </span><br />
-            <span className="perfil">
+            <span>
               <div >Correo electrónico</div>
               <InputText disabled value={user.correo} />
             </span><br />
-            <span className="perfil" >
+            <span>
               <div >Permisos</div>
               <InputText disabled value={user.rol} />
             </span><br />
           </form>
         </TabPanel>
-        <TabPanel rightIcon="pi pi-calendar ml-2">
-          <div className="m-0 container">
-            <h2>Películas que hé visto</h2>
-            <section className="flex flex-wrap justify-content-center card-container gap-3">
+        <TabPanel header="Vistas" leftIcon="pi pi-eye mr-2">
+          <div className=" ">
+            <h2>Películas que he visto</h2>
+            <section className="flex flex-wrap justify-content-center">
               {pelis.length > 0 ? (
                 pelis.map((peli, i) => {
                   return <Carta key={i + 1} id={i} peliData={peli} />;
                 })
               ) : (
-                <h3 className="mx-auto">No hay Peliculas que mostrar</h3>
+                <h3 className="mx-auto">No hay películas que mostrar</h3>
               )}
             </section>
           </div>
         </TabPanel>
-        <TabPanel leftIcon="pi pi-search mr-2">
+        {/* <TabPanel leftIcon="pi pi-search mr-2">
           <p className="m-0 container">
 
           </p>
-        </TabPanel>
+        </TabPanel> */}
       </TabView>
     </div>
   );

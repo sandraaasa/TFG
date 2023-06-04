@@ -50,7 +50,7 @@ const Random = ({ peliData }) => {
     const info = (
         <div className='flex flex-wrap justify-content-center align-items-center'>
             <div className='overflow-auto surface-overlay p-3 border-2 border-round w-8 lg:w-6 xl:w-4 h-20rem md:h-15rem lg:h-auto'>{peliData?.sinopsis}</div>
-            <div className='m-3 w-6 xl:w-3'>
+            <div className='m-3 w-6 xl:w-3'> 
                 <p>
                     <Chip className="pl-0 pr-3" template={time} />
                     <Chip className="pl-0 pr-3 m-2" template={minute} />
