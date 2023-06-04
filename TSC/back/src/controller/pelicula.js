@@ -55,7 +55,7 @@ let controller = {
         }
     },
 
-    //Método Listar todas las pelis
+    //Método get todas las pelis
     getPelis: async (req, res) => {
         try {
             const peliget = await Peli.find({});
@@ -66,6 +66,29 @@ let controller = {
             } else {
                 return res.status(200).send({
                     peliget
+                });
+            };
+        } catch (error) {
+            return res.status(500).send({
+                message: 'Ha habido un error y no se han encontrado las películas'
+            });
+        }
+    },
+
+    
+    //Método get todas las pelis categorías
+    getCate: async (req, res) => {
+        try {
+            const categoria = req.params.cate;
+            const pelisCate = await Peli.where({categorias: categoria}).find({});
+            
+            if ( !pelisCate ) {
+                return res.status(404).send({
+                    message: 'No hay películas con esa categoría'
+                });
+            } else {
+                return res.status(200).send({
+                    pelisCate
                 });
             };
         } catch (error) {
@@ -101,7 +124,7 @@ let controller = {
         }
     }, 
 
-    //Metodo get una categoría
+    //Metodo get peli random con categoría
     getRandomCate: async (req, res) => {
         try {
             const categoria = req.params.cate;
@@ -124,26 +147,7 @@ let controller = {
         }
     },
 
-    //Método get todas categorías
-    getCate: async (req, res) => {
-        try {
-            const categoria = req.params.cate;
-            const pelisCate = await Peli.where({categorias: categoria}).find({});
-            if (pelisCate.length === 0 ) {
-                return res.status(404).send({
-                    message: 'No hay películas con esa categoría'
-                });
-            } else {
-                return res.status(200).send({
-                    pelisCate
-                });
-            };
-        } catch (error) {
-            return res.status(500).send({
-                message: 'Ha habido un error y no se han encontrado las películas'
-            });
-        }
-    },
+    
 
     //Metodo por id
     getPelisId: async (req, res) => {

@@ -29,7 +29,6 @@ const Peliculas = () => {
         setpelis(res.data.peliget);
       });
     } else {
-      console.log(categoria);
       axios.get(url + "getCate/" + categoria).then((res) => {
         setpelis(res.data.pelisCate);
       });

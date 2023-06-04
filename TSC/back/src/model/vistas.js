@@ -6,8 +6,7 @@ var VistasSchema = new Schema(
     {
         idUsu: String,
         idPeli: String,
-        dia: Date,
-        valoracionUsu: Number
+        dia: Date
     }
 )
 module.exports = mongose.model('Vistas', VistasSchema); 

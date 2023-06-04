@@ -7,6 +7,7 @@ import { Chip } from 'primereact/chip';
 
 
 const Random = ({ peliData }) => {
+    
 
     const [visible, setVisible] = useState(false);
 

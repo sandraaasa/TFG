@@ -9,8 +9,6 @@ import UserContext from "../Context/UserContext";
 
 const HeaderInicio = () => {
   const [checked, setChecked] = useState(true);
-  let rol = localStorage.getItem("rol");
-  console.log(rol);
   const { user, logout } = useContext(UserContext);
 
   const location = useLocation();
