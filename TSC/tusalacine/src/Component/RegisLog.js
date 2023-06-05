@@ -64,9 +64,7 @@ const Regislog = () => {
     axios
       .post(url + "getuseremail/", { correo: emailLog, password: passwordLog })
       .then((res) => {
-        console.log("hola");
         const { _id, nombre, rol, correo } = res.data;
-        console.log(res.data);
         correcto(" Inicio de sesión correcto!");
         UserData = {
           id: _id,
@@ -104,6 +102,7 @@ const Regislog = () => {
         cambiarPestaña();
       })
       .catch((er) => {
+        console.log(er.data);
         erroneo(" Registro erroneo!");
       });
   };

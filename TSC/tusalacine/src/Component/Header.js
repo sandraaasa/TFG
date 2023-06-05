@@ -6,10 +6,15 @@ import logo2 from "../assets/images/tsclogoinvert.png";
 import { NavLink } from "react-router-dom";
 import { InputSwitch } from "primereact/inputswitch";
 import UserContext from "../Context/UserContext";
+import { Button } from 'primereact/button';
 
 const HeaderInicio = () => {
   const [checked, setChecked] = useState(true);
   const { user, logout } = useContext(UserContext);
+
+  const dark = () => {
+    setChecked(!checked);
+  };
 
   const location = useLocation();
   const path = location.pathname;
@@ -21,14 +26,6 @@ const HeaderInicio = () => {
         <img alt="logo" src={logo2} height="70" className="mr-2" />
       </NavLink>
       <ul className="lista">
-        <li className="dark_mode">
-          <InputSwitch
-            aria-labelledby="dark_mode"
-            checked={checked}
-            onChange={(e) => setChecked(e.value)}
-          />
-          <span id="dark_mode">Tema oscuro </span>
-        </li>
 
         <li className="flex">
           <NavLink
@@ -90,6 +87,20 @@ const HeaderInicio = () => {
             </li>
           )
         )}
+        {
+          checked === true ?
+            <li className="ml-2 flex dark-mode">
+                <Button rounded raised text className="flex align-content-center justify-content-center" aria-label="modo-oscuro" onclick={dark}>
+                  <i className="pi pi-sun" style={{ fontSize: "2.5rem" }} />
+                </Button>
+            </li>
+          :
+            <li className="ml-2 flex dark-mode">
+                <Button rounded raised text className="flex align-content-center justify-content-center" severity="secondary" aria-label="modo-claro" onclick={dark}>
+                  <i className="pi pi-moon" style={{ fontSize: "2.5rem" }} />
+                </Button>
+            </li>
+        }
       </ul>
     </nav>
   );
