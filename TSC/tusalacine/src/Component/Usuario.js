@@ -5,7 +5,6 @@ import axios from "axios";
 import { TabView, TabPanel } from "primereact/tabview";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
-import Random from "./AleatorioSinCate";
 import CartaPeli from "./Carta";
 
 const PerfilUsuario = () => {
@@ -50,7 +49,6 @@ const PerfilUsuario = () => {
             <section className="flex flex-wrap justify-content-center">
               {pelis.length >= 0 ? (
                 pelis.map((peli, i) => {
-                  console.log(peli)
                   return <CartaPeli key={i + 1} peliData={peli} />;
 
                 })

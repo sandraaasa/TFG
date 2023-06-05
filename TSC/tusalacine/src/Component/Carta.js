@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Card } from "primereact/card";
 import { Button } from "primereact/button";
 import { DateTime } from "react-intl-datetime-format";
@@ -8,12 +8,17 @@ import { Inplace, InplaceDisplay, InplaceContent } from "primereact/inplace";
 import Global from "../Global";
 import axios from "axios";
 
-const CartaPeli = ({ id, peliData }) => {
+const CartaPeli = ({ id, peliData, sw }) => {
   const url = Global.url;
   const location = useLocation();
   const path = location.pathname;
-  const [isHeart, setIsHeart] = useState(false);
   const { user } = useContext(UserContext);
+  const [isHeart, setIsHeart] = useState(false);
+
+/*   useEffect(()=>{
+    
+  }, []); */
+  
   const intlConfig = {
     locale: "en-US",
     options: {
@@ -45,6 +50,21 @@ const CartaPeli = ({ id, peliData }) => {
         .post(url + "addvista", peliVista)
         .then((res) => {
           setIsHeart(!isHeart);
+          sw=true;
+        })
+        .catch((Error) => {
+          console.log(Error.data);
+        });
+    } else {
+      const peliVista = {
+        idUsu: user.id,
+        idPeli: peliData?._id,
+      };
+      axios
+        .delete(url + "deletevista", peliVista)
+        .then((res) => {
+          setIsHeart(!isHeart);
+          sw=false;
         })
         .catch((Error) => {
           console.log(Error.data);
@@ -78,14 +98,19 @@ const CartaPeli = ({ id, peliData }) => {
             </ul>
           </InplaceContent>
         </Inplace>
-        <Button
-          className="col-3 col-offset-4"
-          icon={`pi ${!isHeart ? "pi-eye" : "pi-eye-slash"} `}
-          raised
-          rounded
-          aria-label="Favorite"
-          onClick={cambiarHeart}
-        />
+        
+        {path != "/perfil" && (
+          <Button
+            className="col-3 col-offset-4"
+            //icon={`pi ${isHeart ? "pi-eye" : "pi-eye-slash"} `}
+            icon="pi pi-eye"
+            raised
+            text={sw == true ? false : true}
+            rounded
+            aria-label="Favorite"
+            onClick={cambiarHeart}
+          />
+        )}
         <Inplace closable className="col-12">
           <InplaceDisplay>
             <Button

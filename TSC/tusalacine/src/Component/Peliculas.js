@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import Global from "../Global";
 import axios from "axios";
 import Carta from "./Carta";
@@ -8,6 +8,7 @@ import AleatorioSinCate from "./AleatorioSinCate";
 import { Button } from "primereact/button";
 import { StyleClass } from "primereact/styleclass";
 import { Panel } from "primereact/panel";
+import UserContext from "../Context/UserContext";
 import logo2 from "../assets/images/tsclogoinvert.png";
 
 const Peliculas = () => {
@@ -15,12 +16,14 @@ const Peliculas = () => {
   const [pelis, setpelis] = useState([]);
   const [random, setpeli] = useState([]);
   const [categoria, setCategoria] = useState("");
+  const { user } = useContext(UserContext);
+  const [sw, setSw] = useState(null);
 
   const openBtnRef = useRef(null);
 
   useEffect(() => {
     getpelis();
-  }, [categoria]);
+  }, [categoria , sw]);
 
   //obtner todas las películasen en el usestate pelis
   const getpelis = () => {
@@ -91,8 +94,17 @@ const Peliculas = () => {
         <h1 className="mt-5">Peliculas: {categoria}</h1>
         <section className="flex flex-wrap justify-content-center card-container gap-3">
           {pelis.length > 0 ? (
+              
             pelis.map((peli, i) => {
-              return <Carta key={i + 1} id={i} peliData={peli} />;
+              const fetchData = async () => {
+                  const response = await axios.get(url + "getoneVista/" + user.id + "/" + peli._id)
+                                          .catch((err) => {console.log(err.data)});
+                  setSw(response.data.one);
+              };
+
+              fetchData();
+              console.log(sw);
+              return <Carta key={i + 1} id={i} peliData={peli} sw={false} />;
             })
           ) : (
             <h3 className="mx-auto">No hay Peliculas que mostrar</h3>

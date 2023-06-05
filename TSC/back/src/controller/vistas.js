@@ -53,6 +53,32 @@ let controller = {
         }
     }, */
 
+  //
+
+  //Método get una peli vista
+  getoneVista: async (req, res) => {
+    try {
+      const idUsu = req.params.idUsu;
+      const idPeli = req.params.idPeli;
+      
+      const pelisUsu = await Vista.findOne({ idPeli : idPeli , idUsu: idUsu  });
+      if (!pelisUsu) {
+          return res.status(200).send({
+            one: false,
+          });
+      } else {
+          return res.status(200).send({
+            one: true,
+          });
+      }
+    } catch (error) {
+      return res.status(500).send({
+        message: "Ha habido un error y no se han encontrado las películas",
+      });
+    }
+  },
+  
+  
   //Método get todas las pelis vistas
   getVistas: async (req, res) => {
     try {
@@ -84,8 +110,10 @@ let controller = {
   //Metodo Eliminar
   delete: async (req, res) => {
     try {
-      const vistaid = req.params.id;
-      const vistadelt = await Vista.findOneAndDelete({ _id: vistaid });
+      const idUsu = req.body.idUsu;
+      const idPeli = req.body.idPeli;
+      
+      const vistadelt = await Vista.findOneAndDelete({ idPeli : idPeli , idUsu: idUsu  });
 
       if (!vistadelt) {
         return res.status(404).send({
@@ -94,7 +122,7 @@ let controller = {
         });
       } else {
         return res.status(200).send({
-          vista: vistadelt,
+          vistadelt,
         });
       }
     } catch (error) {
