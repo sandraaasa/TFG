@@ -1,6 +1,7 @@
 "use strict";
 let Peli = require("../model/pelicula");
 let Vista = require("../model/vistas");
+//const ObjectId = mongoose.Types.ObjectId;
 
 let controller = {
   //Metodo añadir
@@ -56,21 +57,21 @@ let controller = {
   getVistas: async (req, res) => {
     try {
       const idUsu = req.params.idUsu;
-      const pelisUsu = await Vista.where({ idUsu: idUsu }).find({});
+      const pelisUsu = await Vista.where({ idUsu: idUsu }).find();
 
-      if (!pelisget) {
+      if (!pelisUsu) {
         return res.status(404).send({
           message: "No hay películas vistas",
         });
       } else {
         const pelisget = [];
         for (let i = 0; i < pelisUsu.length; i++) {
-          const añadir = await Peli.where({ _id: pelisUsu[i].idPeli }).find();
-          console.log(añadir);
-          pelisget.push(añadir);
+          const anadir = await Peli.findById({ _id: pelisUsu[i].idPeli });
+          pelisget.push(anadir);
         }
+
         return res.status(200).send({
-          pelisUsu,
+          pelisget,
         });
       }
     } catch (error) {
