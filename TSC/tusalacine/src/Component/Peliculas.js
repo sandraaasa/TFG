@@ -23,7 +23,8 @@ const Peliculas = () => {
 
   useEffect(() => {
     getpelis();
-  }, [categoria , sw]);
+    
+  }, [categoria ]);
 
   //obtner todas las películasen en el usestate pelis
   const getpelis = () => {
@@ -96,13 +97,17 @@ const Peliculas = () => {
           {pelis.length > 0 ? (
               
             pelis.map((peli, i) => {
-              const fetchData = async () => {
-                  const response = await axios.get(url + "getoneVista/" + user.id + "/" + peli._id)
-                                          .catch((err) => {console.log(err.data)});
-                  setSw(response.data.one);
-              };
-
-              fetchData();
+              
+              /* axios.get(url + "getoneVista/" + user.id + "/" + peli._id)
+                .then((res) => {
+                  return res.data.one
+                })
+                .then((one) => {
+                  setSw(one);
+                  console.log(one)
+                })
+                .catch((err) => {console.log(err)}); */
+                  
               console.log(sw);
               return <Carta key={i + 1} id={i} peliData={peli} sw={false} />;
             })
