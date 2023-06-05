@@ -70,7 +70,7 @@ let controller = {
           pelisget.push(añadir);
         }
         return res.status(200).send({
-          pelisUsu,pelisget
+          pelisUsu,
         });
       }
     } catch (error) {
