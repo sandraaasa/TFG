@@ -61,14 +61,15 @@ const Regislog = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     let UserData = {};
-    axios.post(url + "getuseremail/", { correo: emailLog, password: passwordLog })
+    axios
+      .post(url + "getuseremail/", { correo: emailLog, password: passwordLog })
       .then((res) => {
-        console.log('hola');
-        const { nombre, rol, correo } = res.data;
+        console.log("hola");
+        const { _id, nombre, rol, correo } = res.data;
         console.log(res.data);
         correcto(" Inicio de sesión correcto!");
         UserData = {
-          id: 1,
+          id: _id,
           correo: correo,
           nombre: nombre,
           rol: rol,
@@ -95,7 +96,8 @@ const Regislog = () => {
       password: passwordReg,
       cumple: dateReg,
     };
-    axios.post(url + "adduser", usuario)
+    axios
+      .post(url + "adduser", usuario)
       .then((res) => {
         console.log(res.data);
         correcto(" Registro correcto!");
