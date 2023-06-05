@@ -30,31 +30,6 @@ let controller = {
       });
   },
 
-  /* //Método get todas las pelis no vistas
-    getNoVistas: async (req, res) => {
-        try {
-            const params = req.body;
-            
-            
-            const pelisget = await Peli.where({categorias: categoria}).find({});
-            if (!pelisget ) {
-                return res.status(404).send({
-                    message: 'No hay películas con esa categoría'
-                });
-            } else {
-                return res.status(200).send({
-                    pelisCate
-                });
-            };
-        } catch (error) {
-            return res.status(500).send({
-                message: 'Ha habido un error y no se han encontrado las películas'
-            });
-        }
-    }, */
-
-  //
-
   //Método get una peli vista
   getoneVista: async (req, res) => {
     try {
@@ -64,11 +39,11 @@ let controller = {
       const pelisUsu = await Vista.findOne({ idPeli : idPeli , idUsu: idUsu  });
       if (!pelisUsu) {
           return res.status(200).send({
-            one: false,
+            Visto: false,
           });
       } else {
           return res.status(200).send({
-            one: true,
+            Visto: true,
           });
       }
     } catch (error) {
@@ -110,15 +85,14 @@ let controller = {
   //Metodo Eliminar
   delete: async (req, res) => {
     try {
-      const idUsu = req.body.idUsu;
-      const idPeli = req.body.idPeli;
-      
-      const vistadelt = await Vista.findOneAndDelete({ idPeli : idPeli , idUsu: idUsu  });
-
+      const params = req.body;
+      console.log(params);
+      const [idUsu, idPeli] =params;
+      const vistadelt = await Vista.findOneAndDelete({ idPeli , idUsu  });
+      console.log(vistadelt);
       if (!vistadelt) {
         return res.status(404).send({
-          message:
-            "No se ha encontrado las películas vistas del usuario" + vistaid,
+          message: "No se ha encontrado las películas vistas del usuario " + idUsu,
         });
       } else {
         return res.status(200).send({

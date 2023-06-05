@@ -50,7 +50,6 @@ const PerfilUsuario = () => {
               {pelis.length >= 0 ? (
                 pelis.map((peli, i) => {
                   return <CartaPeli key={i + 1} peliData={peli} />;
-
                 })
               ) : (
                 <h3 className="mx-auto">No hay películas que mostrar</h3>

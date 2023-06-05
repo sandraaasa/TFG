@@ -17,13 +17,11 @@ const Peliculas = () => {
   const [random, setpeli] = useState([]);
   const [categoria, setCategoria] = useState("");
   const { user } = useContext(UserContext);
-  const [sw, setSw] = useState(null);
 
   const openBtnRef = useRef(null);
 
   useEffect(() => {
     getpelis();
-    
   }, [categoria ]);
 
   //obtner todas las películasen en el usestate pelis
@@ -98,18 +96,7 @@ const Peliculas = () => {
               
             pelis.map((peli, i) => {
               
-              /* axios.get(url + "getoneVista/" + user.id + "/" + peli._id)
-                .then((res) => {
-                  return res.data.one
-                })
-                .then((one) => {
-                  setSw(one);
-                  console.log(one)
-                })
-                .catch((err) => {console.log(err)}); */
-                  
-              console.log(sw);
-              return <Carta key={i + 1} id={i} peliData={peli} sw={false} />;
+              return <Carta key={i + 1} id={i} peliData={peli} />;
             })
           ) : (
             <h3 className="mx-auto">No hay Peliculas que mostrar</h3>
