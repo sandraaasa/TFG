@@ -27,7 +27,8 @@ route.delete('/deleteuser/:id', User.delete);
 //rutas para ejecutar los metodos de usuario(controller)
 route.post('/addvista', Vistas.save);
 route.get('/getVistas/:idUsu', Vistas.getVistas);
-route.delete('/deletevista/:id', Vistas.delete);
+route.get('/getoneVista/:idUsu/:idPeli', Vistas.getoneVista);
+route.delete('/deletevista', Vistas.delete);
 
 module.exports = route;
 
