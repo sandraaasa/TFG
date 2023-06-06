@@ -17,18 +17,18 @@ const CartaPeli = ({ id, peliData }) => {
 
   useEffect(() => {
     user &&
-      axios
-        .get(url + "getoneVista/" + user.id + "/" + peliData._id)
-        .then((res) => {
-          return res.data.Visto;
-        })
-        .then((visto) => {
-          setSw(visto);
-        })
-        .catch((err) => {
-          console.log(err.data);
-        });
-  });
+        axios
+            .get(url + "getoneVista/" + user.id + "/" + peliData._id)
+            .then((res) => {
+            return res.data.Visto;
+            })
+            .then((visto) => {
+            setSw(visto);
+            })
+            .catch((err) => {
+            console.log(err.data);
+            });
+  }, [sw]);
 
   const intlConfig = {
     locale: "en-US",
@@ -51,8 +51,7 @@ const CartaPeli = ({ id, peliData }) => {
   const img = peliData?.poster;
 
   const cambiarVisto = () => {
-    if (sw == false) {
-      //no está la peli en vistas del usuario
+    if (sw == false) {//no está la peli en vistas del usuario
       const peliVista = {
         idUsu: user.id,
         idPeli: peliData?._id,
@@ -67,12 +66,8 @@ const CartaPeli = ({ id, peliData }) => {
           console.log(Error.data);
         });
     } else {
-      /* const peliVista = {
-                
-            };
-            console.log(peliVista); */
       axios
-        .delete(url + "deletevista", { idUsu: user.id, idPeli: peliData?._id })
+        .delete(url + "deletevista", { data: { idUsu: user.id, idPeli: peliData?._id } })
         .then((res) => {
           setSw(false);
           console.log(res);

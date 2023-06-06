@@ -82,17 +82,16 @@ let controller = {
     }
   },
 
-  //Metodo Eliminar
   delete: async (req, res) => {
     try {
       const params = req.body;
-      console.log(req);
-      const [idUsu, idPeli] =params;
-      const vistadelt = await Vista.findOneAndDelete({ idPeli , idUsu  });
+      console.log(req.body);
+      const { idUsu, idPeli } = params;
+      const vistadelt = await Vista.findOneAndDelete({ idPeli, idUsu });
       console.log(vistadelt);
       if (!vistadelt) {
         return res.status(404).send({
-          message: "No se ha encontrado las películas vistas del usuario " + idUsu,
+          message: "No se ha encontrado la película vista del usuario " + idUsu,
         });
       } else {
         return res.status(200).send({
