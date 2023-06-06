@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState, useRef, useContext } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { Panel } from "primereact/panel";
 import Global from "../Global";
 import { useLocation } from "react-router-dom";
