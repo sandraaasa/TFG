@@ -10,8 +10,8 @@ const route = express.Router();
 route.post('/add', Peli.save);
 route.post('/addone', Peli.saveone);
 route.get('/getall', Peli.getPelis);
-route.get('/getone', Peli.getRandom);
 route.get('/getCate/:cate',  Peli.getCate);
+route.get('/getone', Peli.getRandom);
 route.get('/getoneCate/:cate', Peli.getRandomCate);
 route.get('/getid/:id', Peli.getPelisId);
 route.delete('/delete/:id', Peli.delete);
@@ -28,7 +28,11 @@ route.delete('/deleteuser/:id', User.delete);
 route.post('/addvista', Vistas.save);
 route.get('/getVistas/:idUsu', Vistas.getVistas);
 route.get('/getoneVista/:idUsu/:idPeli', Vistas.getoneVista);
+route.get('/getVistaRandom/:idUsu', Vistas.getvistaRandom);
+route.get('/getVistaCate/:idUsu/:cate', Vistas.getvistaRandomCate);
 route.delete('/deletevista', Vistas.delete);
+
+route.get('/getprueba', Vistas.getprueba);
 
 module.exports = route;
 
