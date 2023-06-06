@@ -4,7 +4,7 @@ let User = require("../model/usuario");
 let bcrypt = require("bcrypt");
 
 let controller = {
-  //Metodo añadir
+  //Metodo añadir un usuario
   save: async (req, res) => {
     const params = req.body;
     const userNew = new User();
@@ -29,7 +29,8 @@ let controller = {
         return res.status(500).send(error);
       });
   },
-  //Metodo Listar todos los usuarios
+
+  //Metodo get todos los usuarios
   getUser: async (req, res) => {
     try {
       const userget = await User.find({});
@@ -48,7 +49,8 @@ let controller = {
       });
     }
   },
-  //Metodo buscar por id
+
+  //Metodo get un user por id
   getOneUser: async (req, res) => {
     try {
       const userid = req.params.id;
@@ -68,7 +70,8 @@ let controller = {
       });
     }
   },
-  //Metodo buscar por id
+
+  //Metodo post (get) un user por correo y contraseña
   getUserEmail: async (req, res) => {
     try {
       const { correo, password } = req.body;
@@ -92,7 +95,8 @@ let controller = {
       });
     }
   },
-  //Metodo Eliminar
+
+  //Metodo delete un usuario
   delete: async (req, res) => {
     try {
       const userid = req.params.id;
