@@ -17,16 +17,15 @@ const CartaPeli = ({ id, peliData }) => {
 
   useEffect(() => {
     user &&
-        axios
-            .get(url + "getoneVista/" + user.id + "/" + peliData._id)
+        axios.get(url + "getoneVista/" + user.id + "/" + peliData._id)
             .then((res) => {
-            return res.data.Visto;
-            })
+                return res.data.Visto;
+            }) 
             .then((visto) => {
-            setSw(visto);
+                setSw(visto);
             })
             .catch((err) => {
-            console.log(err.data);
+                console.log(err.data);
             });
   }, [sw]);
 

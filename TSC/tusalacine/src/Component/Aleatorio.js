@@ -29,11 +29,12 @@ const Aleatorio = (categoria) => {
     poster,
   } = random || {};
   function getPeliCate() {
-    user
-      ? axios.get(url + "getoneCate/" + categoria.categoria).then((res) => {
+    user ? 
+        axios.get(url + "getVistaCate/" + categoria.categoria + user.id).then((res) => {
           setpeli(res.data.PeliRandom);
         })
-      : axios.get(url + "getoneCate/" + categoria.categoria).then((res) => {
+      : 
+        axios.get(url + "getoneCate/" + categoria.categoria).then((res) => {
           setpeli(res.data.PeliRandom);
         });
   }

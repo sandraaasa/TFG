@@ -6,7 +6,6 @@ import Footer from "./Component/Footer";
 import Peliculas from "./Component/Peliculas";
 import TSCAyuda from "./Component/TSCAyuda";
 import LogRegistro from "./Component/RegisLog";
-import InicioCRUD from "./Component/InicioCrud";
 import Usuario from "./Component/Usuario";
 import { UserProvider } from "./Context/UserContext";
 import "./assets/css/router.css";
@@ -27,7 +26,6 @@ const Rutas = () => {
           <Route exact path="/Catalogo" element={<Peliculas />} />
           <Route exact path="/Sesion" element={<LogRegistro />} />
           <Route exact path="/empresa" element={<TSCAyuda />} />
-          <Route exact path="/admin" element={<InicioCRUD />} />
           <Route exact path="/perfil" element={<Usuario />} />
         </Routes>
       </UserProvider>
