@@ -1,7 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import { Panel } from "primereact/panel";
 import Global from "../Global";
+import { useLocation } from "react-router-dom";
+import UserContext from "../Context/UserContext";
 import { Button } from "primereact/button";
 import { StyleClass } from "primereact/styleclass";
 import { Inplace, InplaceDisplay, InplaceContent } from "primereact/inplace";
@@ -10,6 +12,9 @@ import { Chip } from "primereact/chip";
 
 const Aleatorio = (categoria) => {
   const url = Global.url;
+  const location = useLocation();
+  const path = location.pathname;
+  const { user } = useContext(UserContext);
   const [random, setpeli] = useState([]);
   const openBtnRef = useRef(null);
 
@@ -21,12 +26,16 @@ const Aleatorio = (categoria) => {
     pais,
     sinopsis,
     valoracionTotal,
-    poster
+    poster,
   } = random || {};
   function getPeliCate() {
-    axios.get(url + "getoneCate/" + categoria.categoria).then((res) => {
-      setpeli(res.data.PeliRandom);
-    });
+    user
+      ? axios.get(url + "getoneCate/" + categoria.categoria).then((res) => {
+          setpeli(res.data.PeliRandom);
+        })
+      : axios.get(url + "getoneCate/" + categoria.categoria).then((res) => {
+          setpeli(res.data.PeliRandom);
+        });
   }
 
   const intlConfig = {
