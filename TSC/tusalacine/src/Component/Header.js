@@ -4,9 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/css/header.css";
 import logo2 from "../assets/images/tsclogoinvert.png";
 import { NavLink } from "react-router-dom";
-import { Button } from 'primereact/button';
+import { Button } from "primereact/button";
 import UserContext from "../Context/UserContext";
-import { Button } from 'primereact/button';
 
 const HeaderInicio = () => {
   const [checked, setChecked] = useState(true);
@@ -22,12 +21,10 @@ const HeaderInicio = () => {
 
   return (
     <nav className="card menu onlyback">
-      
       <NavLink to="/" className="deco logoH">
         <img alt="logo" src={logo2} height="70" className="mr-2" />
       </NavLink>
       <ul className="lista">
-
         <li className="flex">
           <NavLink
             to="/Catalogo"
@@ -88,20 +85,34 @@ const HeaderInicio = () => {
             </li>
           )
         )}
-        {
-          checked == true ?
-            <li className="ml-2 flex dark-mode">
-                <Button rounded raised text className="flex align-content-center justify-content-center" severity="secondary" aria-label="modo-oscuro" onClick={dark}>
-                  <i className="pi pi-moon" style={{ fontSize: "2.5rem" }} />
-                </Button>
-            </li>
-          :
-            <li className="ml-2 flex dark-mode">
-                <Button rounded raised text className="flex align-content-center justify-content-center" aria-label="modo-claro" onClick={dark}>
-                  <i className="pi pi-sun" style={{ fontSize: "2.5rem" }} />
-                </Button>
-            </li>
-        }
+        {checked == true ? (
+          <li className="ml-2 flex dark-mode">
+            <Button
+              rounded
+              raised
+              text
+              className="flex align-content-center justify-content-center"
+              severity="secondary"
+              aria-label="modo-oscuro"
+              onClick={dark}
+            >
+              <i className="pi pi-moon" style={{ fontSize: "2.5rem" }} />
+            </Button>
+          </li>
+        ) : (
+          <li className="ml-2 flex dark-mode">
+            <Button
+              rounded
+              raised
+              text
+              className="flex align-content-center justify-content-center"
+              aria-label="modo-claro"
+              onClick={dark}
+            >
+              <i className="pi pi-sun" style={{ fontSize: "2.5rem" }} />
+            </Button>
+          </li>
+        )}
       </ul>
     </nav>
   );

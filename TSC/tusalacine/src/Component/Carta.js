@@ -65,7 +65,7 @@ const CartaPeli = ({ id, peliData }) => {
                 
             };
             console.log(peliVista); */
-            axios.delete(url + "deletevista", {idUsu : user.id , idPeli: peliData?._id})
+            axios.delete(url + "deletevista", ({idUsu : user.id , idPeli: peliData?._id}))
                 .then((res) => {
                     setSw(false);
                      console.log(res);
