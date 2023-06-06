@@ -30,28 +30,6 @@ let controller = {
       });
   },
 
-  //Método get una peli vista
-  getoneVista: async (req, res) => {
-    try {
-      const idUsu = req.params.idUsu;
-      const idPeli = req.params.idPeli;
-
-      const pelisUsu = await Vista.findOne({ idPeli: idPeli, idUsu: idUsu });
-      if (!pelisUsu) {
-        return res.status(200).send({
-          Visto: false,
-        });
-      } else {
-        return res.status(200).send({
-          Visto: true,
-        });
-      }
-    } catch (error) {
-      return res.status(500).send({
-        message: "Ha habido un error y no se han encontrado las películas",
-      });
-    }
-  },
 
   //Método get todas las pelis vistas
   getVistas: async (req, res) => {
@@ -81,6 +59,32 @@ let controller = {
     }
   },
 
+
+  //Método get una peli vista
+  getoneVista: async (req, res) => {
+    try {
+      const idUsu = req.params.idUsu;
+      const idPeli = req.params.idPeli;
+
+      const pelisUsu = await Vista.findOne({ idPeli: idPeli, idUsu: idUsu });
+      if (!pelisUsu) {
+        return res.status(200).send({
+          Visto: false,
+        });
+      } else {
+        return res.status(200).send({
+          Visto: true,
+        });
+      }
+    } catch (error) {
+      return res.status(500).send({
+        message: "Ha habido un error y no se han encontrado las películas",
+      });
+    }
+  },
+
+
+  //Método eliminar una peli vista
   delete: async (req, res) => {
     try {
       const params = req.body;
