@@ -86,7 +86,7 @@ let controller = {
   delete: async (req, res) => {
     try {
       const params = req.body;
-      console.log(params);
+      console.log(req);
       const [idUsu, idPeli] =params;
       const vistadelt = await Vista.findOneAndDelete({ idPeli , idUsu  });
       console.log(vistadelt);
