@@ -45,12 +45,15 @@ const Peliculas = () => {
         setpeli(res.data.PeliRandom)
       })
       .catch((error) =>{
-        console.log(error.data)
+        console.log(error.response.status)
       })
     :
     //si el usuario no está logueado
       axios.get(url + "getone").then((res) => {
         setpeli(res.data.PeliRandom)
+      })
+      .catch((error) =>{
+        console.log(error.response.status)
       })
   }
 

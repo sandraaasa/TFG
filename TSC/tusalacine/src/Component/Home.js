@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import UserContext from "../Context/UserContext";
 import '../assets/css/inicio.css';
 import logo from '../assets/images/TSCHome.png';
 import { Button } from 'primereact/button';
@@ -13,17 +14,34 @@ const Inicio = () => {
     const url = Global.url;
     const [visible, setVisible] = useState(false);
     const [err, seterr] = useState("");
+    const { user } = useContext(UserContext);
 
 
     function getPeli() {
-        axios.get(url + 'getone/').then(res => {
-            setpeli(res.data.PeliRandom);
-            
-            setVisible(true);
-        })
-        .catch(error =>{
-            seterr("No hay películas disponibles");
-        })
+        user ?
+            //si el usuario está logueado
+            axios.get(url + "getVistaRandom/" + user.id).then((res) => {
+                setpeli(res.data.PeliRandom)
+                setVisible(true);
+            })
+            .catch(error =>{
+                if (error.response.status === 404) {
+                    seterr("Te has zampado todas las películas");
+                    console.log(error.response.status)
+                }else{
+                    seterr("Ha ocurrido algún error");
+                    console.log(error.response.status)
+                }
+            })
+        :
+            //si el usuario no está logueado
+            axios.get(url + 'getone/').then(res => {
+                setpeli(res.data.PeliRandom);
+                setVisible(true);
+            })
+            .catch(error =>{
+                seterr("No hay películas disponibles");
+            })
     }
     return (
         <div alt="logo" className="inicio">
