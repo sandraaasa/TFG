@@ -1,6 +1,7 @@
 "use strict";
 let Peli = require("../model/pelicula");
 let Vista = require("../model/vistas");
+//const ObjectId = mongoose.Types.ObjectId;
 
 let controller = {
   //Metodo añadir
@@ -29,48 +30,49 @@ let controller = {
       });
   },
 
-  /* //Método get todas las pelis no vistas
-    getNoVistas: async (req, res) => {
-        try {
-            const params = req.body;
-            
-            
-            const pelisget = await Peli.where({categorias: categoria}).find({});
-            if (!pelisget ) {
-                return res.status(404).send({
-                    message: 'No hay películas con esa categoría'
-                });
-            } else {
-                return res.status(200).send({
-                    pelisCate
-                });
-            };
-        } catch (error) {
-            return res.status(500).send({
-                message: 'Ha habido un error y no se han encontrado las películas'
-            });
-        }
-    }, */
-
+  //Método get una peli vista
+  getoneVista: async (req, res) => {
+    try {
+      const idUsu = req.params.idUsu;
+      const idPeli = req.params.idPeli;
+      
+      const pelisUsu = await Vista.findOne({ idPeli : idPeli , idUsu: idUsu  });
+      if (!pelisUsu) {
+          return res.status(200).send({
+            Visto: false,
+          });
+      } else {
+          return res.status(200).send({
+            Visto: true,
+          });
+      }
+    } catch (error) {
+      return res.status(500).send({
+        message: "Ha habido un error y no se han encontrado las películas",
+      });
+    }
+  },
+  
+  
   //Método get todas las pelis vistas
   getVistas: async (req, res) => {
     try {
       const idUsu = req.params.idUsu;
-      const pelisUsu = await Vista.where({ idUsu: idUsu }).find({});
+      const pelisUsu = await Vista.where({ idUsu: idUsu }).find();
 
-      if (!pelisget) {
+      if (!pelisUsu) {
         return res.status(404).send({
           message: "No hay películas vistas",
         });
       } else {
         const pelisget = [];
         for (let i = 0; i < pelisUsu.length; i++) {
-          const añadir = await Peli.where({ _id: pelisUsu[i].idPeli }).find();
-          console.log(añadir);
-          pelisget.push(añadir);
+          const anadir = await Peli.findById({ _id: pelisUsu[i].idPeli });
+          pelisget.push(anadir);
         }
+
         return res.status(200).send({
-          pelisUsu,
+          pelisget,
         });
       }
     } catch (error) {
@@ -83,17 +85,18 @@ let controller = {
   //Metodo Eliminar
   delete: async (req, res) => {
     try {
-      const vistaid = req.params.id;
-      const vistadelt = await Vista.findOneAndDelete({ _id: vistaid });
-
+      const params = req.body;
+      console.log(req);
+      const [idUsu, idPeli] =params;
+      const vistadelt = await Vista.findOneAndDelete({ idPeli , idUsu  });
+      console.log(vistadelt);
       if (!vistadelt) {
         return res.status(404).send({
-          message:
-            "No se ha encontrado las películas vistas del usuario" + vistaid,
+          message: "No se ha encontrado las películas vistas del usuario " + idUsu,
         });
       } else {
         return res.status(200).send({
-          vista: vistadelt,
+          vistadelt,
         });
       }
     } catch (error) {
