@@ -82,7 +82,84 @@ let controller = {
       });
     }
   },
+  
+  //Metodo get una peli random no vista
+  getvistaRandom: async (req, res) => {
+    try {
+      //sacamos una categoria aleatoria
+      const categoria = [
+        "Acción",
+        "Aventura",
+        "Animación",
+        "Comedia",
+        "Crimen",
+        "Documental",
+        "Drama",
+        "Familia",
+        "Fantasía",
+        "Historia",
+        "Terror",
+        "Música",
+        "Misteria",
+        "Romance",
+        "Ciencia ficción",
+        "Pelicula de TV",
+        "Suspense",
+        "Bélica",
+        "Western",
+      ];
+      const cateRandom = categoria[Math.floor(Math.random() * categoria.length)];
+      
+      //obtenemos el id del usuario
+      const idUsu = req.params.idUsu;
+      
+      //obtenemos los id de pelis no vistas
+      const peliVistas = await Vista.find({ idUsu: idUsu });
+      const peliVistasIds = peliVistas.map((vista) => vista.idPeli);
+      
+      //obtenemos todas las pelis no vistas por categoria aleatoria
+      var peliNoVistas = await Peli.find({ _id: { $nin: peliVistasIds  } }); 
+      //obtenemos una peli aleatoria
+      const PeliRandom = peliNoVistas[Math.floor(Math.random() * peliNoVistas.length)];
 
+      if (peliNoVistas.length === 0) {
+        return res.status(404).send({
+          message: "No hay películas con ese id",
+        });
+      } else {
+        return res.status(200).send({
+          PeliRandom,
+        });
+      }
+    } catch (error) {
+      return res.status(500).send({
+        message: "error",
+      });
+    }
+  },
+
+  //Metodo get una peli random no vista con categoría
+  getvistaRandomCate: async (req, res) => {
+    try {
+      const categoria = req.params.cate;
+      const peliculas = await Peli.where({ categorias: categoria }).find();
+      const PeliRandom = peliculas[Math.floor(Math.random() * peliculas.length)];
+
+      if (peliculas.length === 0) {
+        return res.status(404).send({
+          message: "No hay películas con ese id",
+        });
+      } else {
+        return res.status(200).send({
+          PeliRandom,
+        });
+      }
+    } catch (error) {
+      return res.status(500).send({
+        message: "Ha habido un error y no se han encontrado las películas",
+      });
+    }
+  },
 
   //Método eliminar una peli vista
   delete: async (req, res) => {
@@ -105,5 +182,32 @@ let controller = {
       });
     }
   },
+  
+  getprueba: async (req,res) => {
+    try {
+      const idUsu = "646bdd051db76989ad1bee60";
+
+      //obtenemos los id de pelis no vistas
+      const peliVistas = await Vista.find({ idUsu: idUsu });
+      console.log( peliVistas);
+      const peliVistasIds = peliVistas.map((vista) => vista.idPeli);
+      console.log( peliVistasIds);
+      var peliNoVistas = await Peli.find({ _id: { $nin: peliVistasIds  } }); 
+      
+      if (!peliNoVistas) {
+        return res.status(404).send({
+          message: "No se ha encontrado la película vista del usuario " ,
+        });
+      } else {
+        return res.status(200).send({
+          peliNoVistas,
+        });
+      }
+    } catch (error) {
+      return res.status(500).send({
+        message: "error",
+      });
+    }
+  }
 };
 module.exports = controller;

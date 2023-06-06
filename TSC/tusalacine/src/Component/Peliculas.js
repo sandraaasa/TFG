@@ -24,7 +24,7 @@ const Peliculas = () => {
     getpelis();
   }, [categoria ]);
 
-  //obtner todas las películasen en el usestate pelis
+  //obtner todas las películas en en el usestate pelis
   const getpelis = () => {
     if (categoria === "") {
       axios.get(url + "getall").then((res) => {
@@ -39,9 +39,14 @@ const Peliculas = () => {
 
   //obtner la película aletortia sin la categoría
   function getPeli() {
-    axios.get(url + "getone").then((res) => {
-      setpeli(res.data.PeliRandom);
-    });
+    user ?
+      axios.get(url + "getRandomVista" + user.idUsu).then((res) => {
+        setpeli(res.data.PeliRandom)
+      })
+    :
+      axios.get(url + "getone").then((res) => {
+        setpeli(res.data.PeliRandom)
+      })
   }
 
   const recibirCategoria = (datosHijo) => {
