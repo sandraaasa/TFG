@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/css/header.css";
 import logo2 from "../assets/images/tsclogoinvert.png";
 import { NavLink } from "react-router-dom";
-import { InputSwitch } from "primereact/inputswitch";
+import { Button } from 'primereact/button';
 import UserContext from "../Context/UserContext";
 import { Button } from 'primereact/button';
 
