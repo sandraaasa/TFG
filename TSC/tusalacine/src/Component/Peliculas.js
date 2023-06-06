@@ -26,24 +26,29 @@ const Peliculas = () => {
 
   //obtner todas las películas en en el usestate pelis
   const getpelis = () => {
-    if (categoria === "") {
-      axios.get(url + "getall").then((res) => {
-        setpelis(res.data.peliget);
-      });
-    } else {
-      axios.get(url + "getCate/" + categoria).then((res) => {
-        setpelis(res.data.pelisCate);
-      });
-    }
+      if (categoria === "") {
+        axios.get(url + "getall").then((res) => {
+          setpelis(res.data.peliget);
+        });
+      } else {
+        axios.get(url + "getCate/" + categoria).then((res) => {
+          setpelis(res.data.pelisCate);
+        });
+      }
   };
 
-  //obtner la película aletortia sin la categoría
+  //obtner la película aletortia SIN la categoría
   function getPeli() {
     user ?
-      axios.get(url + "getRandomVista" + user.idUsu).then((res) => {
+      //si el usuario está logueado
+      axios.get(url + "getVistaRandom/" + user.id).then((res) => {
         setpeli(res.data.PeliRandom)
       })
+      .catch((error) =>{
+        console.log(error.data)
+      })
     :
+    //si el usuario no está logueado
       axios.get(url + "getone").then((res) => {
         setpeli(res.data.PeliRandom)
       })

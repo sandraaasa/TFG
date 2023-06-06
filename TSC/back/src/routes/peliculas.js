@@ -28,7 +28,7 @@ route.delete('/deleteuser/:id', User.delete);
 route.post('/addvista', Vistas.save);
 route.get('/getVistas/:idUsu', Vistas.getVistas);
 route.get('/getoneVista/:idUsu/:idPeli', Vistas.getoneVista);
-route.get('/getRandomVista/:idUsu', Vistas.getvistaRandom);
+route.get('/getVistaRandom/:idUsu', Vistas.getvistaRandom);
 route.get('/getVistaCate/:idUsu/:cate', Vistas.getvistaRandomCate);
 route.delete('/deletevista', Vistas.delete);
 
