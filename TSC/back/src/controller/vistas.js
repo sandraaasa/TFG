@@ -35,16 +35,16 @@ let controller = {
     try {
       const idUsu = req.params.idUsu;
       const idPeli = req.params.idPeli;
-      
-      const pelisUsu = await Vista.findOne({ idPeli : idPeli , idUsu: idUsu  });
+
+      const pelisUsu = await Vista.findOne({ idPeli: idPeli, idUsu: idUsu });
       if (!pelisUsu) {
-          return res.status(200).send({
-            Visto: false,
-          });
+        return res.status(200).send({
+          Visto: false,
+        });
       } else {
-          return res.status(200).send({
-            Visto: true,
-          });
+        return res.status(200).send({
+          Visto: true,
+        });
       }
     } catch (error) {
       return res.status(500).send({
@@ -52,8 +52,7 @@ let controller = {
       });
     }
   },
-  
-  
+
   //Método get todas las pelis vistas
   getVistas: async (req, res) => {
     try {
@@ -85,10 +84,8 @@ let controller = {
   delete: async (req, res) => {
     try {
       const params = req.body;
-      console.log(req.body);
       const { idUsu, idPeli } = params;
       const vistadelt = await Vista.findOneAndDelete({ idPeli, idUsu });
-      console.log(vistadelt);
       if (!vistadelt) {
         return res.status(404).send({
           message: "No se ha encontrado la película vista del usuario " + idUsu,
