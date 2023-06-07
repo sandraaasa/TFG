@@ -9,7 +9,6 @@ import { Button } from "primereact/button";
 import { StyleClass } from "primereact/styleclass";
 import { Panel } from "primereact/panel";
 import UserContext from "../Context/UserContext";
-import logo2 from "../assets/images/tsclogoinvert.png";
 
 const Peliculas = () => {
   const url = Global.url;
@@ -48,7 +47,7 @@ const Peliculas = () => {
         console.log(error.response.status)
       })
     :
-    //si el usuario no está logueado
+      //si el usuario no está logueado
       axios.get(url + "getone").then((res) => {
         setpeli(res.data.PeliRandom)
       })

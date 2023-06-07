@@ -148,8 +148,7 @@ let controller = {
     try {
       const categoria = req.params.cate;
       const peliculas = await Peli.where({ categorias: categoria }).find();
-      const PeliRandom =
-        peliculas[Math.floor(Math.random() * peliculas.length)];
+      const PeliRandom = peliculas[Math.floor(Math.random() * peliculas.length)];
 
       if (peliculas.length === 0) {
         return res.status(404).send({

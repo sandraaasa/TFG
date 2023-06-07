@@ -24,12 +24,13 @@ route.get('/getoneuser/:id', User.getOneUser);
 route.post('/getuseremail', User.getUserEmail);
 route.delete('/deleteuser/:id', User.delete);
 
+
 //rutas para ejecutar los metodos de usuario(controller)
 route.post('/addvista', Vistas.save);
 route.get('/getVistas/:idUsu', Vistas.getVistas);
 route.get('/getoneVista/:idUsu/:idPeli', Vistas.getoneVista);
 route.get('/getVistaRandom/:idUsu', Vistas.getvistaRandom);
-route.get('/getVistaCate/:idUsu/:cate', Vistas.getvistaRandomCate);
+route.get('/getVistaCate/:cate/:idUsu', Vistas.getvistaRandomCate);
 route.delete('/deletevista', Vistas.delete);
 
 route.get('/getprueba', Vistas.getprueba);
