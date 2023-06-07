@@ -13,9 +13,7 @@ const Ayuda = ()=> {
 
     const showCopi = () => {
         navigator.clipboard.writeText("sandra_saanchez@hotmail.com");
-        
         toast.current.show({severity:'success', summary: 'Copiado', detail:'Correo copiado al portapapeles', life: 5000});
-
     }
     return (
         <div classname="flex flex-column align-content-center justify-content-center">

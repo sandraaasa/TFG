@@ -9,11 +9,6 @@ import LogRegistro from "./Component/RegisLog";
 import Usuario from "./Component/Usuario";
 import { UserProvider } from "./Context/UserContext";
 import "./assets/css/router.css";
-import "primeicons/primeicons.css";
-/* import "primereact/resources/themes/saga-orange/theme.css"; */
-import "primereact/resources/themes/arya-orange/theme.css";
-import "primereact/resources/primereact.css";
-import "primeflex/primeflex.css";
 import { ScrollTop } from "primereact/scrolltop";
 
 const Rutas = () => {
