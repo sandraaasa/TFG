@@ -1,12 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import UserContext from "../Context/UserContext";
+import Global from '../Global';
+import axios from 'axios';
+import AleatorioSinCate from "./AleatorioSinCate";
 import '../assets/css/inicio.css';
 import logo from '../assets/images/TSCHome.png';
 import { Button } from 'primereact/button';
-import Global from '../Global';
-import axios from 'axios';
 import { Dialog } from 'primereact/dialog';
-import AleatorioSinCate from "./AleatorioSinCate";
+import { Toast } from "primereact/toast";
 
 
 const Inicio = () => {
@@ -15,7 +16,16 @@ const Inicio = () => {
     const [visible, setVisible] = useState(false);
     const [err, seterr] = useState("");
     const { user } = useContext(UserContext);
-
+    const toast = useRef(null);
+    
+    const show = (dato) => {
+        toast.current.show({
+        severity: "error",
+        summary: "No hay películas",
+        detail: dato,
+        life: 5000
+        });
+    };
 
     function getPeli() {
         user ?
@@ -24,14 +34,11 @@ const Inicio = () => {
                 setpeli(res.data.PeliRandom)
                 setVisible(true);
             })
-            .catch(error =>{
-                if (error.response.status === 404) {
-                    seterr("Te has zampado todas las películas");
-                    console.log(error.response.status)
-                }else{
-                    seterr("Ha ocurrido algún error");
-                    console.log(error.response.status)
+            .catch((error) =>{
+                if(error.response.status == 404){
+                    show("Te has zampado todas las películas glotón `^´")
                 }
+                console.log(error.response.status)
             })
         :
             //si el usuario no está logueado
@@ -39,12 +46,16 @@ const Inicio = () => {
                 setpeli(res.data.PeliRandom);
                 setVisible(true);
             })
-            .catch(error =>{
-                seterr("No hay películas disponibles");
+            .catch((error) =>{
+                if(error.response.status == 404){
+                    show("No existe ninguna película")
+                }
+                console.log(error.response.status)
             })
     }
     return (
         <div alt="logo" className="inicio">
+            <Toast ref={toast} />
             <Dialog header="TSC" visible={visible} style={{ width: '60vw' }} onHide={() => setVisible(false)}>
                 {
                     err === "" ?
