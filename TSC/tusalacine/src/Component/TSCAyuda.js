@@ -3,9 +3,10 @@ import React from 'react';
 
 const Ayuda = ()=> {
     return (
-        <div className="card backBlack">
+        <div >
+            
             <div className="flex flex-column ">
-                <div className='card backMBlack '>
+                <div className='  '>
                     <div>
                     Tu Sala Cine es una biblioteca de películas cuyo propósito principal es ayudar a encontrar
                     una opción aleatoria o según la categoría seleccionada por el usuario con toda la
@@ -18,19 +19,18 @@ const Ayuda = ()=> {
                     adaptable, que se ajuste a las necesidades de los usuarios y dispositivos
                     </div>
                 </div>
-                <div className='card backMBlack '>
+                <div className='  '>
                     <div>
                     Tu Sala Cine is a movie library whose main purpose is to help you find a random option or
-according to the category selected by the user with all the necessary information, including
-a list of all movies seen or not seen in that category. But besides that if you don't find a
-movie you can also request to include a movie through a form so that others can also see
-those old movies or movies that not everyone knows. Using React technology and the
-PrimeReact library for the user interface and TheMovieDB API for the data along with
-MongoDB to store the data, creating an accessible and adaptable web page that fits the
-needs of users and devices
+                    according to the category selected by the user with all the necessary information, including
+                    a list of all movies seen or not seen in that category. But besides that if you don't find a
+                    movie you can also request to include a movie through a form so that others can also see
+                    those old movies or movies that not everyone knows. Using React technology and the
+                    PrimeReact library for the user interface and TheMovieDB API for the data along with
+                    MongoDB to store the data, creating an accessible and adaptable web page that fits the
+                    needs of users and devices
                     </div>
                 </div>
-                <div className='card backMBlack'></div>
             </div>
         </div>
     )

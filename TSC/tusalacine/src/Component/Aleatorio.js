@@ -41,10 +41,9 @@ const Aleatorio = (categoria) => {
   } = random || {};
 
   function getPeliCate() {
-    const objeto = categoria.categoria + "/" + user.id;
     user
       ? axios
-          .get(url + "getVistaCate/" + objeto)
+          .get(url + "getVistaCate/" + categoria.categoria + "/" + user.id)
           .then((res) => {
             setpeli(res.data.PeliRandom);
           })
