@@ -13,7 +13,7 @@ const CartaPeli = ({ id, peliData }) => {
   const location = useLocation();
   const path = location.pathname;
   const { user } = useContext(UserContext);
-  const [sw, setSw] = useState(false);
+  const [sw, setSw] = useState(null);
 
   useEffect(() => {
     user &&

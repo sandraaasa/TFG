@@ -13,8 +13,6 @@ import { Toast } from "primereact/toast";
 
 const Aleatorio = (categoria) => {
   const url = Global.url;
-  const location = useLocation();
-  const path = location.pathname;
   const { user } = useContext(UserContext);
   const [random, setpeli] = useState([]);
   const openBtnRef = useRef(null);
