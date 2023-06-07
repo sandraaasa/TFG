@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
+import UserContext from "../Context/UserContext";
 import Global from "../Global";
 import axios from "axios";
 import Carta from "./Carta";
@@ -8,7 +9,7 @@ import AleatorioSinCate from "./AleatorioSinCate";
 import { Button } from "primereact/button";
 import { StyleClass } from "primereact/styleclass";
 import { Panel } from "primereact/panel";
-import UserContext from "../Context/UserContext";
+import { Toast } from "primereact/toast";
 
 const Peliculas = () => {
   const url = Global.url;
@@ -18,44 +19,72 @@ const Peliculas = () => {
   const { user } = useContext(UserContext);
 
   const openBtnRef = useRef(null);
+  const toast = useRef(null);
 
   useEffect(() => {
     getpelis();
-  }, [categoria ]);
+  }, [categoria]);
+
+  const show = (dato) => {
+    toast.current.show({
+      severity: "error",
+      summary: "No hay películas",
+      detail: dato,
+      life: 5000,
+    });
+  };
 
   //obtner todas las películas en en el usestate pelis
   const getpelis = () => {
-      if (categoria === "") {
-        axios.get(url + "getall").then((res) => {
-          setpelis(res.data.peliget);
-        });
-      } else {
-        axios.get(url + "getCate/" + categoria).then((res) => {
+    if (categoria === "") {
+      axios.get(url + "getall").then((res) => {
+        setpelis(res.data.peliget);
+      });
+    } else {
+      axios
+        .get(url + "getCate/" + categoria)
+        .then((res) => {
           setpelis(res.data.pelisCate);
+        })
+        .catch((error) => {
+          if (error.response.status == 404) {
+            show("No hay películas con esta categoría");
+          }
+          console.log(error.response);
         });
-      }
+    }
   };
 
   //obtner la película aletortia SIN la categoría
   function getPeli() {
-    user ?
-      //si el usuario está logueado
-      axios.get(url + "getVistaRandom/" + user.id).then((res) => {
-        setpeli(res.data.PeliRandom)
-      })
-      .catch((error) =>{
-        console.log(error.response.status)
-      })
-    :
-      //si el usuario no está logueado
-      axios.get(url + "getone").then((res) => {
-        setpeli(res.data.PeliRandom)
-      })
-      .catch((error) =>{
-        console.log(error.response.status)
-      })
+    user
+      ? //si el usuario está logueado
+        axios
+          .get(url + "getVistaRandom/" + user.id)
+          .then((res) => {
+            setpeli(res.data.PeliRandom);
+          })
+          .catch((error) => {
+            if (error.response.status == 404) {
+              show("Usted ha visto todas las películas T-T");
+            }
+            console.log(error.response.status);
+          })
+      : //si el usuario no está logueado
+        axios
+          .get(url + "getone")
+          .then((res) => {
+            setpeli(res.data.PeliRandom);
+          })
+          .catch((error) => {
+            if (error.response.status == 404) {
+              show("No existe ninguna película");
+            }
+            console.log(error.response.status);
+          });
   }
 
+  //obtener la categoría del hijo (AsideLateral) para Aleatorio
   const recibirCategoria = (datosHijo) => {
     setCategoria(datosHijo);
   };
@@ -87,9 +116,9 @@ const Peliculas = () => {
   return (
     <main>
       <AsideLateral getCategoria={recibirCategoria} />
-
       <div className="card contenedor backBlack">
         <section className="backBlack card flex flex-wrap justify-content-center align-items-center">
+          <Toast ref={toast} position="top-left" />
           {categoria ? (
             <div>
               <h1>{categoria}</h1>
@@ -105,9 +134,7 @@ const Peliculas = () => {
         <h1 className="mt-5">Peliculas: {categoria}</h1>
         <section className="flex flex-wrap justify-content-center card-container gap-3">
           {pelis.length > 0 ? (
-              
             pelis.map((peli, i) => {
-              
               return <Carta key={i + 1} id={i} peliData={peli} />;
             })
           ) : (

@@ -79,7 +79,7 @@ let controller = {
       const categoria = req.params.cate;
       const pelisCate = await Peli.where({ categorias: categoria }).find({});
 
-      if (!pelisCate) {
+      if (pelisCate.length === 0) {
         return res.status(404).send({
           message: "No hay películas con esa categoría",
         });
@@ -124,10 +124,9 @@ let controller = {
         categoria[Math.floor(Math.random() * categoria.length)];
       //obtenemos la pelicula random
       const peliculas = await Peli.where({ categorias: cateRandom }).find();
-      const PeliRandom =
-        peliculas[Math.floor(Math.random() * peliculas.length)];
+      const PeliRandom = peliculas[Math.floor(Math.random() * peliculas.length)];
 
-      if (!peliculas) {
+      if (peliculas.length === 0) {
         return res.status(404).send({
           message: "No hay películas con ese id",
         });

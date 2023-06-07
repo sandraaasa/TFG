@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useRef, useContext, useEffect } from "react";
 import { Panel } from "primereact/panel";
 import Global from "../Global";
 import { useLocation } from "react-router-dom";
@@ -9,6 +9,7 @@ import { StyleClass } from "primereact/styleclass";
 import { Inplace, InplaceDisplay, InplaceContent } from "primereact/inplace";
 import { DateTime } from "react-intl-datetime-format";
 import { Chip } from "primereact/chip";
+import { Toast } from "primereact/toast";
 
 const Aleatorio = (categoria) => {
   const url = Global.url;
@@ -17,6 +18,16 @@ const Aleatorio = (categoria) => {
   const { user } = useContext(UserContext);
   const [random, setpeli] = useState([]);
   const openBtnRef = useRef(null);
+  const toast = useRef(null);
+
+  const show = (dato) => {
+    toast.current.show({
+      severity: "error",
+      summary: "No hay películas",
+      detail: dato,
+      life: 5000,
+    });
+  };
 
   const {
     imbd_id,
@@ -28,16 +39,37 @@ const Aleatorio = (categoria) => {
     valoracionTotal,
     poster,
   } = random || {};
+
   function getPeliCate() {
-    user ? 
-        axios.get(url + "getVistaCate/" + categoria.categoria + user.id).then((res) => {
-          setpeli(res.data.PeliRandom);
-        })
-      : 
-        axios.get(url + "getoneCate/" + categoria.categoria).then((res) => {
-          setpeli(res.data.PeliRandom);
-        });
+    const objeto = categoria.categoria + "/" + user.id;
+    user
+      ? axios
+          .get(url + "getVistaCate/" + objeto)
+          .then((res) => {
+            setpeli(res.data.PeliRandom);
+          })
+          .catch((error) => {
+            if (error.response.status == 404) {
+              show("Has visto todas las películas de esta categoría T-T");
+            }
+            console.log(error.response.status);
+          })
+      : axios
+          .get(url + "getoneCate/" + categoria.categoria)
+          .then((res) => {
+            setpeli(res.data.PeliRandom);
+          })
+          .catch((error) => {
+            if (error.response.status == 404) {
+              show("No hay películas con esta categoría");
+            }
+            console.log(error.response.status);
+          });
   }
+
+  useEffect(() => {
+    getPeliCate();
+  }, [categoria.categoria]);
 
   const intlConfig = {
     locale: "en-US",
@@ -94,21 +126,21 @@ const Aleatorio = (categoria) => {
 
   return (
     <article className="bg-yellow-200 card">
+      <Toast ref={toast} position="top-left" />
       <div className="bg-yellow-200 card-container flex flex-column align-content-around">
         <StyleClass
           nodeRef={openBtnRef}
           selector=".box"
           enterClassName="hidden"
-          enterActiveClassName="fadein"
-        >
-          <Button
-            ref={openBtnRef}
-            label="Pulsa aquí"
-            icon="pi pi-refresh"
-            size="large"
-            onClick={getPeliCate}
-          />
-        </StyleClass>
+          enterActiveClassName="fadeout"
+        />
+        <Button
+          ref={openBtnRef}
+          label="Random"
+          icon="pi pi-spin pi-refresh"
+          size="large"
+          onClick={getPeliCate}
+        />
         <Panel
           header={titulo}
           toggleable

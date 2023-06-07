@@ -85,7 +85,7 @@ const HeaderInicio = () => {
             </li>
           )
         )}
-        {checked == true ? (
+        {/* {checked == true ? (
           <li className="ml-2 flex dark-mode">
             <Button
               rounded
@@ -112,7 +112,7 @@ const HeaderInicio = () => {
               <i className="pi pi-sun" style={{ fontSize: "2.5rem" }} />
             </Button>
           </li>
-        )}
+        )} */}
       </ul>
     </nav>
   );
