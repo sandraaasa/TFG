@@ -16,8 +16,6 @@
 }
 .deco {
   text-decoration: none;
-  /* color: white; */
-  /* color: "var(--primary-color-text)"; */
   font-size: large;
   font-weight: 600;
   position: relative;

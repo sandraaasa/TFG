@@ -220,7 +220,7 @@ const Regislog = () => {
                 disabled={isLogin}
                 id="emailReg"
                 name="emailReg"
-                type="text"
+                type="email"
                 value={emailReg}
                 onChange={(e) => setEmailReg(e.target.value)}
                 className="w-full"
