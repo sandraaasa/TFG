@@ -1,16 +1,19 @@
 import React from "react";
 import Router from "./router";
 import "primereact/resources/primereact.min.css";
-import 'primereact/resources/themes/arya-orange/theme.css';   // theme
+import 'primereact/resources/themes/saga-orange/theme.css';   // theme
 import 'primereact/resources/primereact.css';                 // core css
 import 'primeicons/primeicons.css';                           // icons
 import 'primeflex/primeflex.css';                             // css utility
 import './index.css';
+import {ThemProvider}  from "./Context/ThemContext";
 
 function App() {
   return (
     <div>
-      <Router />
+      <ThemProvider>
+        <Router />
+      </ThemProvider>
     </div>
   );
 }

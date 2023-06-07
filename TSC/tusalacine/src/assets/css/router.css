@@ -17,7 +17,7 @@ aside {
 .contenedor {
   width: 80%;
 }
-.onlyback {
+/* .onlyback {
   background-color: #1f1f1f;
   color: white;
 }
@@ -32,7 +32,7 @@ aside {
 .backMBlack {
   background-color: #353434;
   color: orange;
-}
+} */
 .perfilContainer{
   display: flex;
   flex-direction: column;
@@ -55,10 +55,10 @@ aside {
     width: 100%;
   }
 }
-.material-symbols-outlined {
+/* .material-symbols-outlined {
   font-variation-settings:
   'FILL' 1,
   'wght' 700,
   'GRAD' 200,
   'opsz' 48
-}
+} */

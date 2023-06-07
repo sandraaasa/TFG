@@ -6,8 +6,6 @@
 }
 
 footer {
-  background-color: #1F1F1F;
-  color: #fff;
   padding: 30px;
   display: flex;
   flex-direction: row;
@@ -37,11 +35,12 @@ footer li:last-child {
 }
 
 .deco{
-  color: #fff;
+  /* color: #fff; */
+  color: var(--primary-color-text);
   text-decoration: none;
 }
 .deco:hover{
-    color: white;
+    color: var(--primary-color-text);
 }
 
 .linea::after {

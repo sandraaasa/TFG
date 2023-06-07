@@ -7,6 +7,7 @@ import UserContext from "../Context/UserContext";
 import { Inplace, InplaceDisplay, InplaceContent } from "primereact/inplace";
 import Global from "../Global";
 import axios from "axios";
+import { Chip } from 'primereact/chip';
 
 const CartaPeli = ({ id, peliData }) => {
   const url = Global.url;
@@ -80,7 +81,22 @@ const CartaPeli = ({ id, peliData }) => {
     }
   };
 
-  const header = <img alt={peliData?.imbd_id} src={img} />;
+  const header = 
+    <div>
+      <img alt={peliData?.imbd_id} src={img} />
+
+      {user && path != "/perfil" && (
+          <Button
+            className="w-full"
+            icon="pi pi-eye"
+            raised
+            text={sw ? false : true} //sw = true => la peli esta en lista de vistas
+            //el botón se muestra rellenado
+            aria-label="Favorite"
+            onClick={cambiarVisto}
+          />
+        )}
+    </div>;
 
   return (
     <Card
@@ -90,41 +106,31 @@ const CartaPeli = ({ id, peliData }) => {
       className="border-round max-w-full md:max-w-14rem xl:max-w-22rem m-2 bg-orange-50 text-gray-900"
     >
       <div className="grid ">
-        <Inplace closable className="col-5">
+        <Inplace closable className="col-12 xl:col-6">
           <InplaceDisplay>
             <Button
               label="Categoría"
               raised
-              icon="pi pi-info-circle border-round"
+              icon="pi pi-info-circle "
+              className="w-9 lg:w-full"
             />
           </InplaceDisplay>
           <InplaceContent>
-            <ul className="overflow-auto border-yellow-500 border-2 border-round">
+            <div className="overflow-auto ">
               {peliData?.categorias.map((elemento) => {
-                return <li key={elemento}>{elemento}</li>;
+                return <Chip key={elemento}  template={elemento} />;
               })}
-            </ul>
+            </div>
           </InplaceContent>
         </Inplace>
 
-        {user && path != "/perfil" && (
-          <Button
-            className="col-3 col-offset-4"
-            icon="pi pi-eye"
-            raised
-            text={sw ? false : true} //sw = true => la peli esta en lista de vistas
-            //el botón se muestra rellenado
-            rounded
-            aria-label="Favorite"
-            onClick={cambiarVisto}
-          />
-        )}
-        <Inplace closable className="col-12">
+        <Inplace closable className="col-12 xl:col-6">
           <InplaceDisplay>
             <Button
               label="Sinopsis"
               raised
-              icon="pi pi-info-circle border-round"
+              icon="pi pi-info-circle"
+              className="w-9 lg:w-full"
             />
           </InplaceDisplay>
           <InplaceContent>

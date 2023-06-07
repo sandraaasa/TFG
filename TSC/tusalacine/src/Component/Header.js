@@ -6,21 +6,24 @@ import logo2 from "../assets/images/tsclogoinvert.png";
 import { NavLink } from "react-router-dom";
 import { Button } from "primereact/button";
 import UserContext from "../Context/UserContext";
+import ThemContext from "../Context/ThemContext";
 
 const HeaderInicio = () => {
-  const [checked, setChecked] = useState(true);
   const { user, logout } = useContext(UserContext);
+  const {theme, changeTheme } = useContext(ThemContext);
+  const { swdark, setswdark } = useState("bg-primary");
 
   const dark = () => {
-    setChecked(!checked);
-    console.log(checked);
+    changeTheme(!theme);
+    console.log(theme);
   };
 
   const location = useLocation();
   const path = location.pathname;
 
   return (
-    <nav className="card menu onlyback">
+    <nav className="card menu onlyback" >
+      {/* <nav className={`card menu onlyback bg-primary ${swdark}`} > */}
       <NavLink to="/" className="deco logoH">
         <img alt="logo" src={logo2} height="70" className="mr-2" />
       </NavLink>
@@ -85,13 +88,14 @@ const HeaderInicio = () => {
             </li>
           )
         )}
-        {/* {checked == true ? (
-          <li className="ml-2 flex dark-mode">
+        {theme == false ? (
+          <li className="ml-2 flex ">
             <Button
               rounded
               raised
               text
               className="flex align-content-center justify-content-center"
+              /* severity="warning" */
               severity="secondary"
               aria-label="modo-oscuro"
               onClick={dark}
@@ -100,19 +104,20 @@ const HeaderInicio = () => {
             </Button>
           </li>
         ) : (
-          <li className="ml-2 flex dark-mode">
+          <li className="ml-2 flex ">
             <Button
               rounded
               raised
               text
               className="flex align-content-center justify-content-center"
+              severity="secondary"
               aria-label="modo-claro"
               onClick={dark}
             >
               <i className="pi pi-sun" style={{ fontSize: "2.5rem" }} />
             </Button>
           </li>
-        )} */}
+        )}
       </ul>
     </nav>
   );
