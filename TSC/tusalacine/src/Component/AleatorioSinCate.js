@@ -39,7 +39,9 @@ const Random = ({ peliData }) => {
     );
     const minute = (
         <>
-            <span className="ml-2 font-medium">  {peliData?.minutos} minutos</span>
+            <span className="ml-2 font-medium">  {peliData?.minutos} 
+            {peliData.url ? <a href={peliData.url}>minutos</a> : "minutos"}
+            </span>
         </>
     );
 
