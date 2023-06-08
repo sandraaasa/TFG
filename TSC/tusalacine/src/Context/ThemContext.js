@@ -7,11 +7,11 @@ const ThemProvider = ({children}) => {
     const [ theme, setTheme ] = useState(false)
 
 
-    const changeTheme = (theme) => {
+    const cambiarTheme = (theme) => {
         setTheme(theme);
     }
 
-    const data = { theme, changeTheme }
+    const data = { theme, cambiarTheme }
 
     return (
         <ThemContext.Provider value={data}>

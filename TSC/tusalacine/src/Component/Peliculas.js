@@ -131,14 +131,14 @@ const Peliculas = () => {
             </div>
           )}
         </section>
-        <h1 className="mt-5">Peliculas: {categoria}</h1>
+        <h1 className="mt-5">Películas: {categoria}</h1>
         <section className="flex flex-wrap justify-content-center card-container gap-3">
           {pelis.length > 0 ? (
             pelis.map((peli, i) => {
               return <Carta key={i + 1} id={i} peliData={peli} />;
             })
           ) : (
-            <h3 className="mx-auto">No hay Peliculas que mostrar</h3>
+            <h3 className="mx-auto">No hay Películas que mostrar</h3>
           )}
         </section>
       </div>

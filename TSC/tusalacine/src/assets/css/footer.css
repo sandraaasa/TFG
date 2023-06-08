@@ -1,5 +1,5 @@
-#footer{
-  position:sticky;
+#footer {
+  position: sticky;
   bottom: 0;
   right: 0;
   width: 100%;
@@ -34,30 +34,29 @@ footer li {
 footer li:last-child {
   margin-right: 0;
 }
-
-.deco{
-  /* color: #fff; */
-  color: var(--primary-color-text);
+ 
+.deco {
+  color: var(--color-text);
   text-decoration: none;
 }
-.deco:hover{
-    color: var(--primary-color-text);
-}
+.deco:hover {
+  color: var(--secondary-color-text);
+} 
 
 .linea::after {
-  content: ''; 
+  content: "";
   position: absolute;
   width: 100%;
   transform: scaleX(0);
   height: 3px;
   bottom: -2px;
   left: 0;
-  background-color: hsl(38, 100%, 57%) ;
+  background-color: hsl(38, 100%, 57%);
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
 
 .linea:hover::after {
-transform: scaleX(1);
-transform-origin: bottom left;
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }

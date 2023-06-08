@@ -1,20 +1,16 @@
-import React from "react";
+import React from 'react';
 import Router from "./router";
+import { ThemProvider } from './Context/ThemContext';
 import "primereact/resources/primereact.min.css";
-import 'primereact/resources/themes/saga-orange/theme.css';   // theme
 import 'primereact/resources/primereact.css';                 // core css
 import 'primeicons/primeicons.css';                           // icons
 import 'primeflex/primeflex.css';                             // css utility
-import './index.css';
-import {ThemProvider}  from "./Context/ThemContext";
 
 function App() {
   return (
-    <div>
-      <ThemProvider>
-        <Router />
-      </ThemProvider>
-    </div>
+    <ThemProvider>
+      <Router />
+    </ThemProvider>
   );
 }
 

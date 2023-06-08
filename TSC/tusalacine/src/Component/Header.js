@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import PrimeReact from 'primereact/api';
 import "../assets/css/header.css";
 import logo from "../assets/images/tsclogoinvert.png";
 import logo2 from "../assets/images/tsclogo.png";
@@ -11,10 +11,20 @@ import ThemContext from "../Context/ThemContext";
 
 const HeaderInicio = () => {
   const { user, logout } = useContext(UserContext);
-  const { theme, changeTheme } = useContext(ThemContext);
+  const { theme, cambiarTheme } = useContext(ThemContext);
 
+  //cambiar el tema cambiando el href del index
   const dark = () => {
-    changeTheme(!theme);
+    if (theme === false) {
+      PrimeReact?.changeTheme?.("aryaOrange.css", "sagaOrange.css", 'theme-link', () =>
+        cambiarTheme(!theme)
+      );
+    } else {
+      PrimeReact?.changeTheme?.("sagaOrange.css", "aryaOrange.css", 'theme-link', () =>
+        cambiarTheme(!theme)
+      );
+    }
+    
     console.log(theme);
   };
 
@@ -22,7 +32,7 @@ const HeaderInicio = () => {
   const path = location.pathname;
 
   return (
-    <nav className="card menu onlyback">
+    <nav className="card menu onlyback flex flex-row flex-wrap">
       <NavLink to="/" className="deco logoH">
         <img
           alt="logo"
@@ -92,20 +102,7 @@ const HeaderInicio = () => {
             </li>
           )
         )}
-        {theme == true ? (
-          <li className="ml-2 flex ">
-            <Button
-              rounded
-              raised
-              className="flex align-content-center justify-content-center"
-              severity="secondary"
-              aria-label="modo-oscuro"
-              onClick={dark}
-            >
-              <i className="pi pi-moon" style={{ fontSize: "2.5rem" }} />
-            </Button>
-          </li>
-        ) : (
+        {theme == false ? (
           <li className="ml-2 flex ">
             <Button
               rounded
@@ -116,6 +113,19 @@ const HeaderInicio = () => {
               onClick={dark}
             >
               <i className="pi pi-sun" style={{ fontSize: "2.5rem" }} />
+            </Button>
+          </li>
+        ) : (
+          <li className="ml-2 flex ">
+            <Button
+              rounded
+              raised
+              className="flex align-content-center justify-content-center"
+              severity="secondary"
+              aria-label="modo-oscuro"
+              onClick={dark}
+            >
+              <i className="pi pi-moon" style={{ fontSize: "2.5rem" }} />
             </Button>
           </li>
         )}

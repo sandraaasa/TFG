@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./Component/Header";
 import Inicio from "./Component/Home";
@@ -10,6 +10,7 @@ import Usuario from "./Component/Usuario";
 import { UserProvider } from "./Context/UserContext";
 import "./assets/css/router.css";
 import { ScrollTop } from "primereact/scrolltop";
+import './index.css';
 
 const Rutas = () => {
   return (
