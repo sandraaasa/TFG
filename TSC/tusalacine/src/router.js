@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+//import "primereact/resources/themes/arya-orange/theme.css"; // theme
 import Header from "./Component/Header";
 import Inicio from "./Component/Home";
 import Footer from "./Component/Footer";
@@ -10,13 +12,17 @@ import Usuario from "./Component/Usuario";
 import { UserProvider } from "./Context/UserContext";
 import "./assets/css/router.css";
 import { ScrollTop } from "primereact/scrolltop";
+import ThemContext from "./Context/ThemContext";
+import sagaBlue from './theme-saga-blue';
 
 const Rutas = () => {
+  
+  const { theme } = useContext(ThemContext);
   return (
     <BrowserRouter>
-      <Head>
+      {/* <Head>
           <link id="theme-link" rel="stylesheet" href="/themes/lara-light-blue/theme.css">
-      </Head>
+      </Head> */}
       <UserProvider>
         <Header />
         <Routes>

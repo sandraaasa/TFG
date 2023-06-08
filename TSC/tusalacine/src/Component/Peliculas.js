@@ -116,7 +116,7 @@ const Peliculas = () => {
   return (
     <main>
       <AsideLateral getCategoria={recibirCategoria} />
-      <div className="card contenedor backBlack">
+      <div className="card contenedor backBlack bg-primary">
         <section className="backBlack card flex flex-wrap justify-content-center align-items-center">
           <Toast ref={toast} position="top-left" />
           {categoria ? (
