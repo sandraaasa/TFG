@@ -14,6 +14,9 @@ import { ScrollTop } from "primereact/scrolltop";
 const Rutas = () => {
   return (
     <BrowserRouter>
+      <Head>
+          <link id="theme-link" rel="stylesheet" href="/themes/lara-light-blue/theme.css">
+      </Head>
       <UserProvider>
         <Header />
         <Routes>

@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/css/header.css";
 import logo2 from "../assets/images/tsclogoinvert.png";
+import logo from "../assets/images/tsclogo.png";
 import { NavLink } from "react-router-dom";
 import { Button } from "primereact/button";
 import UserContext from "../Context/UserContext";
@@ -10,7 +11,7 @@ import ThemContext from "../Context/ThemContext";
 
 const HeaderInicio = () => {
   const { user, logout } = useContext(UserContext);
-  const {theme, changeTheme } = useContext(ThemContext);
+  const { theme, changeTheme } = useContext(ThemContext);
   const { swdark, setswdark } = useState("bg-primary");
 
   const dark = () => {
@@ -22,10 +23,15 @@ const HeaderInicio = () => {
   const path = location.pathname;
 
   return (
-    <nav className="card menu onlyback" >
+    <nav className="card menu onlyback">
       {/* <nav className={`card menu onlyback bg-primary ${swdark}`} > */}
       <NavLink to="/" className="deco logoH">
-        <img alt="logo" src={logo2} height="70" className="mr-2" />
+        <img
+          alt="logo"
+          src={theme == true ? logo2 : logo}
+          height="70"
+          className="mr-2"
+        />
       </NavLink>
       <ul className="lista">
         <li className="flex">
