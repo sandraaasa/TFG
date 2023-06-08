@@ -6,7 +6,7 @@ import { Link, NavLink } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <div id="footer" className='bg-primary rounded'>
+    <div id="footer" className=' rounded'>
       <footer className='rounded'>
         <p>Todos los derechos reservados &copy; 2023</p>
         <ul>

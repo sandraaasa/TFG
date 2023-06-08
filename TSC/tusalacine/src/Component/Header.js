@@ -2,7 +2,8 @@ import React, { useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/css/header.css";
-import logo2 from "../assets/images/tsclogoinvert.png";
+import logo from "../assets/images/tsclogoinvert.png";
+import logo2 from "../assets/images/tsclogo.png";
 import { NavLink } from "react-router-dom";
 import { Button } from "primereact/button";
 import UserContext from "../Context/UserContext";
@@ -10,8 +11,7 @@ import ThemContext from "../Context/ThemContext";
 
 const HeaderInicio = () => {
   const { user, logout } = useContext(UserContext);
-  const {theme, changeTheme } = useContext(ThemContext);
-  const { swdark, setswdark } = useState("bg-primary");
+  const { theme, changeTheme } = useContext(ThemContext);
 
   const dark = () => {
     changeTheme(!theme);
@@ -22,10 +22,14 @@ const HeaderInicio = () => {
   const path = location.pathname;
 
   return (
-    <nav className="card menu onlyback" >
-      {/* <nav className={`card menu onlyback bg-primary ${swdark}`} > */}
+    <nav className="card menu onlyback">
       <NavLink to="/" className="deco logoH">
-        <img alt="logo" src={logo2} height="70" className="mr-2" />
+        <img
+          alt="logo"
+          src={theme == true ? logo2 : logo}
+          height="70"
+          className="mr-2"
+        />
       </NavLink>
       <ul className="lista">
         <li className="flex">
@@ -88,14 +92,12 @@ const HeaderInicio = () => {
             </li>
           )
         )}
-        {theme == false ? (
+        {theme == true ? (
           <li className="ml-2 flex ">
             <Button
               rounded
               raised
-              text
               className="flex align-content-center justify-content-center"
-              /* severity="warning" */
               severity="secondary"
               aria-label="modo-oscuro"
               onClick={dark}
@@ -108,9 +110,8 @@ const HeaderInicio = () => {
             <Button
               rounded
               raised
-              text
               className="flex align-content-center justify-content-center"
-              severity="secondary"
+              severity="warning"
               aria-label="modo-claro"
               onClick={dark}
             >

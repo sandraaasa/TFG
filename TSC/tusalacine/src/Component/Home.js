@@ -1,10 +1,12 @@
 import React, { useState, useContext, useRef } from 'react';
 import UserContext from "../Context/UserContext";
+import ThemContext from "../Context/ThemContext";
 import Global from '../Global';
 import axios from 'axios';
 import AleatorioSinCate from "./AleatorioSinCate";
 import '../assets/css/inicio.css';
-import logo from '../assets/images/TSCHome.png';
+import logo2 from '../assets/images/TSCHome.png';
+import logo from '../assets/images/TSCHomeinvert.png';
 import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
 import { Toast } from "primereact/toast";
@@ -14,6 +16,7 @@ const Inicio = () => {
     const [random, setpeli] = useState([]);
     const url = Global.url;
     const [visible, setVisible] = useState(false);
+    const { theme } = useContext(ThemContext);
     const [err, seterr] = useState("");
     const { user } = useContext(UserContext);
     const toast = useRef(null);
@@ -66,10 +69,10 @@ const Inicio = () => {
                         <div>{err}</div>
                 } 
             </Dialog>
-            <Button icon="pi pi-external-link" onClick={() =>  getPeli()} label="Random Movie" text raised severity="warning" className=' text-3xl md:text-5xl lg:text-7xl'  />
+            <Button icon="pi pi-external-link" onClick={() =>  getPeli()} label="Random Movie" raised severity="warning" className=' text-3xl md:text-5xl lg:text-7xl'  />
             <div className='animacionDiv'>
                 
-                <img src={logo} className='logoI w-full' alt='logo' /> 
+                <img src={theme == true ? logo2 : logo} className='logoI w-full' alt='logo' /> 
             </div>
         </div>
     )

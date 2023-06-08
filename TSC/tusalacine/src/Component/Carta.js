@@ -90,10 +90,12 @@ const CartaPeli = ({ id, peliData }) => {
             className="w-full"
             icon="pi pi-eye"
             raised
+            label={sw && "visto"}
             text={sw ? false : true} //sw = true => la peli esta en lista de vistas
-            //el botón se muestra rellenado
+                                                  //el botón se muestra rellenado
             aria-label="Favorite"
             onClick={cambiarVisto}
+            
           />
         )}
     </div>;
