@@ -3,7 +3,7 @@ import logo from "../assets/images/tsclogoinvert.png";
 import logo2 from "../assets/images/tsclogo.png";
 import mern from '../assets/images/MERN.png';
 import { Fieldset } from 'primereact/fieldset';
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate } from "react-router-dom";
 import { TabView, TabPanel } from 'primereact/tabview';
 import { Button } from "primereact/button";
 import { Toast } from 'primereact/toast';
@@ -17,6 +17,11 @@ const Ayuda = () => {
         navigator.clipboard.writeText("sandra_saanchez@hotmail.com");
         toast.current.show({ severity: 'success', summary: 'Copiado', detail: 'Correo copiado al portapapeles', life: 5000 });
     }
+
+    const discord = () => {
+        window.location.href = "https://discord.gg/ZJuXknnp";
+    }
+    
     return (
         <div >
             <Toast ref={toast} />
@@ -80,9 +85,9 @@ const Ayuda = () => {
                     <h1>Contáctanos</h1>
                         <div className="text-center">
                             <div className="text-blue-600 font-bold mb-3"><i className="pi pi-discord"></i>&nbsp;DISCORD</div>
-                            <h3 className="text-900 font-bold text-5xl mb-3">Encuentranos en nuestra comunidad</h3>
-                            <p className="text-700 text-2xl mb-5">Comentanos lo que desees. Cuando tengas dudas o problemas ahí estamos para ayudarte.</p>
-                            <Button label="Unete" icon="pi pi-discord" className="font-bold px-5 py-3 p-button-raised p-button-rounded white-space-nowrap" />
+                            <h3 className="text-900 font-bold text-5xl mb-3">Encuéntranos en nuestra comunidad</h3>
+                            <p className="text-700 text-2xl mb-5">Coméntanos lo que desees. Cuando tengas dudas o problemas ahí estamos para ayudarte.</p>
+                            <Button label="Únete" icon="pi pi-discord" className="font-bold px-5 py-3 p-button-raised p-button-rounded white-space-nowrap" onClick={discord}/>
                             <p className="text-700 text-2xl m-5">También nos puedes mandar un correo </p>
                             <Button label="Mail" icon="pi pi-envelope" className="font-bold px-5 py-3 p-button-raised p-button-rounded white-space-nowrap" onClick={showCopi} />
                         </div>
