@@ -25,7 +25,7 @@ const Regislog = () => {
   const msgLog = useRef(null);
   const msgReg = useRef(null);
   const { login } = useContext(UserContext);
-
+  const maxDate = new Date();
   const correcto = (mensaje) => {
     if (isLogin) {
       msgLog.current.show({
@@ -141,6 +141,7 @@ const Regislog = () => {
             </h2>
             <span className="p-float-label">
               <InputText
+                pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
                 id="emailLog"
                 name="emailLog"
                 type="email"
@@ -154,13 +155,14 @@ const Regislog = () => {
             <br />
             <span className="p-float-label">
               <Password
+                toggleMask
+                pattern="[A-Za-z0-9!?-]{8,12}"
                 id="passwordLog"
                 name="passwordLog"
                 disabled={!isLogin}
                 value={passwordLog}
                 onChange={(e) => setPasswordLog(e.target.value)}
                 footer={footer}
-                toggleMask
                 className="w-full"
                 inputClassName="w-full p-3 "
               />
@@ -203,7 +205,9 @@ const Regislog = () => {
             <span className="p-float-label">
               <InputText
                 required
+                pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}"
                 disabled={isLogin}
+                keyfilter="alphanum"
                 id="usernameReg"
                 name="usernameReg"
                 type="text"
@@ -217,6 +221,7 @@ const Regislog = () => {
             <span className="p-float-label">
               <InputText
                 required
+                pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
                 disabled={isLogin}
                 id="emailReg"
                 name="emailReg"
@@ -232,6 +237,7 @@ const Regislog = () => {
               <Password
                 toggleMask
                 required
+                pattern="[A-Za-z0-9!?-]{8,12}"
                 id="passwordReg"
                 name="passwordReg"
                 value={passwordReg}
@@ -247,6 +253,8 @@ const Regislog = () => {
             <span className="p-float-label">
               <Calendar
                 required
+                dateFormat="dd/mm/yy"
+                maxDate={maxDate}
                 disabled={isLogin}
                 id="dateReg"
                 name="dateReg"
