@@ -16,7 +16,7 @@
     console.log(data);
   })
  ```
- buscas la pelicula y despues sacas en un nuevo componente la película
+ buscas la película y despues sacas en un nuevo componente la película
 ### react
  * https://youtu.be/mnKHJDkpZos *ayuda useContext HOOK*
  * enlace interesante para aprender un poco de next.js -> https://nextjs.org/learn/foundations/from-react-to-nextjs 

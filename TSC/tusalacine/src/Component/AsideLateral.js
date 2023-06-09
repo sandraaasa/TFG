@@ -24,7 +24,7 @@ const AsideLateral = (props) =>{
         { name: 'Misterio', code: 'MIST' },
         { name: 'Romance', code: 'ROM' },
         { name: 'Ciencia ficción', code: 'SC' },
-        { name: 'Pelicula de TV', code: 'PTV' },
+        { name: 'Película de TV', code: 'PTV' },
         { name: 'Suspense', code: 'SUSP' },
         { name: 'Bélica', code: 'BLG' },
         { name: 'Western', code: 'WSTR' }

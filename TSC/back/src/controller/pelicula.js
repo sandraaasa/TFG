@@ -115,14 +115,14 @@ let controller = {
         "Misteria",
         "Romance",
         "Ciencia ficción",
-        "Pelicula de TV",
+        "Película de TV",
         "Suspense",
         "Bélica",
         "Western",
       ];
       const cateRandom =
         categoria[Math.floor(Math.random() * categoria.length)];
-      //obtenemos la pelicula random
+      //obtenemos la película random
       const peliculas = await Peli.where({ categorias: cateRandom }).find();
       const PeliRandom = peliculas[Math.floor(Math.random() * peliculas.length)];
 
@@ -181,7 +181,7 @@ let controller = {
       }
     } catch (error) {
       return res.status(500).send({
-        message: "Ha habido un error y no se ha encontrado la pelicula",
+        message: "Ha habido un error y no se ha encontrado la película",
       });
     }
   },
