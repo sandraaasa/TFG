@@ -29,7 +29,7 @@ const CartaPeli = ({ id, peliData }) => {
         .catch((err) => {
           console.log(err.data);
         });
-  }, [sw]);
+  });
 
   const intlConfig = {
     locale: "en-US",
