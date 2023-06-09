@@ -50,9 +50,9 @@ const Inicio = () => {
                 setVisible(true);
             })
             .catch((error) =>{
-                if(error.response.status == 404){
+                /* if(error.response.status == 404){
                     show("No existe ninguna película")
-                }
+                } */
                 console.log(error.response.status)
             })
     }

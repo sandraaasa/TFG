@@ -77,9 +77,6 @@ const Peliculas = () => {
             setpeli(res.data.PeliRandom);
           })
           .catch((error) => {
-            if (error.response.status == 404) {
-              show("No existe ninguna película");
-            }
             console.log(error.response.status);
           });
   }
@@ -138,7 +135,7 @@ const Peliculas = () => {
               return <Carta key={i + 1} id={i} peliData={peli} />;
             })
           ) : (
-            <h3 className="mx-auto">No hay Películas que mostrar</h3>
+            <h3 className="mx-auto">No hay películas que mostrar</h3>
           )}
         </section>
       </div>

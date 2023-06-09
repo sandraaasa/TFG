@@ -41,12 +41,10 @@ const CartaPeli = ({ id, peliData }) => {
   };
   const subTitle = (
     <div id="subtitlePeli" className="text-gray-900">
-      <p>
-        Fecha: <DateTime config={intlConfig}>{peliData?.fecha}</DateTime>{" "}
-      </p>
+      <p>Fecha: <DateTime config={intlConfig}>{peliData?.fecha}</DateTime>{" "}</p>
       <p> Minutos: {peliData?.minutos}</p>
       <p>Estrellas: {peliData?.valoracionTotal}</p>
-      <p>Pais: {peliData?.pais}</p>
+      <p>País: {peliData?.pais}</p>
     </div>
   );
   const img = peliData?.poster;
@@ -91,7 +89,7 @@ const CartaPeli = ({ id, peliData }) => {
             icon="pi pi-eye"
             raised
             label={sw && "visto"}
-            text={sw ? false : true} //sw = true => la peli esta en lista de vistas
+            text ={sw ? false : true} //sw = true => la peli esta en lista de vistas
                                                   //el botón se muestra rellenado
             aria-label="Favorite"
             onClick={cambiarVisto}

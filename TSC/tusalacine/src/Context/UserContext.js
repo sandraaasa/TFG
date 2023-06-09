@@ -6,9 +6,7 @@ const UserContext = createContext();
 const UserProvider = ({children}) => {
     const [ user, setUser ] = useState(JSON.parse(localStorage.getItem('usuario')))
 
-
     const login = (usuario) => {
-        
         localStorage.setItem('usuario', JSON.stringify(usuario));
         setUser(JSON.parse(localStorage.getItem('usuario')));
     }

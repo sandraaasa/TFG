@@ -6,7 +6,6 @@ const ThemContext = createContext();
 const ThemProvider = ({children}) => {
     const [ theme, setTheme ] = useState(false)
 
-
     const cambiarTheme = (theme) => {
         setTheme(theme);
     }
