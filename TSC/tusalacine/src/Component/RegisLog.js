@@ -141,7 +141,6 @@ const Regislog = () => {
             </h2>
             <span className="p-float-label">
               <InputText
-                pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
                 id="emailLog"
                 name="emailLog"
                 type="email"
@@ -156,7 +155,6 @@ const Regislog = () => {
             <span className="p-float-label">
               <Password
                 toggleMask
-                pattern="[A-Za-z0-9!?-]{8,12}"
                 id="passwordLog"
                 name="passwordLog"
                 disabled={!isLogin}
