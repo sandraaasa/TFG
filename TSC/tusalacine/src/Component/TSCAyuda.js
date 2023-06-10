@@ -74,10 +74,15 @@ const Ayuda = () => {
                             </p>
                             <img src={mern} alt="mern" height="100" className="m-2" />
                             <p className="m-2">
-                                Usamos diversas tecnologías
-                                Axios
-                                Prime react
-                                y muchas mas ^-^
+                                Usamos diversas tecnologías para la creación y mantenimiento de la aplicación
+                                <ul>
+                                    <ol>React : </ol>
+                                    <ol>Mongoose : </ol>
+                                    <ol>Express : </ol>
+                                    <ol>Node.js : </ol>
+                                    <ol>Axios : </ol>
+                                    <pl>Prime React : </pl>
+                                </ul>
                             </p>
                             <p className="m-2">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum <br/>
