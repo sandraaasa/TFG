@@ -75,21 +75,13 @@ const Ayuda = () => {
                             <img src={mern} alt="mern" height="100" className="m-2" />
                             <p className="m-2">
                                 Usamos diversas tecnologías para la creación y mantenimiento de la aplicación
-                                <ul>
-                                    <ol>React : </ol>
-                                    <ol>Mongoose : </ol>
-                                    <ol>Express : </ol>
-                                    <ol>Node.js : </ol>
-                                    <ol>Axios : </ol>
-                                    <pl>Prime React : </pl>
-                                </ul>
-                            </p>
-                            <p className="m-2">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum <br/>
-                            Al contrario del pensamiento popular, el texto de Lorem Ipsum no es simplemente texto aleatorio. Tiene sus raices en una pieza cl´sica de la literatura del Latin, que data del año 45 antes de Cristo, haciendo que este adquiera mas de 2000 años de antiguedad. Richard McClintock, un profesor de Latin de la Universidad de Hampden-Sydney en Virginia, encontró una de las palabras más oscuras de la lengua del latín, "consecteur", en un pasaje de Lorem Ipsum, y al seguir leyendo distintos textos del latín, descubrió la fuente indudable. 
-                            Lorem Ipsum viene de las secciones 1.10.32 y 1.10.33 de "de Finnibus Bonorum et Malorum" (Los Extremos del Bien y El Mal) por Cicero, escrito en el año 45 antes de Cristo. Este libro es un tratado de teoría de éticas, muy popular durante el Renacimiento. La primera linea del Lorem Ipsum, "Lorem ipsum dolor sit amet..", viene de una linea en la sección 1.10.32
-
-                            El trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido debajo para aquellos interesados. Las secciones 1.10.32 y 1.10.33 de "de Finibus Bonorum et Malorum" por Cicero son también reproducidas en su forma original exacta, acompañadas por versiones en Inglés de la traducción realizada en 1914 por H. Rackham.
+                                
+                                <p>React : </p>
+                                    <p>Mongoose : </p>
+                                    <span>Express : </span>
+                                    <span>Node.js : </span>
+                                    <span>Axios : </span>
+                                    <span>Prime React :</span>
                             </p>
                         </div>
                 </Fieldset>
