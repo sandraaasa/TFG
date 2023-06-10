@@ -77,11 +77,11 @@ const Ayuda = () => {
                                 Usamos diversas tecnologías para la creación y mantenimiento de la aplicación
                                 
                                 <p>React : </p>
-                                    <p>Mongoose : </p>
-                                    <span>Express : </span>
-                                    <span>Node.js : </span>
-                                    <span>Axios : </span>
-                                    <span>Prime React :</span>
+                                <p>Mongoose : </p>
+                                <p>Express : </p>
+                                <p>Node.js : </p>
+                                <p>Axios : </p>
+                                <p>Prime React :</p>
                             </p>
                         </div>
                 </Fieldset>
